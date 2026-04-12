@@ -305,16 +305,37 @@
     })();
     </script>
 
+    <!-- ── Chat i18n ─────────────────────────────────────────── -->
+    <script>
+    var CHAT_I18N = {!! json_encode([
+        'advisor_name'     => __('ui.chat.advisor_name'),
+        'now'              => __('ui.chat.now'),
+        'suggest_1'        => __('ui.chat.suggest_1'),
+        'suggest_2'        => __('ui.chat.suggest_2'),
+        'suggest_3'        => __('ui.chat.suggest_3'),
+        'suggest_4'        => __('ui.chat.suggest_4'),
+        'msg_received'     => __('ui.chat.msg_received'),
+        'msg_error'        => __('ui.chat.msg_error'),
+        'notif_from'       => __('ui.chat.notif_from'),
+        'responses'        => [
+            __('ui.chat.suggest_1') => ['text' => __('ui.chat.resp_sim_text'),     'link' => '/simulateur',              'linkLabel' => __('ui.chat.resp_sim_link')],
+            __('ui.chat.suggest_2') => ['text' => __('ui.chat.resp_rates_text')],
+            __('ui.chat.suggest_3') => ['text' => __('ui.chat.resp_rdv_text'),     'link' => '/contact/rdv',             'linkLabel' => __('ui.chat.resp_rdv_link')],
+            __('ui.chat.suggest_4') => ['text' => __('ui.chat.resp_space_text'),   'link' => '/espace-client/register',  'linkLabel' => __('ui.chat.resp_space_link')],
+            'default'               => ['text' => __('ui.chat.resp_default_text'), 'link' => '/contact/rdv',             'linkLabel' => __('ui.chat.resp_default_link')],
+        ],
+    ]) !!};
+    </script>
+
     <!-- ── Chat widget ──────────────────────────────────────── -->
     <div id="chat-widget" aria-live="polite">
-        {{-- Bulle launcher --}}
         {{-- Mini popup de notification --}}
         <div id="chat-notif-bubble" style="display:none;">
             <div id="chat-notif-bubble__text"></div>
-            <button id="chat-notif-bubble__close" aria-label="Fermer">×</button>
+            <button id="chat-notif-bubble__close" aria-label="{{ __('ui.chat.close_aria') }}">×</button>
         </div>
 
-        <button id="chat-launcher" aria-label="Ouvrir le chat conseiller" aria-expanded="false" aria-controls="chat-popup">
+        <button id="chat-launcher" aria-label="{{ __('ui.chat.open_aria') }}" aria-expanded="false" aria-controls="chat-popup">
             <span id="chat-launcher-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </span>
@@ -326,42 +347,42 @@
         </button>
 
         {{-- Popup --}}
-        <div id="chat-popup" role="dialog" aria-modal="true" aria-label="Chat avec un conseiller" style="display:none;">
+        <div id="chat-popup" role="dialog" aria-modal="true" aria-label="{{ __('ui.chat.popup_aria') }}" style="display:none;">
             <div class="chat-popup__head">
                 <div class="chat-popup__advisor">
                     <div class="chat-popup__avatar">K</div>
                     <div>
-                        <p class="chat-popup__name">Conseiller KapitalStark</p>
+                        <p class="chat-popup__name">{{ __('ui.chat.advisor_name') }}</p>
                         <p class="chat-popup__status">
                             <span class="chat-popup__online-dot"></span>
-                            En ligne — répond en &lt; 2 min
+                            {{ __('ui.chat.advisor_status') }}
                         </p>
                     </div>
                 </div>
-                <button class="chat-popup__minimize" id="chat-minimize" aria-label="Réduire le chat">
+                <button class="chat-popup__minimize" id="chat-minimize" aria-label="{{ __('ui.chat.minimize_aria') }}">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12H4"/></svg>
                 </button>
             </div>
 
             <div class="chat-popup__body" id="chat-popup-body">
                 <div class="chat-popup__msg chat-popup__msg--advisor">
-                    <p>Bonjour ! 👋 Je suis votre conseiller KapitalStark. Comment puis-je vous aider aujourd'hui ?</p>
-                    <span class="chat-popup__time">Maintenant</span>
+                    <p>{{ __('ui.chat.welcome') }}</p>
+                    <span class="chat-popup__time">{{ __('ui.chat.now') }}</span>
                 </div>
                 <div class="chat-popup__suggestions" id="chat-suggestions">
-                    <button class="chat-popup__suggest" onclick="sendSuggestion('Simuler un prêt')">Simuler un prêt</button>
-                    <button class="chat-popup__suggest" onclick="sendSuggestion('Taux actuels')">Taux actuels</button>
-                    <button class="chat-popup__suggest" onclick="sendSuggestion('Parler à un conseiller')">Parler à un conseiller</button>
-                    <button class="chat-popup__suggest" onclick="sendSuggestion('Déposer un dossier')">Déposer un dossier</button>
+                    <button class="chat-popup__suggest" onclick="sendSuggestion(CHAT_I18N.suggest_1)">{{ __('ui.chat.suggest_1') }}</button>
+                    <button class="chat-popup__suggest" onclick="sendSuggestion(CHAT_I18N.suggest_2)">{{ __('ui.chat.suggest_2') }}</button>
+                    <button class="chat-popup__suggest" onclick="sendSuggestion(CHAT_I18N.suggest_3)">{{ __('ui.chat.suggest_3') }}</button>
+                    <button class="chat-popup__suggest" onclick="sendSuggestion(CHAT_I18N.suggest_4)">{{ __('ui.chat.suggest_4') }}</button>
                 </div>
             </div>
 
             <div class="chat-popup__input-wrap">
                 <input type="text" id="chat-input" class="chat-popup__input"
-                       placeholder="Écrivez votre message…"
-                       aria-label="Message au conseiller"
+                       placeholder="{{ __('ui.chat.input_ph') }}"
+                       aria-label="{{ __('ui.chat.input_aria') }}"
                        onkeydown="if(event.key==='Enter')sendChatMsg()">
-                <button class="chat-popup__send" onclick="sendChatMsg()" aria-label="Envoyer">
+                <button class="chat-popup__send" onclick="sendChatMsg()" aria-label="{{ __('ui.chat.send_aria') }}">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </button>
             </div>
@@ -723,13 +744,7 @@
         var minimize = document.getElementById('chat-minimize');
         var isOpen   = false;
 
-        var RESPONSES = {
-            'Simuler un prêt':         { text: 'Parfait ! Vous pouvez utiliser notre simulateur gratuit →', link: '/simulateur', linkLabel: 'Ouvrir le simulateur' },
-            'Taux actuels':            { text: 'Nos taux actuels : Immobilier dès 1,9% · Auto dès 2,5% · Personnel dès 3,2%. Ces taux sont indicatifs et dépendent de votre profil.' },
-            'Parler à un conseiller':  { text: 'Vous pouvez prendre rendez-vous avec l\'un de nos conseillers dès maintenant.', link: '/contact/rdv', linkLabel: 'Prendre RDV' },
-            'Déposer un dossier':      { text: 'Créez votre espace client gratuit pour déposer votre dossier en ligne, sécurisé et rapide.', link: '/espace-client/register', linkLabel: 'Créer mon espace' },
-            'default':                 { text: 'Merci pour votre message ! Un conseiller KapitalStark vous répondra sous 2 minutes. Ou prenez directement rendez-vous.', link: '/contact/rdv', linkLabel: 'Prendre RDV' },
-        };
+        var RESPONSES = CHAT_I18N.responses;
 
         function openChat() {
             popup.style.display = 'block';
@@ -816,16 +831,14 @@
                     lastAdminMsgId = data.bot_id;
                 }
                 if (data.bot) {
-                    // Réponse automatique du bot
                     appendMsg(data.bot.body, false, data.bot.link || null, data.bot.link_label || null);
                 } else {
-                    // Bot incapable — message d'attente conseiller
-                    appendMsg('Votre message a bien été reçu. Un conseiller KapitalStark va vous répondre dans les plus brefs délais.', false, null, null);
+                    appendMsg(CHAT_I18N.msg_received, false, null, null);
                 }
             })
             .catch(function(){
                 hideTyping();
-                appendMsg('Une erreur est survenue. Veuillez réessayer.', false, null, null);
+                appendMsg(CHAT_I18N.msg_error, false, null, null);
             });
         }
 
@@ -848,7 +861,7 @@
         }
 
         function showNotifBubble(text) {
-            notifText.innerHTML = '<strong>Conseiller KapitalStark</strong>' + text;
+            notifText.innerHTML = '<strong>' + CHAT_I18N.notif_from + '</strong>' + text;
             notifBubble.style.display = 'flex';
             // Fermer automatiquement après 8s
             clearTimeout(bubbleTimer);
