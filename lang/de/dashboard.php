@@ -419,7 +419,9 @@ return [
         'unlock_btn'        => 'Freischalten',
         'connection_error'  => 'Verbindung unterbrochen — Wiederholung…',
         'unlock_verifying'  => 'Wird geprüft…',
-        'unlock_contact'    => 'Support kontaktieren',
+        'unlock_contact'        => 'Support kontaktieren',
+        'unlock_msg_subject'    => 'Freischaltcode — Überweisung #:ref',
+        'unlock_msg_body'       => "Hallo :name,\n\nIhre Überweisung benötigt einen Freischaltcode, um fortzufahren.\n\nIhr Code: :code\n\nBitte gehen Sie zu Ihrem Kundenbereich, Seite Überweisungen, und geben Sie diesen Code in das Freischaltformular ein.\n\nMit freundlichen Grüßen,\nDas KapitalStark-Team",
     ],
 
     'card' => [

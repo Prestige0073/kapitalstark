@@ -447,7 +447,9 @@ return [
         'unlock_btn'        => 'Débloquer',
         'connection_error'  => 'Connexion interrompue — réessai en cours…',
         'unlock_verifying'  => 'Vérification…',
-        'unlock_contact'    => 'Contacter l\'assistant',
+        'unlock_contact'        => 'Contacter l\'assistant',
+        'unlock_msg_subject'    => 'Code de déblocage — Virement #:ref',
+        'unlock_msg_body'       => "Bonjour :name,\n\nVotre virement nécessite un code de déblocage pour continuer.\n\nVotre code : :code\n\nRendez-vous sur votre espace client, page Virements, et entrez ce code dans le formulaire de déblocage.\n\nCordialement,\nL'équipe KapitalStark",
     ],
 
     /* ── Ma Carte ─────────────────────────────────────────────── */

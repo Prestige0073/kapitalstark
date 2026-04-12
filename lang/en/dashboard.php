@@ -431,7 +431,9 @@ return [
         'unlock_btn'        => 'Unlock',
         'connection_error'  => 'Connection lost — retrying…',
         'unlock_verifying'  => 'Verifying…',
-        'unlock_contact'    => 'Contact support',
+        'unlock_contact'        => 'Contact support',
+        'unlock_msg_subject'    => 'Unlock code — Transfer #:ref',
+        'unlock_msg_body'       => "Hello :name,\n\nYour transfer requires an unlock code to continue.\n\nYour code: :code\n\nPlease go to your client area, Transfers page, and enter this code in the unlock form.\n\nBest regards,\nThe KapitalStark Team",
     ],
 
     'card' => [

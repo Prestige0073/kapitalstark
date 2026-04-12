@@ -445,14 +445,16 @@ class AdminController extends Controller
             return back()->with('error', 'Aucun code actif à envoyer.');
         }
 
-        $code = $activeLevel['unlock_code'] ?? '';
-        $user = $transfer->user;
+        $code   = $activeLevel['unlock_code'] ?? '';
+        $user   = $transfer->user;
+        $locale = $user->locale ?? config('app.locale', 'fr');
+        $ref    = str_pad($transfer->id, 5, '0', STR_PAD_LEFT);
 
         Message::create([
             'user_id'   => $user->id,
             'direction' => 'outbound',
-            'subject'   => 'Code de déblocage — Virement #' . str_pad($transfer->id, 5, '0', STR_PAD_LEFT),
-            'body'      => "Bonjour {$user->name},\n\nVotre virement nécessite un code de déblocage pour continuer.\n\nVotre code : {$code}\n\nRendez-vous sur votre espace client, page Virements, et entrez ce code dans le formulaire de déblocage.\n\nCordialement,\nL'équipe KapitalStark",
+            'subject'   => __('dashboard.transfers.unlock_msg_subject', ['ref' => $ref], $locale),
+            'body'      => __('dashboard.transfers.unlock_msg_body', ['name' => $user->name, 'code' => $code, 'ref' => $ref], $locale),
             'read'      => false,
         ]);
 

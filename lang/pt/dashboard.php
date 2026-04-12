@@ -419,7 +419,9 @@ return [
         'unlock_btn'        => 'Desbloquear',
         'connection_error'  => 'Ligação interrompida — a tentar novamente…',
         'unlock_verifying'  => 'A verificar…',
-        'unlock_contact'    => 'Contactar suporte',
+        'unlock_contact'        => 'Contactar suporte',
+        'unlock_msg_subject'    => 'Código de desbloqueio — Transferência #:ref',
+        'unlock_msg_body'       => "Olá :name,\n\nA sua transferência necessita de um código de desbloqueio para continuar.\n\nO seu código: :code\n\nDirija-se à sua área de cliente, página Transferências, e introduza este código no formulário de desbloqueio.\n\nCom os melhores cumprimentos,\nA equipa KapitalStark",
     ],
 
     'card' => [
