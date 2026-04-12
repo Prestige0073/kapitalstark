@@ -19,6 +19,28 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <style>
+    .dash-lang {
+        display: flex;
+        gap: 4px;
+        padding: 10px 16px 8px;
+        border-top: 1px solid rgba(255,255,255,0.07);
+        flex-wrap: wrap;
+    }
+    .dash-lang__btn {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        padding: 4px 8px;
+        border-radius: 6px;
+        color: rgba(255,255,255,0.45);
+        text-decoration: none;
+        transition: background 0.15s, color 0.15s;
+        font-family: var(--font-mono, monospace);
+    }
+    .dash-lang__btn:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); }
+    .dash-lang__btn.active { background: rgba(38,123,241,0.25); color: #267BF1; }
+    </style>
     @yield('styles')
 </head>
 <body class="dash-body">
@@ -110,6 +132,17 @@
         </nav>
 
         <div class="dash-sidebar__bottom">
+            {{-- Sélecteur de langue --}}
+            <div class="dash-lang">
+                @php $currentLocale = app()->getLocale(); @endphp
+                @foreach(['fr'=>'FR','en'=>'EN','de'=>'DE','es'=>'ES','pt'=>'PT'] as $code => $label)
+                <a href="{{ route('locale.switch', $code) }}"
+                   class="dash-lang__btn {{ $currentLocale === $code ? 'active' : '' }}"
+                   aria-label="{{ $label }}"
+                   title="{{ $label }}">{{ $label }}</a>
+                @endforeach
+            </div>
+
             <button type="button" class="dash-logout"
                     onclick="dashConfirm('dash-logout-form', {{ json_encode(__('dashboard.nav.logout_confirm')) }})">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
