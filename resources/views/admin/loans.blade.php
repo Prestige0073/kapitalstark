@@ -149,16 +149,15 @@
 </div>
 
 {{-- ── Modal édition prêt ────────────────────────────────────── --}}
-<div id="loan-edit-overlay" onclick="if(event.target===this)closeLoanModal()"
-     style="display:none;position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:9000;align-items:center;justify-content:center;padding:20px;">
-    <div style="background:#fff;border-radius:20px;width:100%;max-width:500px;box-shadow:0 24px 64px rgba(15,23,42,.18);overflow:hidden;">
-        <div style="padding:20px 24px 16px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:16px;font-weight:800;color:#0f172a;">Modifier le prêt <span id="modal-loan-id" style="color:#267BF1;font-family:monospace;"></span></span>
-            <button onclick="closeLoanModal()" style="background:none;border:none;cursor:pointer;color:#94a3b8;font-size:22px;line-height:1;padding:0;">×</button>
+<div id="loan-edit-overlay" class="leo" onclick="if(event.target===this)closeLoanModal()">
+    <div class="leo__box">
+        <div class="leo__header">
+            <span class="leo__title">Modifier le prêt <span id="modal-loan-id" class="leo__id"></span></span>
+            <button onclick="closeLoanModal()" class="leo__close">×</button>
         </div>
         <form id="loan-edit-form" method="POST">
             @csrf
-            <div class="loan-modal-grid" style="padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="loan-modal-grid leo__body">
                 <div>
                     <label style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;display:block;margin-bottom:5px;">Capital restant (€)</label>
                     <input id="modal-remaining" type="number" name="remaining" min="0" required
@@ -201,13 +200,9 @@
                            onfocus="this.style.borderColor='#267BF1'" onblur="this.style.borderColor='#e2e8f0'">
                 </div>
             </div>
-            <div style="padding:16px 24px;border-top:1px solid #f1f5f9;display:flex;gap:10px;justify-content:flex-end;background:#f8fafc;">
-                <button type="button" onclick="closeLoanModal()"
-                        style="padding:10px 20px;background:#f1f5f9;color:#475569;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">
-                    Annuler
-                </button>
-                <button type="submit"
-                        style="padding:10px 24px;background:linear-gradient(135deg,#267BF1,#1a56db);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;">
+            <div class="leo__footer">
+                <button type="button" onclick="closeLoanModal()" class="leo__cancel">Annuler</button>
+                <button type="submit" class="leo__submit">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                     Enregistrer
                 </button>
@@ -219,15 +214,59 @@
 @section('styles')
 <style>
 .hidden { display: none !important; }
+
+/* ── Loan edit overlay ─────────────────────────────────── */
+.leo {
+    position: fixed; inset: 0; z-index: 9000;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+    background: rgba(15,23,42,.55);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .15s, visibility .15s;
+    will-change: opacity;
+}
+.leo.open { opacity: 1; visibility: visible; pointer-events: auto; }
+.leo__box {
+    background: #fff; border-radius: 20px; width: 100%; max-width: 500px;
+    box-shadow: 0 24px 64px rgba(15,23,42,.18); overflow: hidden;
+    will-change: transform, opacity;
+}
+.leo.open .leo__box { animation: leo-slide .15s ease-out; }
+@keyframes leo-slide { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+.leo__header {
+    padding: 20px 24px 16px; border-bottom: 1px solid #f1f5f9;
+    display: flex; align-items: center; justify-content: space-between;
+}
+.leo__title { font-size: 16px; font-weight: 800; color: #0f172a; }
+.leo__id    { color: #267BF1; font-family: monospace; }
+.leo__close { background: none; border: none; cursor: pointer; color: #94a3b8; font-size: 22px; line-height: 1; padding: 0; }
+.leo__close:hover { color: #475569; }
+.leo__body  { padding: 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.leo__footer {
+    padding: 16px 24px; border-top: 1px solid #f1f5f9;
+    display: flex; gap: 10px; justify-content: flex-end; background: #f8fafc;
+}
+.leo__cancel {
+    padding: 10px 20px; background: #f1f5f9; color: #475569;
+    border: none; border-radius: 10px; font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+}
+.leo__cancel:hover { background: #e2e8f0; }
+.leo__submit {
+    padding: 10px 24px; background: linear-gradient(135deg,#267BF1,#1a56db);
+    color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 700;
+    cursor: pointer; display: flex; align-items: center; gap: 8px; font-family: inherit;
+}
+.leo__submit:hover { opacity: .9; }
+
+/* ── Form grid responsive ──────────────────────────────── */
 @media (max-width: 900px) {
     .loan-form-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 @media (max-width: 560px) {
     .loan-form-grid { grid-template-columns: 1fr !important; }
-}
-@media (max-width: 540px) {
-    .loan-modal-grid { grid-template-columns: 1fr !important; }
-    #loan-edit-overlay > div { max-width: 100% !important; border-radius: 16px !important; }
+    .leo__body      { grid-template-columns: 1fr !important; }
+    .leo__box       { border-radius: 16px; }
+    .leo            { padding: 12px; }
 }
 </style>
 @endsection
@@ -247,12 +286,11 @@ function openLoanModal(id, remaining, monthly, progress, status, nextPayment) {
     document.getElementById('progress-bar-preview').style.width = progress + '%';
     document.getElementById('progress-val').textContent = progress + '%';
 
-    var overlay = document.getElementById('loan-edit-overlay');
-    overlay.style.display = 'flex';
+    document.getElementById('loan-edit-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
 }
 function closeLoanModal() {
-    document.getElementById('loan-edit-overlay').style.display = 'none';
+    document.getElementById('loan-edit-overlay').classList.remove('open');
     document.body.style.overflow = '';
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLoanModal(); });
