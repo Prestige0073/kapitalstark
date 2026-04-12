@@ -62,7 +62,7 @@
                     <polyline points="7 10 12 15 17 10"/>
                     <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                {{ __('dashboard.receipts.download_btn') }}
+                <span>{{ __('dashboard.receipts.download_btn') }}</span>
             </a>
         </div>
         @endforeach
@@ -95,7 +95,7 @@
                 <rect x="2" y="5" width="20" height="14" rx="2"/>
                 <line x1="2" y1="10" x2="22" y2="10"/>
             </svg>
-            {{ __('dashboard.receipts.my_card_link') }}
+            <span>{{ __('dashboard.receipts.my_card_link') }}</span>
         </a>
     </div>
 
@@ -173,7 +173,7 @@
                     <polyline points="7 10 12 15 17 10"/>
                     <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                {{ __('dashboard.receipts.receipt_btn') }}
+                <span>{{ __('dashboard.receipts.receipt_btn') }}</span>
             </a>
             @else
             <span class="receipts-dl-btn receipts-dl-btn--disabled" style="opacity:0;pointer-events:none;"></span>
