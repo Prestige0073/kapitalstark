@@ -84,7 +84,7 @@
         <span class="admin-card__title">Liste des prêts</span>
         <span style="font-size:12px;color:#718096;">{{ $loans->total() }} prêt(s)</span>
     </div>
-    <table class="admin-table admin-table--wide">
+    <div class="admin-table-scroll"><table class="admin-table admin-table--wide">
         <thead>
             <tr>
                 <th>#</th>
@@ -142,7 +142,7 @@
             <tr><td colspan="10" style="text-align:center;color:#718096;padding:32px;">Aucun prêt enregistré</td></tr>
             @endforelse
         </tbody>
-    </table>
+    </table></div>
     @if($loans->hasPages())
     <div class="admin-pagination">{{ $loans->links('pagination::simple-tailwind') }}</div>
     @endif

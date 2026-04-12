@@ -450,6 +450,7 @@ return [
     'legal' => [
         'breadcrumb'  => 'Rechtliche Hinweise',
         'page_title'  => 'Rechtliche Hinweise',
+        'description' => 'Rechtliche Hinweise von KapitalStark: Herausgeber, Hosting, geistiges Eigentum, regulierte Tätigkeit.',
         'last_update' => 'Letzte Aktualisierung',
         'sections' => [
             ['id'=>'editeur',        'title'=>'1. Website-Betreiber',             'content'=>'Die Website <strong>kapitalstark.pt</strong> wird betrieben von <strong>KapitalStark, S.A.</strong>, einer Aktiengesellschaft mit einem Stammkapital von 2.000.000 €, eingetragen beim Conservatória do Registo Comercial de Lisboa unter der Nummer 28745, NIF/NIPC: <strong>506 789 123</strong>, mit Sitz in Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa, Portugal. Als Kreditinstitut bei der <strong>Banco de Portugal</strong> unter der N° 4567 registriert.'],
@@ -466,6 +467,7 @@ return [
     'terms' => [
         'breadcrumb'  => 'AGB',
         'page_title'  => 'Allgemeine Nutzungsbedingungen',
+        'description' => 'Allgemeine Nutzungsbedingungen von KapitalStark: Zugang zur Website, Simulationsdienste, Kundenbereich, anwendbares Recht.',
         'version'     => 'Version 3.2',
         'sections' => [
             ['id'=>'objet',         'title'=>'1. Zweck und Geltungsbereich',      'content'=>'Diese Allgemeinen Nutzungsbedingungen (ANB) legen die Bedingungen für die Nutzung der Website <strong>kapitalstark.pt</strong> und der von KapitalStark, S.A. angebotenen Dienste fest. Jeder Zugriff auf die Website impliziert die vollständige Akzeptanz dieser ANB.'],
@@ -484,6 +486,7 @@ return [
     'privacy' => [
         'breadcrumb'   => 'Datenschutz',
         'page_title'   => 'Datenschutzerklärung',
+        'description'  => 'Datenschutzerklärung von KapitalStark gemäß DSGVO: erhobene Daten, Zwecke, Speicherfristen, Ihre Rechte.',
         'compliance'   => 'DSGVO (EU) 2016/679 konform',
         'contact_dpo'  => 'Bei Fragen:',
         'sections' => [
@@ -502,6 +505,7 @@ return [
     'cookies' => [
         'breadcrumb'  => 'Cookies',
         'page_title'  => 'Cookie-Richtlinie',
+        'description' => 'Cookie-Richtlinie von KapitalStark: verwendete Cookie-Typen, Speicherfristen, Verwaltung Ihrer Einstellungen gemäß DSGVO.',
         'compliance'  => 'Gemäß CNPD-Empfehlungen',
         'sections' => [
             ['id'=>'intro',       'title'=>'1. Was ist ein Cookie?',              'content'=>'Ein Cookie ist eine kleine Textdatei, die beim Besuch einer Website auf Ihrem Gerät gespeichert wird. Cookies können keine Viren enthalten und Ihre Geräte nicht beschädigen.'],
@@ -528,5 +532,63 @@ return [
         'no_results'     => 'Kein Erfahrungsbericht entspricht dieser Auswahl.',
         'count_singular' => 'Bewertung',
         'count_plural'   => 'Bewertungen',
+    ],
+
+    /* ── Pressraum ─────────────────────────────────────────────── */
+    'press' => [
+        'breadcrumb'     => 'Pressraum',
+        'page_title'     => 'Pressraum',
+        'description'    => 'KapitalStark Pressraum: Pressemitteilungen, Kennzahlen, Medienkit, Journalistenkontakte.',
+        'hero_label'     => 'Journalisten & Medien',
+        'hero_sub'       => 'Finden Sie unsere Pressemitteilungen, Kennzahlen und Medienressourcen. Unser Presseteam antwortet innerhalb von 4 Arbeitsstunden.',
+        'contact_btn'    => 'Presseteam kontaktieren',
+        'kit_btn'        => 'Medienkit herunterladen',
+
+        'stats' => [
+            ['val'=>'2010',   'label'=>'Gründungsjahr',          'icon'=>'🏛'],
+            ['val'=>'+50 000','label'=>'Aktive Kunden',           'icon'=>'👥'],
+            ['val'=>'5',      'label'=>'Filialen in Portugal',   'icon'=>'📍'],
+            ['val'=>'2 Mrd€', 'label'=>'Gewährte Kredite',       'icon'=>'💰'],
+        ],
+
+        'releases_label' => 'Aktuelles',
+        'releases_title' => 'Neueste Pressemitteilungen',
+        'releases_cta'   => 'Mitteilung anfordern',
+
+        'releases' => [
+            ['date'=>'15. Mär. 2025','tag'=>'Finanzen',     'color'=>'var(--blue)', 'title'=>'KapitalStark veröffentlicht Jahresergebnisse 2024: +23% bei vergebenen Krediten',       'excerpt'=>'KapitalStark meldet ein Wachstum von 23% beim Kreditvolumen im Jahr 2024 auf insgesamt 2 Milliarden Euro. Immobilienkredite bleiben mit 68% der Anträge die treibende Kraft.'],
+            ['date'=>'8. Feb. 2025', 'tag'=>'Partnerschaft','color'=>'var(--gold)', 'title'=>'Neue Partnerschaft mit BPI Portugal zur KMU-Finanzierung',                             'excerpt'=>'KapitalStark und BPI Portugal kündigen eine Kofinanzierungsvereinbarung an, um kleinen und mittelständischen Unternehmen den Kreditzugang zu erleichtern.'],
+            ['date'=>'22. Jan. 2025','tag'=>'Innovation',   'color'=>'#10b981',     'title'=>'Einführung des Sofort-Kreditkapazitätsrechners',                                       'excerpt'=>'KapitalStark stellt seinen neuen KI-gestützten Kreditkapazitätsrechner vor, der in unter 3 Minuten eine Grundsatzentscheidung liefert.'],
+            ['date'=>'10. Dez. 2024','tag'=>'CSR',          'color'=>'#22c55e',     'title'=>'KapitalStark erhält das Siegel Verantwortungsvolle Finanzierung der ASF',               'excerpt'=>'Nach einer 18-monatigen Prüfung erhält KapitalStark das Siegel Verantwortungsvolle Finanzierung, das seine vorbildliche Kreditvergabepraxis anerkennt.'],
+            ['date'=>'5. Nov. 2024', 'tag'=>'Expansion',   'color'=>'var(--blue)', 'title'=>'Eröffnung der 5. KapitalStark-Filiale in Porto',                                       'excerpt'=>'KapitalStark eröffnet seine 5. Filiale in Porto und stärkt seine regionale Präsenz mit einem Team von 8 spezialisierten Beratern.'],
+        ],
+
+        'kit_label'   => 'Medienressourcen',
+        'kit_title'   => 'KapitalStark Medienkit',
+        'kit_desc'    => 'Laden Sie unsere offiziellen Ressourcen herunter: hochauflösendes Logo, Corporate-Design-Leitfaden, Teamfotos, institutionelle Präsentation und Infografiken.',
+        'kit_cta'     => 'Vollständiges Kit anfordern',
+        'kit_assets'  => [
+            ['icon'=>'🎨','label'=>'Vektorlogo (SVG + PNG)',        'size'=>'2,4 MB'],
+            ['icon'=>'📐','label'=>'Vollständiger CD-Leitfaden',    'size'=>'8,1 MB'],
+            ['icon'=>'📸','label'=>'Team- & Filialfotos',           'size'=>'34 MB'],
+            ['icon'=>'📊','label'=>'Institutionelle Präsentation',  'size'=>'4,7 MB'],
+            ['icon'=>'📋','label'=>'Führungsbiografien',            'size'=>'340 KB'],
+        ],
+
+        'contact_title'  => 'Pressekontakt',
+        'contact_desc'   => 'Unsere Kommunikationsleiterin steht für Interviews, Informationsanfragen und öffentliche Stellungnahmen zur Verfügung.',
+        'contact_name'   => 'Ana Rodrigues',
+        'contact_role'   => 'Kommunikationsleiterin',
+        'contact_hours'  => 'Verfügbar Mo–Fr 9–18 Uhr · Antwort innerhalb von 4 Std.',
+
+        'accred_title'   => 'Journalistenakkreditierung',
+        'accred_desc'    => 'Für den Zugang zu KapitalStark-Veranstaltungen, Management-Interviews oder Expertenkommentare zur Finanzbranche.',
+        'accred_items'   => [
+            'Bevorzugter Zugang zu KapitalStark-Veranstaltungen',
+            'Expertenkommentare innerhalb von 2 Std.',
+            'Exklusive Daten und Marktforschung',
+            'Filialbesuch mit unseren Beratern',
+        ],
+        'accred_cta'     => 'Akkreditierung beantragen',
     ],
 ];

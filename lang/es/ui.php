@@ -175,4 +175,12 @@ return [
         'cookies'           => 'Cookies',
         'cgu'               => 'T&C',
     ],
+
+    'seo' => [
+        'title_suffix'    => 'Su futuro financiero empieza aquí',
+        'desc_default'    => 'KapitalStark — Institución financiera moderna. Préstamos hipotecarios, automóviles, personales y empresas. Simule su préstamo en línea.',
+        'json_desc'       => 'Institución financiera moderna — préstamos hipotecarios, automóviles, personales, empresas y microcréditos.',
+        'breadcrumb_home' => 'Inicio',
+        'og_locale'       => 'es_ES',
+    ],
 ];

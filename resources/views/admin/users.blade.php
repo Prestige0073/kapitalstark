@@ -15,7 +15,7 @@
         <a href="{{ route('admin.users') }}" class="admin-btn admin-btn--outline admin-btn--sm">Effacer</a>
         @endif
     </form>
-    <table class="admin-table">
+    <div class="admin-table-scroll"><table class="admin-table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -69,7 +69,7 @@
             <tr><td colspan="9" style="text-align:center;color:#718096;padding:32px;">Aucun utilisateur</td></tr>
             @endforelse
         </tbody>
-    </table>
+    </table></div>
     @if($users->hasPages())
     <div class="admin-pagination">{{ $users->links('pagination::simple-tailwind') }}</div>
     @endif

@@ -464,6 +464,7 @@ return [
     'legal' => [
         'breadcrumb'  => 'Mentions légales',
         'page_title'  => 'Mentions légales',
+        'description' => 'Informations légales de KapitalStark : éditeur, hébergement, propriété intellectuelle, activité réglementée.',
         'last_update' => 'Dernière mise à jour',
         'sections' => [
             ['id'=>'editeur',        'title'=>'1. Éditeur du site',               'content'=>'Le site <strong>kapitalstark.pt</strong> est édité par <strong>KapitalStark, S.A.</strong>, société anonyme au capital de 2 000 000 €, immatriculée à la Conservatória do Registo Comercial de Lisboa sous le numéro 28745, NIF/NIPC : <strong>506 789 123</strong>, dont le siège social est situé Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa, Portugal. Enregistrée auprès du <strong>Banco de Portugal</strong> en tant qu\'institution de crédit sous le N° 4567. Numéro IVA : PT 506 789 123.'],
@@ -482,6 +483,7 @@ return [
     'terms' => [
         'breadcrumb'  => 'CGU',
         'page_title'  => 'Conditions Générales d\'Utilisation',
+        'description' => 'Conditions générales d\'utilisation de KapitalStark : accès au site, simulation, espace client, droit applicable.',
         'version'     => 'Version 3.2',
         'sections' => [
             ['id'=>'objet',         'title'=>'1. Objet et champ d\'application',  'content'=>'Les présentes CGU définissent les modalités d\'utilisation du site <strong>kapitalstark.pt</strong> et des services proposés par KapitalStark, S.A. (NIF 506 789 123), dont le siège est Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa. Tout accès au Site implique l\'acceptation pleine et entière des présentes CGU.'],
@@ -502,6 +504,7 @@ return [
     'privacy' => [
         'breadcrumb'   => 'Confidentialité',
         'page_title'   => 'Politique de Confidentialité',
+        'description'  => 'Politique de confidentialité RGPD de KapitalStark : données collectées, finalités, durées de conservation, vos droits.',
         'compliance'   => 'Conforme RGPD (UE) 2016/679',
         'contact_dpo'  => 'Pour toute question :',
         'sections' => [
@@ -522,6 +525,7 @@ return [
     'cookies' => [
         'breadcrumb'  => 'Cookies',
         'page_title'  => 'Politique de Cookies',
+        'description' => 'Politique de cookies de KapitalStark : types de cookies utilisés, durées, gestion de vos préférences conformément au RGPD.',
         'compliance'  => 'Conforme recommandations CNPD',
         'sections' => [
             ['id'=>'intro',       'title'=>'1. Qu\'est-ce qu\'un cookie ?',        'content'=>'Un cookie est un petit fichier texte déposé sur votre terminal lors de votre visite sur un site web. Il permet de mémoriser des informations relatives à votre navigation. Les cookies ne peuvent pas contenir de virus ni endommager votre équipement.'],
@@ -548,5 +552,63 @@ return [
         'no_results'     => 'Aucun témoignage ne correspond à cette sélection.',
         'count_singular' => 'témoignage',
         'count_plural'   => 'témoignages',
+    ],
+
+    /* ── Espace Presse ──────────────────────────────────────────── */
+    'press' => [
+        'breadcrumb'     => 'Espace Presse',
+        'page_title'     => 'Espace Presse',
+        'description'    => 'Espace presse KapitalStark : communiqués de presse, chiffres clés, kit média, contacts journalistes.',
+        'hero_label'     => 'Journalistes & Médias',
+        'hero_sub'       => 'Retrouvez nos communiqués, chiffres clés et ressources médias. Notre équipe presse répond sous 4h ouvrées.',
+        'contact_btn'    => 'Contacter l\'équipe presse',
+        'kit_btn'        => 'Télécharger le kit média',
+
+        'stats' => [
+            ['val'=>'2010',   'label'=>'Année de création',     'icon'=>'🏛'],
+            ['val'=>'+50 000','label'=>'Clients actifs',         'icon'=>'👥'],
+            ['val'=>'5',      'label'=>'Agences au Portugal',   'icon'=>'📍'],
+            ['val'=>'2 Md€',  'label'=>'Financements accordés', 'icon'=>'💰'],
+        ],
+
+        'releases_label' => 'Actualités',
+        'releases_title' => 'Derniers communiqués de presse',
+        'releases_cta'   => 'Demander le CP',
+
+        'releases' => [
+            ['date'=>'15 mar. 2025','tag'=>'Financier',   'color'=>'var(--blue)', 'title'=>'KapitalStark publie ses résultats annuels 2024 : +23% de financements accordés',                    'excerpt'=>'KapitalStark annonce une croissance de 23% de son volume de financements en 2024, portant le total à 2 milliards d\'euros. Le prêt immobilier reste le moteur avec 68% des dossiers.'],
+            ['date'=>'8 fév. 2025', 'tag'=>'Partenariat','color'=>'var(--gold)', 'title'=>'Nouveau partenariat avec BPI Portugal pour le financement des TPE/PME',                             'excerpt'=>'KapitalStark et BPI Portugal annoncent un accord de co-financement permettant d\'accélérer l\'accès au crédit pour les très petites et petites entreprises portugaises.'],
+            ['date'=>'22 jan. 2025','tag'=>'Innovation',  'color'=>'#10b981',     'title'=>'Lancement de l\'outil de capacité d\'emprunt instantanée',                                          'excerpt'=>'KapitalStark dévoile son nouveau calculateur de capacité d\'emprunt basé sur l\'intelligence artificielle, permettant une réponse de principe en moins de 3 minutes.'],
+            ['date'=>'10 déc. 2024','tag'=>'RSE',         'color'=>'#22c55e',     'title'=>'KapitalStark obtient le label Financement Responsable de l\'ASF',                                   'excerpt'=>'Après 18 mois d\'audit, KapitalStark reçoit le label Financement Responsable, reconnaissant ses pratiques exemplaires en matière d\'octroi de crédit.'],
+            ['date'=>'5 nov. 2024', 'tag'=>'Expansion',  'color'=>'var(--blue)', 'title'=>'Ouverture de la 5e agence KapitalStark à Porto',                                                    'excerpt'=>'KapitalStark inaugure sa 5e agence à Porto, renforçant son ancrage régional avec une équipe de 8 conseillers spécialisés.'],
+        ],
+
+        'kit_label'   => 'Ressources médias',
+        'kit_title'   => 'Kit média KapitalStark',
+        'kit_desc'    => 'Téléchargez nos ressources officielles : logo en haute définition, charte graphique, photos d\'équipe, présentation institutionnelle et infographies.',
+        'kit_cta'     => 'Demander le kit complet',
+        'kit_assets'  => [
+            ['icon'=>'🎨','label'=>'Logo vectoriel (SVG + PNG)',   'size'=>'2.4 Mo'],
+            ['icon'=>'📐','label'=>'Charte graphique complète',    'size'=>'8.1 Mo'],
+            ['icon'=>'📸','label'=>'Photos équipe & agences',      'size'=>'34 Mo'],
+            ['icon'=>'📊','label'=>'Présentation institutionnelle','size'=>'4.7 Mo'],
+            ['icon'=>'📋','label'=>'Biographies dirigeants',       'size'=>'340 Ko'],
+        ],
+
+        'contact_title'  => 'Relations Presse',
+        'contact_desc'   => 'Notre responsable communication est disponible pour interviews, demandes d\'informations et prises de parole.',
+        'contact_name'   => 'Ana Rodrigues',
+        'contact_role'   => 'Directrice Communication',
+        'contact_hours'  => 'Disponible Lun–Ven 9h–18h · Réponse sous 4h',
+
+        'accred_title'   => 'Accréditation journaliste',
+        'accred_desc'    => 'Pour accéder aux événements KapitalStark, obtenir une interview de direction ou des commentaires sur l\'actualité financière.',
+        'accred_items'   => [
+            'Accès privilégié aux événements KapitalStark',
+            'Commentaires d\'experts sous 2h',
+            'Données exclusives et études de marché',
+            'Visite d\'agence avec nos conseillers',
+        ],
+        'accred_cta'     => 'Demander une accréditation',
     ],
 ];

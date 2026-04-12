@@ -456,6 +456,7 @@ return [
     'legal' => [
         'breadcrumb'  => 'Legal Notices',
         'page_title'  => 'Legal Notices',
+        'description' => 'KapitalStark legal notices: publisher, hosting, intellectual property, regulated activity.',
         'last_update' => 'Last updated',
         'sections' => [
             ['id'=>'editeur',        'title'=>'1. Website Publisher',             'content'=>'The website <strong>kapitalstark.pt</strong> is published by <strong>KapitalStark, S.A.</strong>, a public limited company with share capital of €2,000,000, registered at the Conservatória do Registo Comercial de Lisboa under number 28745, NIF/NIPC: <strong>506 789 123</strong>, headquartered at Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa, Portugal. Registered with the <strong>Banco de Portugal</strong> as a credit institution under N° 4567.'],
@@ -472,6 +473,7 @@ return [
     'terms' => [
         'breadcrumb'  => 'Terms of Use',
         'page_title'  => 'Terms and Conditions of Use',
+        'description' => 'KapitalStark terms and conditions: site access, simulation services, client area, applicable law.',
         'version'     => 'Version 3.2',
         'sections' => [
             ['id'=>'objet',         'title'=>'1. Purpose and scope',              'content'=>'These Terms and Conditions of Use (TCU) define the terms of use of the website <strong>kapitalstark.pt</strong> and the services offered by KapitalStark, S.A. (NIF 506 789 123), headquartered at Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa. Any access to the Site implies full and unreserved acceptance of these TCU.'],
@@ -490,6 +492,7 @@ return [
     'privacy' => [
         'breadcrumb'   => 'Privacy',
         'page_title'   => 'Privacy Policy',
+        'description'  => 'KapitalStark GDPR privacy policy: data collected, purposes, retention periods, your rights.',
         'compliance'   => 'GDPR (EU) 2016/679 compliant',
         'contact_dpo'  => 'For any questions:',
         'sections' => [
@@ -508,6 +511,7 @@ return [
     'cookies' => [
         'breadcrumb'  => 'Cookies',
         'page_title'  => 'Cookie Policy',
+        'description' => 'KapitalStark cookie policy: types of cookies used, retention periods, manage your preferences in compliance with GDPR.',
         'compliance'  => 'CNPD guidelines compliant',
         'sections' => [
             ['id'=>'intro',       'title'=>'1. What is a cookie?',                'content'=>'A cookie is a small text file placed on your device when you visit a website. It enables the site to remember information about your browsing. Cookies cannot contain viruses or damage your equipment.'],
@@ -534,5 +538,63 @@ return [
         'no_results'     => 'No testimonial matches this selection.',
         'count_singular' => 'review',
         'count_plural'   => 'reviews',
+    ],
+
+    /* ── Press Room ───────────────────���─────────────────────────── */
+    'press' => [
+        'breadcrumb'     => 'Press Room',
+        'page_title'     => 'Press Room',
+        'description'    => 'KapitalStark press room: press releases, key figures, media kit, journalist contacts.',
+        'hero_label'     => 'Journalists & Media',
+        'hero_sub'       => 'Find our press releases, key figures and media resources. Our press team responds within 4 working hours.',
+        'contact_btn'    => 'Contact the press team',
+        'kit_btn'        => 'Download the media kit',
+
+        'stats' => [
+            ['val'=>'2010',   'label'=>'Founded',             'icon'=>'🏛'],
+            ['val'=>'+50 000','label'=>'Active clients',       'icon'=>'👥'],
+            ['val'=>'5',      'label'=>'Branches in Portugal','icon'=>'📍'],
+            ['val'=>'€2 Bn',  'label'=>'Loans granted',       'icon'=>'💰'],
+        ],
+
+        'releases_label' => 'News',
+        'releases_title' => 'Latest press releases',
+        'releases_cta'   => 'Request release',
+
+        'releases' => [
+            ['date'=>'15 Mar 2025','tag'=>'Financial',   'color'=>'var(--blue)', 'title'=>'KapitalStark publishes 2024 annual results: +23% in loans granted',              'excerpt'=>'KapitalStark announces 23% growth in loan volumes in 2024, bringing the total to €2 billion. Home loans remain the driver with 68% of applications.'],
+            ['date'=>'8 Feb 2025', 'tag'=>'Partnership', 'color'=>'var(--gold)', 'title'=>'New partnership with BPI Portugal for SME financing',                             'excerpt'=>'KapitalStark and BPI Portugal announce a co-financing agreement to accelerate access to credit for small and very small Portuguese businesses.'],
+            ['date'=>'22 Jan 2025','tag'=>'Innovation',  'color'=>'#10b981',     'title'=>'Launch of instant borrowing capacity tool',                                       'excerpt'=>'KapitalStark unveils its new AI-powered borrowing capacity calculator, providing a decision in principle in under 3 minutes.'],
+            ['date'=>'10 Dec 2024','tag'=>'CSR',         'color'=>'#22c55e',     'title'=>'KapitalStark receives the Responsible Finance label from ASF',                    'excerpt'=>'After an 18-month audit, KapitalStark receives the Responsible Finance label, recognising its exemplary lending practices.'],
+            ['date'=>'5 Nov 2024', 'tag'=>'Expansion',  'color'=>'var(--blue)', 'title'=>'Opening of KapitalStark\'s 5th branch in Porto',                                  'excerpt'=>'KapitalStark opens its 5th branch in Porto, strengthening its regional presence with a team of 8 specialist advisors.'],
+        ],
+
+        'kit_label'   => 'Media resources',
+        'kit_title'   => 'KapitalStark media kit',
+        'kit_desc'    => 'Download our official resources: high-resolution logo, brand guidelines, team photos, institutional presentation and infographics.',
+        'kit_cta'     => 'Request the full kit',
+        'kit_assets'  => [
+            ['icon'=>'🎨','label'=>'Vector logo (SVG + PNG)',       'size'=>'2.4 MB'],
+            ['icon'=>'📐','label'=>'Complete brand guidelines',     'size'=>'8.1 MB'],
+            ['icon'=>'📸','label'=>'Team & branch photos',          'size'=>'34 MB'],
+            ['icon'=>'📊','label'=>'Institutional presentation',    'size'=>'4.7 MB'],
+            ['icon'=>'📋','label'=>'Executive biographies',         'size'=>'340 KB'],
+        ],
+
+        'contact_title'  => 'Press Relations',
+        'contact_desc'   => 'Our communications director is available for interviews, information requests and public statements.',
+        'contact_name'   => 'Ana Rodrigues',
+        'contact_role'   => 'Communications Director',
+        'contact_hours'  => 'Available Mon–Fri 9am–6pm · Response within 4h',
+
+        'accred_title'   => 'Press accreditation',
+        'accred_desc'    => 'To access KapitalStark events, obtain a management interview or expert commentary on financial news.',
+        'accred_items'   => [
+            'Priority access to KapitalStark events',
+            'Expert commentary within 2h',
+            'Exclusive data and market research',
+            'Branch visit with our advisors',
+        ],
+        'accred_cta'     => 'Request accreditation',
     ],
 ];

@@ -54,7 +54,7 @@
             <span class="admin-card__title">Dernières demandes de prêt</span>
             <a href="{{ route('admin.requests') }}" class="admin-btn admin-btn--outline admin-btn--sm">Voir tout</a>
         </div>
-        <table class="admin-table">
+        <div class="admin-table-scroll"><table class="admin-table">
             <thead>
                 <tr>
                     <th>Client</th>
@@ -83,7 +83,7 @@
                 <tr><td colspan="4" style="text-align:center;color:#718096;padding:24px;">Aucune demande</td></tr>
                 @endforelse
             </tbody>
-        </table>
+        </table></div>
     </div>
 
     {{-- Nouveaux clients --}}
@@ -92,7 +92,7 @@
             <span class="admin-card__title">Nouveaux clients</span>
             <a href="{{ route('admin.users') }}" class="admin-btn admin-btn--outline admin-btn--sm">Voir tout</a>
         </div>
-        <table class="admin-table">
+        <div class="admin-table-scroll"><table class="admin-table">
             <thead>
                 <tr>
                     <th>Client</th>
@@ -125,7 +125,7 @@
                 <tr><td colspan="3" style="text-align:center;color:#718096;padding:24px;">Aucun utilisateur</td></tr>
                 @endforelse
             </tbody>
-        </table>
+        </table></div>
     </div>
 
 </div>

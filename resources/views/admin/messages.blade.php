@@ -8,10 +8,10 @@
     <p style="font-size:13px;color:#718096;margin:0;">Échangez avec vos clients en temps réel.</p>
 </div>
 
-<div style="display:flex;gap:0;background:#1a202c;border-radius:16px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;height:calc(100vh - 220px);min-height:520px;">
+<div class="admin-msgs-layout {{ $selectedUserId ? 'has-user' : '' }}">
 
     {{-- Colonne gauche : liste des users --}}
-    <div style="width:280px;flex-shrink:0;border-right:1px solid rgba(255,255,255,0.07);overflow-y:auto;background:#151b26;">
+    <div class="admin-msgs-users">
         <div style="padding:16px;border-bottom:1px solid rgba(255,255,255,0.07);">
             <p style="font-size:13px;font-weight:700;color:#a0aec0;text-transform:uppercase;letter-spacing:.06em;margin:0 0 2px;">Clients ({{ $users->count() }})</p>
             @php $withMsg = $users->filter(fn($u) => $u->messages->isNotEmpty())->count(); @endphp
@@ -61,7 +61,7 @@
     </div>
 
     {{-- Colonne droite : conversation --}}
-    <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
+    <div class="admin-msgs-conv">
 
         @if(!$selectedUserId)
         <div style="flex:1;display:flex;align-items:center;justify-content:center;color:#718096;font-size:14px;">
@@ -69,6 +69,12 @@
         </div>
         @else
         @php $selectedUser = $allUsers->firstWhere('id', $selectedUserId); @endphp
+
+        {{-- Bouton retour (visible uniquement sur mobile) --}}
+        <a href="{{ route('admin.messages') }}" class="admin-msgs-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            Conversations
+        </a>
 
         {{-- Header --}}
         <div style="padding:14px 24px;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:12px;flex-shrink:0;background:#1a202c;">

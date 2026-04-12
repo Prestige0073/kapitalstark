@@ -6,7 +6,7 @@
 <div class="admin-card">
     <div class="admin-card__header">
         <span class="admin-card__title">Tous les rendez-vous</span>
-        <form method="GET" style="display:flex;gap:8px;">
+        <form method="GET">
             <select name="status" onchange="this.form.submit()" style="padding:6px 10px;border:1.5px solid rgba(38,123,241,0.15);border-radius:8px;font-size:13px;">
                 <option value="">Tous</option>
                 <option value="upcoming"  {{ request('status')==='upcoming'  ? 'selected' : '' }}>À venir</option>
@@ -15,7 +15,7 @@
             </select>
         </form>
     </div>
-    <table class="admin-table">
+    <div class="admin-table-scroll"><table class="admin-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -75,7 +75,7 @@
             <tr><td colspan="9" style="text-align:center;color:#718096;padding:32px;">Aucun rendez-vous</td></tr>
             @endforelse
         </tbody>
-    </table>
+    </table></div>
     @if($appointments->hasPages())
     <div class="admin-pagination">{{ $appointments->links('pagination::simple-tailwind') }}</div>
     @endif

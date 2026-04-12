@@ -110,7 +110,7 @@
         <p style="margin:4px 0 0;font-size:12px;">Cliquez sur "Ajouter un document" pour commencer.</p>
     </div>
     @else
-    <table class="admin-table">
+    <div class="admin-table-scroll"><table class="admin-table">
         <thead>
             <tr>
                 <th>Document</th>
@@ -159,7 +159,7 @@
             </tr>
             @endforeach
         </tbody>
-    </table>
+    </table></div>
     @if($docs->hasPages())
     <div class="admin-pagination">{{ $docs->links('pagination::simple-tailwind') }}</div>
     @endif

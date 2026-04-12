@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', __('pages.titles.terms'))
-@section('description', 'CGU de KapitalStark : conditions d\'accès au site, utilisation des services de simulation, espace client, cookies et droit applicable (droit portugais).')
+@section('description', __('pages.terms.description'))
 @section('styles')<link rel="stylesheet" href="{{ asset('css/pages.css') }}">@endsection
 
 @section('content')

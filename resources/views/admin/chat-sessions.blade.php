@@ -11,7 +11,7 @@
     @if($sessions->isEmpty())
         <p style="padding:32px;text-align:center;color:var(--text-muted);">Aucune conversation pour l'instant.</p>
     @else
-        <table class="admin-table">
+        <div class="admin-table-scroll"><table class="admin-table">
             <thead>
                 <tr>
                     <th>IP visiteur</th>
@@ -47,7 +47,7 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table></div>
         <div style="padding:16px;">{{ $sessions->links() }}</div>
     @endif
 </div>

@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'KapitalStark') — Votre avenir financier commence ici</title>
-    <meta name="description" content="@yield('description', 'KapitalStark — Institution financière moderne. Prêts immobiliers, automobiles, personnels et entreprise. Simulez votre prêt en ligne.')">
+    <title>@yield('title', 'KapitalStark') — {{ __('ui.seo.title_suffix') }}</title>
+    <meta name="description" content="@yield('description', __('ui.seo.desc_default'))">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -18,7 +18,7 @@
           "name": "KapitalStark",
           "url": "{{ url('/') }}",
           "logo": "{{ asset('img/og-cover.svg') }}",
-          "description": "Institution financière moderne — prêts immobiliers, automobiles, personnels, entreprise et microcrédit.",
+          "description": "{{ __('ui.seo.json_desc') }}",
           "telephone": "+351210001234",
           "email": "contacto@kapitalstark.pt",
           "address": {
@@ -52,7 +52,7 @@
           "@@type": "BreadcrumbList",
           "@@id": "{{ url()->current() }}#breadcrumb",
           "itemListElement": [
-            { "@@type": "ListItem", "position": 1, "name": "Accueil", "item": "{{ url('/') }}" }
+            { "@@type": "ListItem", "position": 1, "name": "{{ __('ui.seo.breadcrumb_home') }}", "item": "{{ url('/') }}" }
           ]
         }
       ]
@@ -64,13 +64,13 @@
     <meta property="og:type"        content="website">
     <meta property="og:site_name"   content="KapitalStark">
     <meta property="og:url"         content="{{ url()->current() }}">
-    <meta property="og:title"       content="@yield('title', 'KapitalStark') — Votre avenir financier commence ici">
-    <meta property="og:description" content="@yield('description', 'KapitalStark — Institution financière moderne. Prêts immobiliers, automobiles, personnels et entreprise.')">
+    <meta property="og:title"       content="@yield('title', 'KapitalStark') — {{ __('ui.seo.title_suffix') }}">
+    <meta property="og:description" content="@yield('description', __('ui.seo.desc_default'))">
     <meta property="og:image"       content="{{ asset('img/og-cover.svg') }}">
-    <meta property="og:locale"      content="fr_FR">
+    <meta property="og:locale"      content="{{ __('ui.seo.og_locale') }}">
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="@yield('title', 'KapitalStark')">
-    <meta name="twitter:description" content="@yield('description', 'KapitalStark — Institution financière moderne.')">
+    <meta name="twitter:description" content="@yield('description', __('ui.seo.desc_default'))">
     <meta name="twitter:image"       content="{{ asset('img/og-cover.svg') }}">
 
     <!-- Fonts (locally embedded) -->

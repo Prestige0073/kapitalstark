@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', __('pages.titles.cookies'))
-@section('description', 'Politique cookies de KapitalStark : types de cookies utilisés, durées, gestion de vos préférences conformément au RGPD.')
+@section('description', __('pages.cookies.description'))
 @section('styles')<link rel="stylesheet" href="{{ asset('css/pages.css') }}">@endsection
 
 @section('content')

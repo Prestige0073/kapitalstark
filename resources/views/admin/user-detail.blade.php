@@ -33,7 +33,7 @@
     {{-- Prêts --}}
     <div class="admin-card">
         <div class="admin-card__header"><span class="admin-card__title">Prêts ({{ $member->loans->count() }})</span></div>
-        <table class="admin-table">
+        <div class="admin-table-scroll"><table class="admin-table">
             <thead><tr><th>Type</th><th>Montant</th><th>Statut</th></tr></thead>
             <tbody>
                 @forelse($member->loans as $l)
@@ -46,7 +46,7 @@
                 <tr><td colspan="3" style="text-align:center;color:#718096;padding:16px;">Aucun prêt</td></tr>
                 @endforelse
             </tbody>
-        </table>
+        </table></div>
     </div>
 </div>
 
@@ -54,7 +54,7 @@
     {{-- Demandes --}}
     <div class="admin-card">
         <div class="admin-card__header"><span class="admin-card__title">Demandes ({{ $member->loanRequests->count() }})</span></div>
-        <table class="admin-table">
+        <div class="admin-table-scroll"><table class="admin-table">
             <thead><tr><th>Type</th><th>Montant</th><th>Statut</th><th>Date</th></tr></thead>
             <tbody>
                 @forelse($member->loanRequests as $r)
@@ -68,13 +68,13 @@
                 <tr><td colspan="4" style="text-align:center;color:#718096;padding:16px;">Aucune demande</td></tr>
                 @endforelse
             </tbody>
-        </table>
+        </table></div>
     </div>
 
     {{-- Rendez-vous --}}
     <div class="admin-card">
         <div class="admin-card__header"><span class="admin-card__title">Rendez-vous ({{ $member->appointments->count() }})</span></div>
-        <table class="admin-table">
+        <div class="admin-table-scroll"><table class="admin-table">
             <thead><tr><th>Date</th><th>Sujet</th><th>Statut</th></tr></thead>
             <tbody>
                 @forelse($member->appointments as $a)
@@ -87,7 +87,7 @@
                 <tr><td colspan="3" style="text-align:center;color:#718096;padding:16px;">Aucun RDV</td></tr>
                 @endforelse
             </tbody>
-        </table>
+        </table></div>
     </div>
 </div>
 

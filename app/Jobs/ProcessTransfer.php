@@ -80,7 +80,7 @@ class ProcessTransfer implements ShouldQueue
                 'status'      => 'paused',
             ]);
 
-            Log::info("Transfer #{$transfer->id} — palier {$pct}% : pause, code {$unlockCode}");
+            Log::info("Transfer #{$transfer->id} — palier {$pct}% : pause.");
             return; // EXIT — unlock() redispatchera le job
         }
 

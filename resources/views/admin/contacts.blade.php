@@ -9,7 +9,7 @@
         <span class="admin-card__title">Formulaires de contact</span>
         <span style="font-size:12px;color:#718096;">{{ $contacts->total() }} message(s)</span>
     </div>
-    <table class="admin-table">
+    <div class="admin-table-scroll"><table class="admin-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -60,7 +60,7 @@
             <tr><td colspan="8" style="text-align:center;color:#718096;padding:32px;">Aucun contact</td></tr>
             @endforelse
         </tbody>
-    </table>
+    </table></div>
     @if($contacts->hasPages())
     <div class="admin-pagination">{{ $contacts->links('pagination::simple-tailwind') }}</div>
     @endif
@@ -72,7 +72,7 @@
         <span class="admin-card__title">Demandes de rendez-vous (formulaire public)</span>
         <span style="font-size:12px;color:#718096;">{{ $rdv->total() }} demande(s)</span>
     </div>
-    <table class="admin-table">
+    <div class="admin-table-scroll"><table class="admin-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -125,7 +125,7 @@
             <tr><td colspan="9" style="text-align:center;color:#718096;padding:32px;">Aucune demande de RDV</td></tr>
             @endforelse
         </tbody>
-    </table>
+    </table></div>
     @if($rdv->hasPages())
     <div class="admin-pagination">{{ $rdv->links('pagination::simple-tailwind') }}</div>
     @endif

@@ -175,4 +175,12 @@ return [
         'cookies'           => 'Cookies',
         'cgu'               => 'AGB',
     ],
+
+    'seo' => [
+        'title_suffix'    => 'Ihre finanzielle Zukunft beginnt hier',
+        'desc_default'    => 'KapitalStark — Modernes Finanzinstitut. Immobilien-, Auto-, Privat- und Unternehmenskredite. Simulieren Sie Ihren Kredit online.',
+        'json_desc'       => 'Modernes Finanzinstitut — Immobilien-, Auto-, Privat-, Unternehmenskredite und Mikrokredite.',
+        'breadcrumb_home' => 'Startseite',
+        'og_locale'       => 'de_DE',
+    ],
 ];

@@ -465,9 +465,11 @@ return [
     ],
 
     'legal' => [
-        'breadcrumb' => 'Informação Legal',
-        'page_title' => 'Informação Legal',
-        'sections'   => [
+        'breadcrumb'  => 'Informação Legal',
+        'page_title'  => 'Informação Legal',
+        'description' => 'Informação legal da KapitalStark: editor, alojamento, propriedade intelectual, atividade regulada.',
+        'last_update' => 'Última atualização',
+        'sections'    => [
             ['id'=>'publisher',    'title'=>'Editor do site',             'content'=>'<p>KapitalStark SAS — Capital de 500 000 € — SIREN 123 456 789 — Sede social: 12 rue de la Finance, 75001 Paris, França.</p><p>Diretora de publicação: Marie Dubois — Email: contact@kapitalstark.com</p>'],
             ['id'=>'hosting',      'title'=>'Alojamento',                 'content'=>'<p>O site está alojado pela OVHcloud — SAS com capital de 10 000 000 € — Sede: 2 rue Kellermann, 59100 Roubaix, França. Telefone: +33 9 72 10 10 07.</p>'],
             ['id'=>'ip',           'title'=>'Propriedade intelectual',    'content'=>'<p>Todos os conteúdos deste site (textos, imagens, logótipos, ícones, gráficos) são propriedade exclusiva da KapitalStark ou dos seus parceiros e estão protegidos por direitos de autor. Qualquer reprodução, total ou parcial, está sujeita a autorização prévia por escrito.</p>'],
@@ -481,9 +483,11 @@ return [
     ],
 
     'terms' => [
-        'breadcrumb' => 'Termos e Condições',
-        'page_title' => 'Termos e Condições de Utilização',
-        'sections'   => [
+        'breadcrumb'  => 'Termos e Condições',
+        'page_title'  => 'Termos e Condições de Utilização',
+        'description' => 'Termos e condições de utilização da KapitalStark: acesso ao site, simulações, área de cliente, direito aplicável.',
+        'version'     => 'Versão 3.2',
+        'sections'    => [
             ['id'=>'object',       'title'=>'Objeto',                     'content'=>'<p>As presentes condições gerais de utilização (CGU) têm por objeto definir as condições de acesso e utilização do site web da KapitalStark, bem como os serviços de simulação e pedido de empréstimo disponíveis no mesmo.</p>'],
             ['id'=>'acceptance',   'title'=>'Aceitação',                  'content'=>'<p>O acesso e utilização do site implicam a aceitação plena e incondicional das presentes CGU. A KapitalStark reserva-se o direito de as modificar a qualquer momento sem aviso prévio.</p>'],
             ['id'=>'access',       'title'=>'Acesso ao serviço',          'content'=>'<p>O site está acessível 24h/24h, 7d/7d, salvo em caso de força maior ou de manutenção programada. A KapitalStark não garante uma disponibilidade ininterrupta do serviço.</p>'],
@@ -499,9 +503,12 @@ return [
     ],
 
     'privacy' => [
-        'breadcrumb' => 'Política de Privacidade',
-        'page_title' => 'Política de Privacidade',
-        'sections'   => [
+        'breadcrumb'  => 'Política de Privacidade',
+        'page_title'  => 'Política de Privacidade',
+        'description' => 'Política de privacidade RGPD da KapitalStark: dados recolhidos, finalidades, prazos de conservação, os seus direitos.',
+        'compliance'  => 'Conforme ao RGPD (UE) 2016/679',
+        'contact_dpo' => 'Para qualquer questão:',
+        'sections'    => [
             ['id'=>'intro',        'title'=>'Introdução',                 'content'=>'<p>A KapitalStark compromete-se a proteger a sua privacidade. Esta política descreve como recolhemos, utilizamos e protegemos os seus dados pessoais em conformidade com o RGPD.</p>'],
             ['id'=>'controller',   'title'=>'Responsável pelo tratamento','content'=>'<p>KapitalStark SAS — 12 rue de la Finance, 75001 Paris — contact@kapitalstark.com — DPO: dpo@kapitalstark.com</p>'],
             ['id'=>'data',         'title'=>'Dados recolhidos',           'content'=>'<p>Recolhemos os dados que nos fornece diretamente (formulários, pedidos de empréstimo), os dados de navegação (cookies, endereço IP) e os dados bancários necessários para a análise do seu processo.</p>'],
@@ -515,9 +522,68 @@ return [
         ],
     ],
 
+    'press' => [
+        'breadcrumb'     => 'Sala de Imprensa',
+        'page_title'     => 'Sala de Imprensa',
+        'description'    => 'Sala de imprensa da KapitalStark: comunicados de imprensa, números-chave, kit de imprensa, contactos para jornalistas.',
+        'hero_label'     => 'Jornalistas e Meios de Comunicação',
+        'hero_sub'       => 'Aceda aos nossos comunicados, números-chave e recursos para os media. A nossa equipa de imprensa responde em menos de 4 horas úteis.',
+        'contact_btn'    => 'Contactar a equipa de imprensa',
+        'kit_btn'        => 'Descarregar o kit de imprensa',
+
+        'stats' => [
+            ['val'=>'2010',    'label'=>'Ano de fundação',            'icon'=>'🏛'],
+            ['val'=>'+50 000', 'label'=>'Clientes ativos',             'icon'=>'👥'],
+            ['val'=>'5',       'label'=>'Agências em França',          'icon'=>'📍'],
+            ['val'=>'2 Md€',   'label'=>'Financiamentos concedidos',   'icon'=>'💰'],
+        ],
+
+        'releases_label' => 'Novidades',
+        'releases_title' => 'Últimos comunicados de imprensa',
+        'releases_cta'   => 'Solicitar o comunicado',
+
+        'releases' => [
+            ['date'=>'15 mar. 2025','tag'=>'Financeiro',  'color'=>'var(--blue)', 'title'=>'A KapitalStark publica os seus resultados anuais de 2024: +23% de financiamentos concedidos',    'excerpt'=>'A KapitalStark anuncia um crescimento de 23% no seu volume de financiamentos em 2024, totalizando 2 mil milhões de euros. O crédito habitação mantém-se como motor principal com 68% dos processos.'],
+            ['date'=>'8 fev. 2025', 'tag'=>'Empresa',     'color'=>'var(--gold)', 'title'=>'Nova parceria com a BPI France para o financiamento de PME',                                     'excerpt'=>'A KapitalStark e a BPI France anunciam um acordo de co-financiamento para acelerar o acesso ao crédito das pequenas e médias empresas francesas.'],
+            ['date'=>'22 jan. 2025','tag'=>'Tecnologia',  'color'=>'#10b981',     'title'=>'Lançamento da ferramenta de capacidade de endividamento instantânea',                           'excerpt'=>'A KapitalStark apresenta a sua nova calculadora de capacidade de endividamento baseada em inteligência artificial, que fornece uma resposta de princípio em menos de 3 minutos.'],
+            ['date'=>'10 dez. 2024','tag'=>'RSE',          'color'=>'#22c55e',     'title'=>'A KapitalStark obtém o rótulo de Financiamento Responsável da ASF',                            'excerpt'=>'Após 18 meses de auditoria, a KapitalStark recebe o rótulo de Financiamento Responsável, reconhecendo as suas práticas exemplares na concessão de crédito.'],
+            ['date'=>'5 nov. 2024', 'tag'=>'Expansão',    'color'=>'var(--blue)', 'title'=>'Inauguração da 5.ª agência KapitalStark em Bordéus',                                            'excerpt'=>'A KapitalStark inaugura a sua 5.ª agência física em Bordéus, reforçando a sua presença regional no Grande Sudoeste com uma equipa de 8 consultores especializados.'],
+        ],
+
+        'kit_label'   => 'Recursos para os media',
+        'kit_title'   => 'Kit de imprensa KapitalStark',
+        'kit_desc'    => 'Descarregue os nossos recursos oficiais: logótipo em alta definição, manual de identidade visual, fotografias da equipa, apresentação institucional e infografias.',
+        'kit_cta'     => 'Solicitar o kit completo',
+        'kit_assets'  => [
+            ['icon'=>'🎨','label'=>'Logótipo vetorial (SVG + PNG)',        'size'=>'2,4 MB'],
+            ['icon'=>'📐','label'=>'Manual de identidade visual completo',  'size'=>'8,1 MB'],
+            ['icon'=>'📸','label'=>'Fotografias da equipa e agências',      'size'=>'34 MB'],
+            ['icon'=>'📊','label'=>'Apresentação institucional',             'size'=>'4,7 MB'],
+            ['icon'=>'📋','label'=>'Biografias dos dirigentes',              'size'=>'340 KB'],
+        ],
+
+        'contact_title'  => 'Relações com a Imprensa',
+        'contact_desc'   => 'A nossa responsável de comunicação está disponível para entrevistas, pedidos de informação e tomadas de posição.',
+        'contact_name'   => 'Marie Dubois',
+        'contact_role'   => 'Diretora de Comunicação',
+        'contact_hours'  => 'Disponível seg–sex 9h–18h · Resposta em menos de 4h',
+
+        'accred_title'   => 'Acreditação de jornalista',
+        'accred_desc'    => 'Para aceder aos eventos da KapitalStark, obter uma entrevista com a direção ou comentários sobre a atualidade financeira.',
+        'accred_items'   => [
+            'Acesso privilegiado aos eventos da KapitalStark',
+            'Comentários de especialistas em menos de 2h',
+            'Dados exclusivos e estudos de mercado',
+            'Visita à agência com os nossos consultores',
+        ],
+        'accred_cta'     => 'Solicitar acreditação',
+    ],
+
     'cookies' => [
         'breadcrumb'  => 'Política de Cookies',
         'page_title'  => 'Política de Cookies',
+        'description' => 'Política de cookies da KapitalStark: tipos de cookies utilizados, prazos, gestão das suas preferências em conformidade com o RGPD.',
+        'compliance'  => 'Conforme às recomendações da CNPD',
         'sections'    => [
             ['id'=>'what',         'title'=>'O que é um cookie?',         'content'=>'<p>Um cookie é um pequeno ficheiro de texto depositado no seu dispositivo ao visitar um site. Permite ao site memorizar informações sobre a sua visita (preferências, idioma, sessão...).</p>'],
             ['id'=>'types',        'title'=>'Tipos de cookies utilizados','content'=>'<p><strong>Cookies essenciais:</strong> necessários para o funcionamento do site (sessão, segurança). <strong>Cookies analíticos:</strong> permitem medir o tráfego de forma anónima. <strong>Cookies de marketing:</strong> utilizados com o seu consentimento para personalizar os anúncios.</p>'],

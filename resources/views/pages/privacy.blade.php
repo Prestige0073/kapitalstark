@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', __('pages.titles.privacy'))
-@section('description', 'Politique de confidentialité RGPD de KapitalStark : données collectées, finalités, durées de conservation, vos droits.')
+@section('description', __('pages.privacy.description'))
 @section('styles')<link rel="stylesheet" href="{{ asset('css/pages.css') }}">@endsection
 
 @section('content')
@@ -34,7 +34,7 @@ $sections = trans('pages.privacy.sections');
                     </nav>
                     <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(38,123,241,0.1);">
                         <p style="font-size:11px;color:var(--text-muted);line-height:1.6;">
-                            Pour toute question :<br>
+                            {{ __('pages.privacy.contact_dpo') }}<br>
                             <a href="mailto:dpo@kapitalstark.pt" style="color:var(--blue);font-weight:600;">dpo@kapitalstark.pt</a>
                         </p>
                     </div>

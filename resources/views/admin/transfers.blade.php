@@ -6,22 +6,20 @@
 <div class="admin-card">
     <div class="admin-card__header">
         <span class="admin-card__title">Demandes de virement</span>
-        <form method="GET" style="display:flex;gap:8px;align-items:center;">
-            <input type="text" name="search" value="{{ request('search') }}"
-                   placeholder="Rechercher un client…"
-                   class="admin-input" style="width:200px;">
-            <select name="status" class="admin-select">
-                <option value="">Tous les statuts</option>
-                <option value="pending"    {{ request('status') === 'pending'    ? 'selected' : '' }}>En attente</option>
-                <option value="processing" {{ request('status') === 'processing' ? 'selected' : '' }}>En cours</option>
-                <option value="completed"  {{ request('status') === 'completed'  ? 'selected' : '' }}>Terminés</option>
-                <option value="rejected"   {{ request('status') === 'rejected'   ? 'selected' : '' }}>Rejetés</option>
-            </select>
-            <button type="submit" class="admin-btn admin-btn--primary">Filtrer</button>
-        </form>
     </div>
+    <form method="GET" class="admin-filters">
+        <input type="text" name="search" value="{{ request('search') }}" placeholder="Rechercher un client…">
+        <select name="status">
+            <option value="">Tous les statuts</option>
+            <option value="pending"    {{ request('status') === 'pending'    ? 'selected' : '' }}>En attente</option>
+            <option value="processing" {{ request('status') === 'processing' ? 'selected' : '' }}>En cours</option>
+            <option value="completed"  {{ request('status') === 'completed'  ? 'selected' : '' }}>Terminés</option>
+            <option value="rejected"   {{ request('status') === 'rejected'   ? 'selected' : '' }}>Rejetés</option>
+        </select>
+        <button type="submit" class="admin-btn admin-btn--primary admin-btn--sm">Filtrer</button>
+    </form>
 
-    <table class="admin-table">
+    <div class="admin-table-scroll"><table class="admin-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -97,7 +95,7 @@
             </tr>
             @endforelse
         </tbody>
-    </table>
+    </table></div>
 
     <div style="padding:16px 24px;">
         {{ $transfers->links() }}

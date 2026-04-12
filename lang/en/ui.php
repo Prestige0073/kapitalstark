@@ -175,4 +175,12 @@ return [
         'cookies'           => 'Cookies',
         'cgu'               => 'T&Cs',
     ],
+
+    'seo' => [
+        'title_suffix'    => 'Your financial future starts here',
+        'desc_default'    => 'KapitalStark — Modern financial institution. Home, auto, personal and business loans. Simulate your loan online.',
+        'json_desc'       => 'Modern financial institution — home, auto, personal, business and microloans.',
+        'breadcrumb_home' => 'Home',
+        'og_locale'       => 'en_GB',
+    ],
 ];

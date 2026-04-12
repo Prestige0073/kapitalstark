@@ -51,7 +51,7 @@
         @endif
     </form>
 
-    <table class="admin-table">
+    <div class="admin-table-scroll"><table class="admin-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -264,7 +264,7 @@
             <tr><td colspan="7" style="text-align:center;color:#718096;padding:40px;">Aucune demande trouvée</td></tr>
             @endforelse
         </tbody>
-    </table>
+    </table></div>
 
     @if($requests->hasPages())
     <div class="admin-pagination">{{ $requests->links('pagination::simple-tailwind') }}</div>

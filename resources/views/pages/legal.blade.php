@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', __('pages.titles.legal'))
-@section('description', 'Informação legal de KapitalStark, S.A. — editor, alojamento, propriedade intelectual, actividade regulada pelo Banco de Portugal.')
+@section('description', __('pages.legal.description'))
 @section('styles')<link rel="stylesheet" href="{{ asset('css/pages.css') }}">@endsection
 
 @section('content')
