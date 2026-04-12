@@ -217,6 +217,7 @@ Route::prefix('admin')->name('admin.')->middleware(['is_admin'])->group(function
     // Rendez-vous
     Route::get('/rendez-vous',                  [AdminController::class, 'appointments'])->name('appointments');
     Route::post('/rendez-vous/{id}',            [AdminController::class, 'updateAppointment'])->name('appointments.update');
+    Route::delete('/rendez-vous/{id}',          [AdminController::class, 'deleteAppointment'])->name('appointments.delete');
     // Utilisateurs
     Route::get('/utilisateurs',                 [AdminController::class, 'users'])->name('users');
     Route::get('/utilisateurs/{id}',            [AdminController::class, 'showUser'])->name('users.show');

@@ -50,18 +50,25 @@
                     {{ match($a->status){'upcoming'=>'À venir','past'=>'Passé','cancelled'=>'Annulé',default=>$a->status} }}
                 </span></td>
                 <td>
-                    <form action="{{ route('admin.appointments.update', $a->id) }}" method="POST" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
-                        @csrf
-                        <input type="hidden" name="notes" value="{{ $a->notes }}">
-                        <input type="text" name="advisor" value="{{ $a->advisor }}" placeholder="Conseiller…"
-                            style="padding:4px 8px;border:1.5px solid rgba(38,123,241,0.15);border-radius:6px;font-size:12px;width:110px;">
-                        <select name="status" style="padding:4px 8px;border:1.5px solid rgba(38,123,241,0.15);border-radius:6px;font-size:12px;">
-                            <option value="upcoming"  {{ $a->status==='upcoming'  ? 'selected':'' }}>À venir</option>
-                            <option value="past"      {{ $a->status==='past'      ? 'selected':'' }}>Passé</option>
-                            <option value="cancelled" {{ $a->status==='cancelled' ? 'selected':'' }}>Annulé</option>
-                        </select>
-                        <button type="submit" class="admin-btn admin-btn--primary admin-btn--sm">OK</button>
-                    </form>
+                    <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+                        <form action="{{ route('admin.appointments.update', $a->id) }}" method="POST" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+                            @csrf
+                            <input type="hidden" name="notes" value="{{ $a->notes }}">
+                            <input type="text" name="advisor" value="{{ $a->advisor }}" placeholder="Conseiller…"
+                                style="padding:4px 8px;border:1.5px solid rgba(38,123,241,0.15);border-radius:6px;font-size:12px;width:110px;">
+                            <select name="status" style="padding:4px 8px;border:1.5px solid rgba(38,123,241,0.15);border-radius:6px;font-size:12px;">
+                                <option value="upcoming"  {{ $a->status==='upcoming'  ? 'selected':'' }}>À venir</option>
+                                <option value="past"      {{ $a->status==='past'      ? 'selected':'' }}>Passé</option>
+                                <option value="cancelled" {{ $a->status==='cancelled' ? 'selected':'' }}>Annulé</option>
+                            </select>
+                            <button type="submit" class="admin-btn admin-btn--primary admin-btn--sm">OK</button>
+                        </form>
+                        <form action="{{ route('admin.appointments.delete', $a->id) }}" method="POST">
+                            @csrf @method('DELETE')
+                            <button type="button" class="admin-btn admin-btn--danger admin-btn--sm" title="Supprimer"
+                                    onclick="adminConfirm(this, 'Supprimer le RDV #{{ $a->id }} de {{ addslashes($a->user->name ?? '') }} ? Cette action est irréversible.')">✕</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             @empty

@@ -521,6 +521,13 @@ class AdminController extends Controller
         return back()->with('success', 'Rendez-vous mis à jour.');
     }
 
+    public function deleteAppointment(int $id)
+    {
+        Appointment::findOrFail($id)->delete();
+
+        return back()->with('success', 'Rendez-vous supprimé.');
+    }
+
     /* ── Utilisateurs ───────────────────────────────────────── */
     public function users(Request $request)
     {
