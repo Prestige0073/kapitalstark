@@ -24,7 +24,7 @@
             </div>
             <div class="profile-avatar-info">
                 <strong>{{ $user->name }}</strong>
-                <span>Client depuis {{ \Carbon\Carbon::parse($user->created_at)->format('M Y') }}</span>
+                <span>{{ __('ui.dash.since') }} {{ \Carbon\Carbon::parse($user->created_at)->format('M Y') }}</span>
                 <div class="profile-verified-badge">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     {{ __('dashboard.profile.verified') }}
