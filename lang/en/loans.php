@@ -115,4 +115,113 @@ return [
         'cta_sim'          => 'Simulate for free',
         'cta_contact'      => 'Contact an advisor',
     ],
+
+    'data' => [
+        'immobilier' => [
+            'title'        => 'Mortgage Loan',
+            'subtitle'     => 'Finance your property, at your pace',
+            'desc'         => 'Whether you are buying your primary residence, an investment property or financing renovations, KapitalStark offers you the best market conditions with personalised support.',
+            'duration_max' => '30 years',
+            'subcategories' => [
+                ['icon'=>'🏡','title'=>'Primary residence purchase','desc'=>'Finance the purchase of your house or apartment with the best conditions.'],
+                ['icon'=>'💼','title'=>'Buy-to-let investment',     'desc'=>'Grow your property portfolio with optimised financing.'],
+                ['icon'=>'🔄','title'=>'Loan consolidation',        'desc'=>'Group your credits to lower your monthly payments and reduce your rate.'],
+                ['icon'=>'🔨','title'=>'Renovation financing',      'desc'=>'Renovation, extension, upgrades — finance all your projects.'],
+            ],
+            'documents' => ['Valid ID','Last 3 pay slips','Last 2 tax returns','Last 3 bank statements','Sale agreement'],
+            'faq' => [
+                ['q'=>'What is the minimum down payment required?','r'=>'We generally recommend a minimum 10% down payment. Some profiles can borrow without a down payment.'],
+                ['q'=>'What is the maximum term?',                 'r'=>'For a mortgage, the term can go up to 30 years depending on your profile and property type.'],
+                ['q'=>'Can I repay early?',                        'r'=>'Yes, early repayment is possible. Penalties may apply depending on your contract conditions.'],
+            ],
+        ],
+        'automobile' => [
+            'title'        => 'Car Loan',
+            'subtitle'     => 'Take the wheel of your financing',
+            'desc'         => 'New car, used, commercial vehicle or leasing — KapitalStark finances all your automotive projects with competitive rates and a 24h response.',
+            'duration_max' => '84 months',
+            'subcategories' => [
+                ['icon'=>'✨','title'=>'New vehicle',           'desc'=>'Finance your new car with a preferential rate and adapted monthly payments.'],
+                ['icon'=>'🔍','title'=>'Used vehicle',          'desc'=>'Recent or older car, we finance all types of used vehicles.'],
+                ['icon'=>'🚐','title'=>'Commercial vehicle',    'desc'=>'Vans, trucks, company vehicles — solutions for professionals.'],
+                ['icon'=>'🔑','title'=>'Leasing / PCP',         'desc'=>'Drive without buying: flexible lease with purchase option.'],
+            ],
+            'documents' => ['Valid ID','Last 3 pay slips','Bank statements (3 months)','Vehicle order form','Driving licence'],
+            'faq' => [
+                ['q'=>'Can I finance a used vehicle?',                   'r'=>'Yes, we finance all vehicles, new or used, up to 10 years old.'],
+                ['q'=>'What is the difference between a car loan and PCP?','r'=>'A car loan makes you the owner immediately. PCP lets you lease with a purchase option at the end of the contract.'],
+                ['q'=>'Is insurance compulsory?',                        'r'=>'Comprehensive insurance is recommended. It can be included in your financing.'],
+            ],
+        ],
+        'personnel' => [
+            'title'        => 'Personal Loan',
+            'subtitle'     => 'Achieve your projects, no justification needed',
+            'desc'         => 'Travel, wedding, studies, equipment, health — the KapitalStark personal loan gives you access to the funds you need, with no obligation to justify their use.',
+            'duration_max' => '84 months',
+            'subcategories' => [
+                ['icon'=>'✈️','title'=>'Travel & Leisure',   'desc'=>'Explore the world with simple and fast financing.'],
+                ['icon'=>'💍','title'=>'Wedding & Events',   'desc'=>'Celebrate life\'s big moments without financial constraints.'],
+                ['icon'=>'🎓','title'=>'Studies & Training', 'desc'=>'Invest in your future with an advantageous student loan.'],
+                ['icon'=>'🏥','title'=>'Health & Wellbeing', 'desc'=>'Medical costs, glasses, dental — fast financing with no justification.'],
+            ],
+            'documents' => ['Valid ID','Last 3 pay slips','Bank statements (3 months)','Proof of address'],
+            'faq' => [
+                ['q'=>'Do I need to justify how I use the funds?','r'=>'No, a personal loan requires no justification on how the funds are used.'],
+                ['q'=>'How long to receive the funds?',           'r'=>'After acceptance, funds are available within 7 to 14 business days (statutory cooling-off period).'],
+                ['q'=>'Can I repay early?',                       'r'=>'Yes, free for loans under €10,000. Capped penalties apply above that amount.'],
+            ],
+        ],
+        'entreprise' => [
+            'title'        => 'Business Loan',
+            'subtitle'     => 'Financing your ambition',
+            'desc'         => 'Start-up, growth, cash flow, equipment — KapitalStark supports entrepreneurs and SMEs with tailored financing solutions of up to 1 million euros.',
+            'duration_max' => '120 months',
+            'subcategories' => [
+                ['icon'=>'🚀','title'=>'Business start-up', 'desc'=>'Launch your business with financing tailored to your business plan.'],
+                ['icon'=>'📈','title'=>'Growth',            'desc'=>'Growth financing, recruitment, commercial expansion.'],
+                ['icon'=>'💰','title'=>'Cash flow',         'desc'=>'Handle cash flow gaps with a flexible credit line.'],
+                ['icon'=>'⚙️','title'=>'Equipment',         'desc'=>'Machinery, vehicles, IT equipment — fast financing.'],
+            ],
+            'documents' => ['Director\'s ID','Company registration (under 3 months)','Last 2 annual accounts','Business plan (for start-ups)','Business bank details'],
+            'faq' => [
+                ['q'=>'Is my business eligible?',                'r'=>'We finance all types of businesses: sole traders, LTDs, PLCs, SMEs. A minimum 1-year track record is required except for start-ups.'],
+                ['q'=>'What is the processing time?',            'r'=>'Business files are processed in 48 to 72h. For larger amounts, a meeting with an advisor is arranged.'],
+                ['q'=>'Can I get financing without a guarantee?','r'=>'Depending on the amount and company profile, some loans do not require a personal guarantee.'],
+            ],
+        ],
+        'agricole' => [
+            'title'        => 'Agricultural Loan',
+            'subtitle'     => 'Cultivate your success',
+            'desc'         => 'Designed with farmers, for farmers — our agricultural financing solutions adapt to seasonal constraints and the specific features of the sector.',
+            'duration_max' => '15 years',
+            'subcategories' => [
+                ['icon'=>'🚜','title'=>'Agricultural equipment','desc'=>'Tractors, harvesters, irrigation equipment — immediate financing.'],
+                ['icon'=>'🌍','title'=>'Land purchase',         'desc'=>'Acquisition of agricultural land with adapted conditions.'],
+                ['icon'=>'🌱','title'=>'Seasonal cash flow',    'desc'=>'Financing for inputs, seeds, fertilisers at the start of the season.'],
+                ['icon'=>'🏗','title'=>'Farm buildings',        'desc'=>'Construction or renovation of barns, stables, greenhouses.'],
+            ],
+            'documents' => ['Valid ID','Agricultural registration number','Last 2 annual accounts','Bank statements (6 months)','Farm business plan'],
+            'faq' => [
+                ['q'=>'Do you offer seasonal repayments?',          'r'=>'Yes, we adapt the repayment schedule to production cycles: payments at end of harvest for example.'],
+                ['q'=>'Are young farmers eligible?',                'r'=>'Absolutely. We have special offers for those receiving the Young Farmer Start-up Grant.'],
+                ['q'=>'Do you finance organic farming?',            'r'=>'Yes, with preferential conditions for certified organic or converting farms.'],
+            ],
+        ],
+        'microcredit' => [
+            'title'        => 'Microcredit',
+            'subtitle'     => 'Financial inclusion for everyone',
+            'desc'         => 'KapitalStark microcredit is aimed at people excluded from the traditional banking system — jobseekers, benefit recipients, micro-entrepreneurs — to finance a personal or professional project.',
+            'duration_max' => '60 months',
+            'subcategories' => [
+                ['icon'=>'👤','title'=>'Personal microcredit',     'desc'=>'Driving licence, equipment, training — to get back into work.'],
+                ['icon'=>'💡','title'=>'Professional microcredit', 'desc'=>'Launch a micro-business, buy stock, basic equipment.'],
+            ],
+            'documents' => ['Valid ID','Proof of address','Proof of income (benefits, jobcentre…)','Project description'],
+            'faq' => [
+                ['q'=>'Who can benefit from microcredit?','r'=>'Anyone having difficulty accessing conventional bank credit: unemployed, benefit recipients, low-income individuals.'],
+                ['q'=>'Is support provided?',             'r'=>'Yes, each recipient is monitored by an advisor throughout repayment to help with their project.'],
+                ['q'=>'Really no guarantee needed?',      'r'=>'Yes, microcredit requires no conventional guarantee. It is granted based on your project and motivation.'],
+            ],
+        ],
+    ],
 ];

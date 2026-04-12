@@ -115,4 +115,113 @@ return [
         'cta_sim'          => 'Simular gratis',
         'cta_contact'      => 'Contactar un asesor',
     ],
+
+    'data' => [
+        'immobilier' => [
+            'title'        => 'Préstamo Hipotecario',
+            'subtitle'     => 'Financie su inmueble, a su ritmo',
+            'desc'         => 'Tanto si compra su vivienda habitual, una inversión en alquiler o financia obras, KapitalStark le ofrece las mejores condiciones del mercado con un acompañamiento personalizado.',
+            'duration_max' => '30 años',
+            'subcategories' => [
+                ['icon'=>'🏡','title'=>'Compra de vivienda habitual','desc'=>'Finance la compra de su casa o apartamento con las mejores condiciones.'],
+                ['icon'=>'💼','title'=>'Inversión en alquiler',      'desc'=>'Desarrolle su patrimonio inmobiliario con una financiación optimizada.'],
+                ['icon'=>'🔄','title'=>'Reunificación de créditos',  'desc'=>'Agrupe sus créditos para aligerar sus cuotas y reducir su tipo.'],
+                ['icon'=>'🔨','title'=>'Financiación de obras',      'desc'=>'Reforma, ampliación, adecuación — financie todos sus proyectos.'],
+            ],
+            'documents' => ['DNI/NIE válido','Últimas 3 nóminas','Últimas 2 declaraciones de renta','Últimos 3 extractos bancarios','Contrato de arras o compraventa'],
+            'faq' => [
+                ['q'=>'¿Qué entrada mínima se necesita?',     'r'=>'Recomendamos generalmente una entrada mínima del 10 %. Algunos perfiles pueden pedir sin entrada.'],
+                ['q'=>'¿Cuál es el plazo máximo?',            'r'=>'Para una hipoteca, el plazo puede llegar a 30 años según su perfil y el tipo de bien.'],
+                ['q'=>'¿Puedo reembolsar anticipadamente?',   'r'=>'Sí, el reembolso anticipado es posible. Pueden aplicarse penalizaciones según las condiciones de su contrato.'],
+            ],
+        ],
+        'automobile' => [
+            'title'        => 'Préstamo Auto',
+            'subtitle'     => 'Tome el volante de su financiación',
+            'desc'         => 'Vehículo nuevo, de ocasión, utilitario o renting — KapitalStark financia todos sus proyectos de automóvil con tipos competitivos y respuesta en 24h.',
+            'duration_max' => '84 meses',
+            'subcategories' => [
+                ['icon'=>'✨','title'=>'Vehículo nuevo',        'desc'=>'Financie su coche nuevo con un tipo preferencial y cuotas adaptadas.'],
+                ['icon'=>'🔍','title'=>'Vehículo de ocasión',  'desc'=>'Coche reciente o antiguo, financiamos todo tipo de vehículos de ocasión.'],
+                ['icon'=>'🚐','title'=>'Vehículo comercial',   'desc'=>'Furgonetas, camionetas, vehículos de empresa — soluciones para profesionales.'],
+                ['icon'=>'🔑','title'=>'Renting / Leasing',    'desc'=>'Conduzca sin comprar: alquiler flexible con opción de compra.'],
+            ],
+            'documents' => ['DNI/NIE válido','Últimas 3 nóminas','Extractos bancarios (3 meses)','Pedido del vehículo','Permiso de conducir'],
+            'faq' => [
+                ['q'=>'¿Puedo financiar un vehículo de ocasión?',                  'r'=>'Sí, financiamos todos los vehículos, nuevos o de ocasión, hasta 10 años de antigüedad.'],
+                ['q'=>'¿Qué diferencia hay entre crédito auto y renting/leasing?', 'r'=>'El crédito auto le hace propietario desde el inicio. El leasing le permite alquilar con opción de compra al final del contrato.'],
+                ['q'=>'¿Es obligatorio el seguro?',                                'r'=>'Se recomienda un seguro a todo riesgo. Puede incluirse en su financiación.'],
+            ],
+        ],
+        'personnel' => [
+            'title'        => 'Préstamo Personal',
+            'subtitle'     => 'Realice sus proyectos, sin justificante',
+            'desc'         => 'Viaje, boda, estudios, equipamiento, salud — el préstamo personal KapitalStark le da acceso a los fondos que necesita, sin justificar el uso.',
+            'duration_max' => '84 meses',
+            'subcategories' => [
+                ['icon'=>'✈️','title'=>'Viajes & Ocio',       'desc'=>'Descubra el mundo con una financiación sencilla y rápida.'],
+                ['icon'=>'💍','title'=>'Boda & Eventos',      'desc'=>'Celebre los grandes momentos de su vida sin restricciones financieras.'],
+                ['icon'=>'🎓','title'=>'Estudios & Formación','desc'=>'Invierta en su futuro con un préstamo estudiantil ventajoso.'],
+                ['icon'=>'🏥','title'=>'Salud & Bienestar',   'desc'=>'Gastos médicos, óptica, dental — financiación rápida sin justificante.'],
+            ],
+            'documents' => ['DNI/NIE válido','Últimas 3 nóminas','Extractos bancarios (3 meses)','Justificante de domicilio'],
+            'faq' => [
+                ['q'=>'¿Debo justificar el uso de los fondos?','r'=>'No, el préstamo personal no requiere ningún justificante sobre el uso de los fondos.'],
+                ['q'=>'¿Cuánto tiempo para recibir los fondos?','r'=>'Tras la aceptación, los fondos están disponibles en 7 a 14 días hábiles (plazo legal de desistimiento).'],
+                ['q'=>'¿Puedo reembolsar anticipadamente?',    'r'=>'Sí, sin coste para préstamos inferiores a 10.000 €. Se aplican penalizaciones limitadas por encima de esa cantidad.'],
+            ],
+        ],
+        'entreprise' => [
+            'title'        => 'Préstamo Empresa',
+            'subtitle'     => 'La financiación de su ambición',
+            'desc'         => 'Creación, desarrollo, tesorería, equipamiento — KapitalStark acompaña a los emprendedores y pymes con soluciones de financiación a medida de hasta 1 millón de euros.',
+            'duration_max' => '120 meses',
+            'subcategories' => [
+                ['icon'=>'🚀','title'=>'Creación de empresa',   'desc'=>'Lance su actividad con una financiación adaptada a su plan de negocio.'],
+                ['icon'=>'📈','title'=>'Desarrollo',            'desc'=>'Financiación de crecimiento, contratación, expansión comercial.'],
+                ['icon'=>'💰','title'=>'Tesorería',             'desc'=>'Haga frente a los desfases de tesorería con una línea de crédito flexible.'],
+                ['icon'=>'⚙️','title'=>'Equipamiento & Maquinaria','desc'=>'Maquinaria, vehículos, equipamiento informático — financiación rápida.'],
+            ],
+            'documents' => ['DNI/NIE del administrador','Certificado de empresa actualizado','Últimos 2 balances contables','Plan de negocio (para creación)','Datos bancarios empresariales'],
+            'faq' => [
+                ['q'=>'¿Es elegible mi empresa?',                    'r'=>'Financiamos todo tipo de empresas: autónomos, SL, SA, pymes. Se requiere un historial mínimo de 1 año, excepto en creación.'],
+                ['q'=>'¿Cuál es el plazo de tramitación?',           'r'=>'Los expedientes empresariales se tramitan en 48 a 72h. Para importes elevados se organiza una reunión con un asesor.'],
+                ['q'=>'¿Puedo financiar sin garantía personal?',     'r'=>'Según el importe y el perfil de la empresa, algunos préstamos no requieren aval personal.'],
+            ],
+        ],
+        'agricole' => [
+            'title'        => 'Préstamo Agrario',
+            'subtitle'     => 'Cultive su éxito',
+            'desc'         => 'Diseñadas con los agricultores, para los agricultores — nuestras soluciones de financiación agraria se adaptan a las limitaciones estacionales y las especificidades del sector.',
+            'duration_max' => '15 años',
+            'subcategories' => [
+                ['icon'=>'🚜','title'=>'Maquinaria agrícola',    'desc'=>'Tractores, cosechadoras, equipos de riego — financiación inmediata.'],
+                ['icon'=>'🌍','title'=>'Compra de tierras',      'desc'=>'Adquisición de terrenos agrícolas con condiciones adaptadas.'],
+                ['icon'=>'🌱','title'=>'Tesorería estacional',   'desc'=>'Financiación de insumos, semillas, abonos al inicio de la campaña.'],
+                ['icon'=>'🏗','title'=>'Edificios de explotación','desc'=>'Construcción o reforma de naves, establos, invernaderos.'],
+            ],
+            'documents' => ['DNI/NIE válido','Número de REGA o SIRET','Últimos 2 balances / cuentas de gestión','Extractos bancarios (6 meses)','Plan de explotación'],
+            'faq' => [
+                ['q'=>'¿Ofrecen reembolsos estacionales?',         'r'=>'Sí, adaptamos el calendario de pagos a los ciclos de producción: pagos a fin de cosecha, por ejemplo.'],
+                ['q'=>'¿Son elegibles los jóvenes agricultores?',  'r'=>'Por supuesto. Tenemos ofertas especiales para instalaciones con ayudas a jóvenes agricultores.'],
+                ['q'=>'¿Financian la agricultura ecológica?',      'r'=>'Sí, con condiciones preferenciales para explotaciones certificadas ecológicas o en conversión.'],
+            ],
+        ],
+        'microcredit' => [
+            'title'        => 'Microcrédito',
+            'subtitle'     => 'La inclusión financiera para todos',
+            'desc'         => 'El microcrédito KapitalStark está destinado a las personas excluidas del sistema bancario tradicional — demandantes de empleo, beneficiarios de ayudas sociales, microempresarios — para financiar un proyecto de vida o profesional.',
+            'duration_max' => '60 meses',
+            'subcategories' => [
+                ['icon'=>'👤','title'=>'Microcrédito personal',     'desc'=>'Permiso de conducir, equipamiento, formación — para reincorporarse al empleo.'],
+                ['icon'=>'💡','title'=>'Microcrédito profesional',  'desc'=>'Lanzar una microactividad, comprar stock, material básico.'],
+            ],
+            'documents' => ['DNI/NIE válido','Justificante de domicilio','Justificante de ingresos (prestaciones, SEPE…)','Descripción del proyecto'],
+            'faq' => [
+                ['q'=>'¿Quién puede beneficiarse del microcrédito?','r'=>'Toda persona con dificultad de acceso al crédito bancario clásico: desempleados, beneficiarios de ayudas, personas con ingresos bajos.'],
+                ['q'=>'¿Se ofrece acompañamiento?',                'r'=>'Sí, cada beneficiario es seguido por un asesor durante todo el reembolso para ayudarle en su proyecto.'],
+                ['q'=>'¿Realmente sin garantía?',                  'r'=>'Sí, el microcrédito no requiere garantía clásica. Se concede en función de su proyecto y motivación.'],
+            ],
+        ],
+    ],
 ];

@@ -115,4 +115,113 @@ return [
         'cta_sim'          => 'Kostenlos berechnen',
         'cta_contact'      => 'Berater kontaktieren',
     ],
+
+    'data' => [
+        'immobilier' => [
+            'title'        => 'Immobilienkredit',
+            'subtitle'     => 'Finanzieren Sie Ihr Eigentum in Ihrem Tempo',
+            'desc'         => 'Ob Sie Ihren Hauptwohnsitz, eine Kapitalanlage kaufen oder Renovierungen finanzieren — KapitalStark bietet Ihnen die besten Marktkonditionen mit persönlicher Begleitung.',
+            'duration_max' => '30 Jahre',
+            'subcategories' => [
+                ['icon'=>'🏡','title'=>'Kauf Hauptwohnsitz',   'desc'=>'Finanzieren Sie den Kauf Ihres Hauses oder Ihrer Wohnung zu besten Konditionen.'],
+                ['icon'=>'💼','title'=>'Kapitalanlage',        'desc'=>'Bauen Sie Ihr Immobilienvermögen mit optimierter Finanzierung aus.'],
+                ['icon'=>'🔄','title'=>'Kreditumschuldung',    'desc'=>'Fassen Sie Ihre Kredite zusammen, um Ihre Monatsraten zu senken.'],
+                ['icon'=>'🔨','title'=>'Renovierungskredit',   'desc'=>'Renovierung, Anbau, Modernisierung — finanzieren Sie alle Ihre Projekte.'],
+            ],
+            'documents' => ['Personalausweis','Letzte 3 Gehaltsabrechnungen','Letzte 2 Einkommensteuerbescheide','Letzte 3 Kontoauszüge','Kaufvertrag'],
+            'faq' => [
+                ['q'=>'Welche Mindesteinlage ist erforderlich?','r'=>'Wir empfehlen generell eine Mindesteinlage von 10 %. Manche Profile können ohne Eigenkapital finanzieren.'],
+                ['q'=>'Was ist die maximale Laufzeit?',         'r'=>'Für einen Immobilienkredit kann die Laufzeit je nach Profil und Objektart bis zu 30 Jahre betragen.'],
+                ['q'=>'Kann ich vorzeitig zurückzahlen?',       'r'=>'Ja, vorzeitige Rückzahlung ist möglich. Vorfälligkeitsentschädigungen können je nach Vertragsbedingungen anfallen.'],
+            ],
+        ],
+        'automobile' => [
+            'title'        => 'Autokredit',
+            'subtitle'     => 'Übernehmen Sie das Steuer Ihrer Finanzierung',
+            'desc'         => 'Neuwagen, Gebrauchtwagen, Nutzfahrzeug oder Leasing — KapitalStark finanziert alle Ihre Automobilprojekte mit wettbewerbsfähigen Zinsen und einer Antwort in 24h.',
+            'duration_max' => '84 Monate',
+            'subcategories' => [
+                ['icon'=>'✨','title'=>'Neuwagen',                    'desc'=>'Finanzieren Sie Ihr neues Auto mit einem Vorzugszins und angepassten Monatsraten.'],
+                ['icon'=>'🔍','title'=>'Gebrauchtwagen',              'desc'=>'Neueres oder älteres Fahrzeug — wir finanzieren alle Gebrauchtwagenarten.'],
+                ['icon'=>'🚐','title'=>'Nutzfahrzeug',                'desc'=>'Transporter, Kleintransporter, Firmenfahrzeuge — Lösungen für Gewerbetreibende.'],
+                ['icon'=>'🔑','title'=>'Leasing / Finanzierungsleasing','desc'=>'Fahren ohne zu kaufen: flexible Miete mit Kaufoption.'],
+            ],
+            'documents' => ['Personalausweis','Letzte 3 Gehaltsabrechnungen','Kontoauszüge (3 Monate)','Fahrzeugbestellung','Führerschein'],
+            'faq' => [
+                ['q'=>'Kann ich ein Gebrauchtfahrzeug finanzieren?',            'r'=>'Ja, wir finanzieren alle Fahrzeuge, neu oder gebraucht, bis zu 10 Jahre alt.'],
+                ['q'=>'Was ist der Unterschied zwischen Autokredit und Leasing?','r'=>'Der Autokredit macht Sie sofort zum Eigentümer. Beim Leasing mieten Sie mit Kaufoption am Vertragsende.'],
+                ['q'=>'Ist eine Versicherung Pflicht?',                         'r'=>'Eine Vollkaskoversicherung wird empfohlen. Sie kann in Ihre Finanzierung eingeschlossen werden.'],
+            ],
+        ],
+        'personnel' => [
+            'title'        => 'Privatkredit',
+            'subtitle'     => 'Verwirklichen Sie Ihre Projekte — ohne Verwendungsnachweis',
+            'desc'         => 'Reisen, Hochzeit, Studium, Ausstattung, Gesundheit — der KapitalStark-Privatkredit gibt Ihnen Zugang zu den Mitteln, die Sie benötigen, ohne Verwendungszweck nachweisen zu müssen.',
+            'duration_max' => '84 Monate',
+            'subcategories' => [
+                ['icon'=>'✈️','title'=>'Reisen & Freizeit',      'desc'=>'Entdecken Sie die Welt mit einfacher und schneller Finanzierung.'],
+                ['icon'=>'💍','title'=>'Hochzeit & Events',      'desc'=>'Feiern Sie die großen Momente Ihres Lebens ohne finanzielle Einschränkungen.'],
+                ['icon'=>'🎓','title'=>'Studium & Weiterbildung','desc'=>'Investieren Sie mit einem vorteilhaften Studienkredit in Ihre Zukunft.'],
+                ['icon'=>'🏥','title'=>'Gesundheit & Wellness',  'desc'=>'Arztkosten, Brille, Zahnarzt — schnelle Finanzierung ohne Nachweis.'],
+            ],
+            'documents' => ['Personalausweis','Letzte 3 Gehaltsabrechnungen','Kontoauszüge (3 Monate)','Wohnsitznachweis'],
+            'faq' => [
+                ['q'=>'Muss ich den Verwendungszweck nachweisen?','r'=>'Nein, ein Privatkredit erfordert keinen Verwendungsnachweis.'],
+                ['q'=>'Wie lange dauert es bis zur Auszahlung?',  'r'=>'Nach Genehmigung stehen die Mittel innerhalb von 7 bis 14 Werktagen bereit (gesetzliche Widerrufsfrist).'],
+                ['q'=>'Kann ich vorzeitig zurückzahlen?',         'r'=>'Ja, kostenlos bei Krediten unter 10.000 €. Bei höheren Beträgen gelten begrenzte Vorfälligkeitsgebühren.'],
+            ],
+        ],
+        'entreprise' => [
+            'title'        => 'Unternehmenskredit',
+            'subtitle'     => 'Die Finanzierung Ihres Ehrgeizes',
+            'desc'         => 'Gründung, Wachstum, Liquidität, Ausrüstung — KapitalStark begleitet Unternehmer und KMU mit maßgeschneiderten Finanzierungslösungen bis zu 1 Million Euro.',
+            'duration_max' => '120 Monate',
+            'subcategories' => [
+                ['icon'=>'🚀','title'=>'Unternehmensgründung',    'desc'=>'Starten Sie Ihr Unternehmen mit einer auf Ihren Businessplan zugeschnittenen Finanzierung.'],
+                ['icon'=>'📈','title'=>'Wachstum',               'desc'=>'Wachstumsfinanzierung, Einstellung, kommerzielle Expansion.'],
+                ['icon'=>'💰','title'=>'Liquidität',             'desc'=>'Überbrücken Sie Liquiditätsengpässe mit einer flexiblen Kreditlinie.'],
+                ['icon'=>'⚙️','title'=>'Ausrüstung & Maschinen', 'desc'=>'Maschinen, Fahrzeuge, IT-Ausstattung — schnelle Finanzierung.'],
+            ],
+            'documents' => ['Personalausweis des Geschäftsführers','Aktueller Handelsregisterauszug','Letzte 2 Jahresabschlüsse','Businessplan (für Gründer)','Geschäftliche Bankverbindung'],
+            'faq' => [
+                ['q'=>'Ist mein Unternehmen berechtigt?',                'r'=>'Wir finanzieren alle Unternehmensformen: Einzelunternehmer, GmbH, AG, KMU. Mindestens 1 Jahr Betriebsgeschichte erforderlich, außer bei Neugründungen.'],
+                ['q'=>'Wie lange dauert die Bearbeitung?',               'r'=>'Unternehmensanträge werden in 48 bis 72 Stunden bearbeitet. Bei größeren Beträgen wird ein Beratungstermin vereinbart.'],
+                ['q'=>'Kann ich ohne persönliche Bürgschaft finanzieren?','r'=>'Je nach Betrag und Unternehmensprofil sind bei einigen Krediten keine persönlichen Bürgschaften erforderlich.'],
+            ],
+        ],
+        'agricole' => [
+            'title'        => 'Agrarkredit',
+            'subtitle'     => 'Kultivieren Sie Ihren Erfolg',
+            'desc'         => 'Mit Landwirten entwickelt, für Landwirte — unsere Agrarfinanzierungslösungen passen sich saisonalen Anforderungen und den Besonderheiten des Sektors an.',
+            'duration_max' => '15 Jahre',
+            'subcategories' => [
+                ['icon'=>'🚜','title'=>'Landwirtschaftliche Ausrüstung','desc'=>'Traktoren, Mähdrescher, Bewässerungsanlagen — sofortige Finanzierung.'],
+                ['icon'=>'🌍','title'=>'Landkauf',                     'desc'=>'Erwerb landwirtschaftlicher Flächen zu angepassten Konditionen.'],
+                ['icon'=>'🌱','title'=>'Saisonale Liquidität',          'desc'=>'Finanzierung von Betriebsmitteln, Saatgut, Dünger zu Saisonbeginn.'],
+                ['icon'=>'🏗','title'=>'Wirtschaftsgebäude',           'desc'=>'Bau oder Renovierung von Scheunen, Ställen, Gewächshäusern.'],
+            ],
+            'documents' => ['Personalausweis','Betriebsnummer / SIRET','Letzte 2 Jahresabschlüsse','Kontoauszüge (6 Monate)','Betriebsplan'],
+            'faq' => [
+                ['q'=>'Bieten Sie saisonale Rückzahlungen an?','r'=>'Ja, wir passen den Tilgungsplan an die Produktionszyklen an, z.B. Zahlungen nach der Ernte.'],
+                ['q'=>'Sind Junglandwirte berechtigt?',        'r'=>'Absolut. Wir haben Sonderangebote für Betriebe, die von der Junglandwirteförderung profitieren.'],
+                ['q'=>'Finanzieren Sie ökologischen Landbau?', 'r'=>'Ja, mit Vorzugskonditionen für zertifizierte Bio-Betriebe oder Betriebe in Umstellung.'],
+            ],
+        ],
+        'microcredit' => [
+            'title'        => 'Mikrokredit',
+            'subtitle'     => 'Finanzielle Inklusion für alle',
+            'desc'         => 'Der KapitalStark-Mikrokredit richtet sich an Personen, die vom traditionellen Bankensystem ausgeschlossen sind — Arbeitssuchende, Sozialhilfeempfänger, Kleinstunternehmer — zur Finanzierung eines Lebens- oder Berufsprojekts.',
+            'duration_max' => '60 Monate',
+            'subcategories' => [
+                ['icon'=>'👤','title'=>'Persönlicher Mikrokredit','desc'=>'Führerschein, Ausstattung, Weiterbildung — für den Wiedereinstieg ins Berufsleben.'],
+                ['icon'=>'💡','title'=>'Gewerblicher Mikrokredit','desc'=>'Kleinstunternehmen gründen, Waren kaufen, Grundausstattung anschaffen.'],
+            ],
+            'documents' => ['Personalausweis','Wohnsitznachweis','Einkommensnachweis (Sozialleistungen, Arbeitsagentur…)','Projektbeschreibung'],
+            'faq' => [
+                ['q'=>'Wer kann von Mikrokrediten profitieren?','r'=>'Alle Personen mit Schwierigkeiten beim Zugang zu konventionellen Bankkrediten: Arbeitslose, Sozialhilfeempfänger, Geringverdiener.'],
+                ['q'=>'Wird Begleitung angeboten?',            'r'=>'Ja, jeder Empfänger wird während der gesamten Rückzahlungszeit von einem Berater begleitet.'],
+                ['q'=>'Wirklich ohne Sicherheit?',             'r'=>'Ja, Mikrokredite erfordern keine klassischen Sicherheiten. Sie werden auf Basis Ihres Projekts und Ihrer Motivation vergeben.'],
+            ],
+        ],
+    ],
 ];

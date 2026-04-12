@@ -115,4 +115,113 @@ return [
         'cta_sim'          => 'Simular gratuitamente',
         'cta_contact'      => 'Contactar um consultor',
     ],
+
+    'data' => [
+        'immobilier' => [
+            'title'        => 'Crédito Habitação',
+            'subtitle'     => 'Financie o seu imóvel, ao seu ritmo',
+            'desc'         => 'Quer compre a sua habitação própria, um investimento para arrendamento ou financie obras, a KapitalStark oferece-lhe as melhores condições do mercado com acompanhamento personalizado.',
+            'duration_max' => '30 anos',
+            'subcategories' => [
+                ['icon'=>'🏡','title'=>'Compra de habitação própria','desc'=>'Finance a compra da sua casa ou apartamento nas melhores condições.'],
+                ['icon'=>'💼','title'=>'Investimento para arrendamento','desc'=>'Desenvolva o seu património imobiliário com um financiamento otimizado.'],
+                ['icon'=>'🔄','title'=>'Consolidação de créditos',  'desc'=>'Agrupe os seus créditos para reduzir as prestações e o seu spread.'],
+                ['icon'=>'🔨','title'=>'Financiamento de obras',    'desc'=>'Remodelação, ampliação, modernização — finance todos os seus projetos.'],
+            ],
+            'documents' => ['BI/CC válido','Últimos 3 recibos de vencimento','Últimas 2 declarações de IRS','Últimos 3 extratos bancários','Contrato-promessa de compra e venda'],
+            'faq' => [
+                ['q'=>'Qual a entrada mínima necessária?',      'r'=>'Recomendamos geralmente uma entrada mínima de 10 %. Alguns perfis podem pedir sem entrada.'],
+                ['q'=>'Qual é o prazo máximo?',                 'r'=>'Para um crédito habitação, o prazo pode ir até 30 anos consoante o seu perfil e o tipo de imóvel.'],
+                ['q'=>'Posso reembolsar antecipadamente?',      'r'=>'Sim, o reembolso antecipado é possível. Podem aplicar-se penalizações consoante as condições do seu contrato.'],
+            ],
+        ],
+        'automobile' => [
+            'title'        => 'Crédito Auto',
+            'subtitle'     => 'Assuma o volante do seu financiamento',
+            'desc'         => 'Veículo novo, usado, comercial ou ALD — a KapitalStark financia todos os seus projetos automóvel com taxas competitivas e resposta em 24h.',
+            'duration_max' => '84 meses',
+            'subcategories' => [
+                ['icon'=>'✨','title'=>'Veículo novo',       'desc'=>'Finance o seu carro novo com uma taxa preferencial e prestações adaptadas.'],
+                ['icon'=>'🔍','title'=>'Veículo usado',     'desc'=>'Carro recente ou antigo, financiamos todos os tipos de veículos usados.'],
+                ['icon'=>'🚐','title'=>'Veículo comercial', 'desc'=>'Carrinhas, furgões, viaturas de empresa — soluções para profissionais.'],
+                ['icon'=>'🔑','title'=>'ALD / Leasing',     'desc'=>'Conduza sem comprar: aluguer flexível com opção de compra.'],
+            ],
+            'documents' => ['BI/CC válido','Últimos 3 recibos de vencimento','Extratos bancários (3 meses)','Fatura pro-forma do veículo','Carta de condução'],
+            'faq' => [
+                ['q'=>'Posso financiar um veículo usado?',                     'r'=>'Sim, financiamos todos os veículos, novos ou usados, até 10 anos de idade.'],
+                ['q'=>'Qual a diferença entre crédito auto e ALD/leasing?',    'r'=>'O crédito auto torna-o proprietário de imediato. O ALD permite alugar com opção de compra no final do contrato.'],
+                ['q'=>'O seguro é obrigatório?',                               'r'=>'Um seguro multirriscos é recomendado. Pode ser incluído no seu financiamento.'],
+            ],
+        ],
+        'personnel' => [
+            'title'        => 'Crédito Pessoal',
+            'subtitle'     => 'Realize os seus projetos, sem justificativo',
+            'desc'         => 'Viagem, casamento, estudos, equipamento, saúde — o crédito pessoal KapitalStark dá-lhe acesso aos fundos de que necessita, sem obrigação de justificar a utilização.',
+            'duration_max' => '84 meses',
+            'subcategories' => [
+                ['icon'=>'✈️','title'=>'Viagens & Lazer',    'desc'=>'Explore o mundo com um financiamento simples e rápido.'],
+                ['icon'=>'💍','title'=>'Casamento & Eventos','desc'=>'Celebre os grandes momentos da sua vida sem restrições financeiras.'],
+                ['icon'=>'🎓','title'=>'Estudos & Formação', 'desc'=>'Invista no seu futuro com um crédito estudantil vantajoso.'],
+                ['icon'=>'🏥','title'=>'Saúde & Bem-estar',  'desc'=>'Despesas médicas, óptica, dentista — financiamento rápido sem justificativo.'],
+            ],
+            'documents' => ['BI/CC válido','Últimos 3 recibos de vencimento','Extratos bancários (3 meses)','Comprovativo de morada'],
+            'faq' => [
+                ['q'=>'Preciso de justificar a utilização dos fundos?','r'=>'Não, o crédito pessoal não requer qualquer justificativo sobre a utilização dos fundos.'],
+                ['q'=>'Quanto tempo para receber os fundos?',          'r'=>'Após aceitação, os fundos ficam disponíveis em 7 a 14 dias úteis (prazo legal de livre resolução).'],
+                ['q'=>'Posso reembolsar antecipadamente?',             'r'=>'Sim, sem custos para créditos inferiores a 10.000 €. Aplicam-se penalizações limitadas acima desse valor.'],
+            ],
+        ],
+        'entreprise' => [
+            'title'        => 'Crédito Empresas',
+            'subtitle'     => 'O financiamento da sua ambição',
+            'desc'         => 'Criação, desenvolvimento, tesouraria, equipamento — a KapitalStark acompanha empreendedores e PME com soluções de financiamento à medida até 1 milhão de euros.',
+            'duration_max' => '120 meses',
+            'subcategories' => [
+                ['icon'=>'🚀','title'=>'Criação de empresa',    'desc'=>'Lance a sua atividade com um financiamento adaptado ao seu plano de negócios.'],
+                ['icon'=>'📈','title'=>'Desenvolvimento',       'desc'=>'Financiamento de crescimento, recrutamento, expansão comercial.'],
+                ['icon'=>'💰','title'=>'Tesouraria',            'desc'=>'Faça face a desfasamentos de tesouraria com uma linha de crédito flexível.'],
+                ['icon'=>'⚙️','title'=>'Equipamento & Maquinaria','desc'=>'Máquinas, viaturas, equipamento informático — financiamento rápido.'],
+            ],
+            'documents' => ['BI/CC do gerente','Certidão permanente da empresa','Últimos 2 relatórios de contas','Plano de negócios (para criação)','NIB/IBAN empresarial'],
+            'faq' => [
+                ['q'=>'A minha empresa é elegível?',                   'r'=>'Financiamos todos os tipos de empresas: ENI, Lda., SA, PME. É exigido um historial mínimo de 1 ano, exceto em criação.'],
+                ['q'=>'Qual é o prazo de análise?',                    'r'=>'Os processos empresariais são analisados em 48 a 72h. Para montantes elevados, é organizada uma reunião com um consultor.'],
+                ['q'=>'Posso financiar sem garantia pessoal?',         'r'=>'Consoante o montante e o perfil da empresa, alguns créditos não requerem aval pessoal.'],
+            ],
+        ],
+        'agricole' => [
+            'title'        => 'Crédito Agrícola',
+            'subtitle'     => 'Cultive o seu sucesso',
+            'desc'         => 'Desenvolvidas com agricultores, para agricultores — as nossas soluções de financiamento agrícola adaptam-se às condicionantes sazonais e às especificidades do setor.',
+            'duration_max' => '15 anos',
+            'subcategories' => [
+                ['icon'=>'🚜','title'=>'Equipamento agrícola',   'desc'=>'Tratores, ceifeiras, equipamento de rega — financiamento imediato.'],
+                ['icon'=>'🌍','title'=>'Compra de terrenos',     'desc'=>'Aquisição de terrenos agrícolas com condições adaptadas.'],
+                ['icon'=>'🌱','title'=>'Tesouraria sazonal',     'desc'=>'Financiamento de fatores de produção, sementes, fertilizantes no início da campanha.'],
+                ['icon'=>'🏗','title'=>'Construções agrícolas',  'desc'=>'Construção ou renovação de armazéns, estábulos, estufas.'],
+            ],
+            'documents' => ['BI/CC válido','NIF / Número de exploração','Últimos 2 relatórios de contas','Extratos bancários (6 meses)','Plano de exploração'],
+            'faq' => [
+                ['q'=>'Oferecem reembolsos sazonais?',          'r'=>'Sim, adaptamos o plano de pagamentos aos ciclos de produção: pagamentos no final da colheita, por exemplo.'],
+                ['q'=>'Os jovens agricultores são elegíveis?',  'r'=>'Absolutamente. Temos ofertas especiais para instalações apoiadas pela dotação jovem agricultor.'],
+                ['q'=>'Financiam agricultura biológica?',       'r'=>'Sim, com condições preferenciais para explorações certificadas bio ou em conversão.'],
+            ],
+        ],
+        'microcredit' => [
+            'title'        => 'Microcrédito',
+            'subtitle'     => 'Inclusão financeira para todos',
+            'desc'         => 'O microcrédito KapitalStark destina-se a pessoas excluídas do sistema bancário tradicional — desempregados, beneficiários de prestações sociais, microempresários — para financiar um projeto de vida ou profissional.',
+            'duration_max' => '60 meses',
+            'subcategories' => [
+                ['icon'=>'👤','title'=>'Microcrédito pessoal',    'desc'=>'Carta de condução, equipamento, formação — para regressar ao emprego.'],
+                ['icon'=>'💡','title'=>'Microcrédito profissional','desc'=>'Lançar uma microatividade, comprar stock, equipamento básico.'],
+            ],
+            'documents' => ['BI/CC válido','Comprovativo de morada','Comprovativo de rendimentos (prestações, IEFP…)','Descrição do projeto'],
+            'faq' => [
+                ['q'=>'Quem pode beneficiar do microcrédito?','r'=>'Qualquer pessoa com dificuldade de acesso ao crédito bancário clássico: desempregados, beneficiários de prestações, pessoas com rendimentos baixos.'],
+                ['q'=>'É fornecido acompanhamento?',          'r'=>'Sim, cada beneficiário é acompanhado por um consultor durante todo o reembolso para o ajudar no seu projeto.'],
+                ['q'=>'Realmente sem garantia?',              'r'=>'Sim, o microcrédito não requer garantia clássica. É concedido com base no seu projeto e motivação.'],
+            ],
+        ],
+    ],
 ];
