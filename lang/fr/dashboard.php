@@ -11,6 +11,35 @@ return [
     'back'       => 'Retour',
     'next_step'  => 'Étape suivante',
 
+    /* ── Navigation (layout sidebar) ─────────────────────────── */
+    'nav' => [
+        'section_main'   => 'Principal',
+        'section_account'=> 'Compte',
+        'dashboard'      => 'Tableau de bord',
+        'loans'          => 'Mes Prêts',
+        'requests'       => 'Mes Demandes',
+        'documents'      => 'Documents',
+        'messages'       => 'Messagerie',
+        'appointments'   => 'Mes Rendez-vous',
+        'transfers'      => 'Virements',
+        'card'           => 'Ma Carte',
+        'receipts'       => 'Reçus & Approbations',
+        'profile'        => 'Mon Profil',
+        'simulator'      => 'Simulateur',
+        'logout'         => 'Déconnexion',
+        'close_menu'     => 'Fermer le menu',
+        'open_menu'      => 'Ouvrir le menu',
+        'client_since'   => 'Client depuis :year',
+        'new_request'    => 'Nouvelle demande',
+        'notifications'  => 'Notifications',
+        'no_notifs'      => 'Aucune notification',
+        'see_messages'   => 'Voir tous les messages →',
+        'logout_confirm' => 'Voulez-vous vraiment vous déconnecter ?',
+        'confirm_title'  => 'Confirmer l\'action',
+        'confirm_cancel' => 'Annuler',
+        'confirm_ok'     => 'Confirmer',
+    ],
+
     /* ── Tableau de bord (index) ──────────────────────────────── */
     'index' => [
         'title'          => 'Tableau de bord',
