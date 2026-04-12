@@ -186,10 +186,10 @@ var _acmForm = null;
 function adminConfirm(btn, msg) {
     _acmForm = btn.closest('form');
     document.getElementById('acm-msg').textContent = msg;
-    document.getElementById('acm').style.display = 'flex';
+    document.getElementById('acm').classList.add('open');
 }
 function adminConfirmCancel() {
-    document.getElementById('acm').style.display = 'none';
+    document.getElementById('acm').classList.remove('open');
     _acmForm = null;
 }
 function adminConfirmOk() {
