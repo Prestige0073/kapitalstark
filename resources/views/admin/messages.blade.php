@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div style="margin-bottom:24px;">
+<div class="admin-msgs-title" style="margin-bottom:24px;">
     <h1 style="font-size:22px;font-weight:700;color:#e2e8f0;margin:0 0 4px;">Messagerie clients</h1>
     <p style="font-size:13px;color:#718096;margin:0;">Échangez avec vos clients en temps réel.</p>
 </div>
@@ -143,7 +143,7 @@
             $prefillSubject = request('prefill_subject', '');
             $prefillBody    = request('prefill_body', '');
         @endphp
-        <div style="padding:16px 24px;border-top:1px solid rgba(255,255,255,0.07);background:#151b26;flex-shrink:0;">
+        <div class="admin-msgs-send-area" style="padding:16px 24px;border-top:1px solid rgba(255,255,255,0.07);background:#151b26;flex-shrink:0;">
             @if($prefillBody)
             <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;margin-bottom:10px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;font-size:12px;color:#d97706;">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -153,7 +153,7 @@
             <form action="{{ route('admin.messages.send') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $selectedUserId }}">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+                <div class="admin-compose-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
                     <div>
                         <label style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#718096;display:block;margin-bottom:4px;">Client</label>
                         <select name="user_id_display" onchange="window.location='/admin/messagerie?user_id='+this.value"

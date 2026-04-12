@@ -4,28 +4,24 @@
    ADMIN RESPONSIVE v2 — Corrections mobile complètes
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Table scroll wrapper ──────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   ADMIN RESPONSIVE v3
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Table scroll wrapper ──────────────────────────────────────
+   .admin-card garde overflow:hidden (défini ci-dessus).
+   Le wrapper est donc contraint à la largeur de la carte,
+   l'overflow-x:auto crée le scroll interne sans toucher au parent.
+   ──────────────────────────────────────────────────────────────*/
 .admin-table-scroll{
   overflow-x:auto;
   -webkit-overflow-scrolling:touch;
-  /* Scroll shadow : indique visuellement qu'on peut scroller */
-  background:
-    linear-gradient(to right,#fff 30%,transparent) left center,
-    linear-gradient(to left, #fff 30%,transparent) right center,
-    linear-gradient(to right,rgba(38,123,241,.12),transparent) left center,
-    linear-gradient(to left, rgba(38,123,241,.12),transparent) right center;
-  background-size:40px 100%,40px 100%,12px 100%,12px 100%;
-  background-repeat:no-repeat;
-  background-attachment:local,local,scroll,scroll;
 }
 .admin-table-scroll::-webkit-scrollbar{height:4px;}
 .admin-table-scroll::-webkit-scrollbar-track{background:#f0f4fa;}
-.admin-table-scroll::-webkit-scrollbar-thumb{background:rgba(38,123,241,.35);border-radius:2px;}
+.admin-table-scroll::-webkit-scrollbar-thumb{background:rgba(38,123,241,.4);border-radius:2px;}
 
-/* ── Admin card base : autoriser le scroll horizontal du wrapper ─ */
-.admin-card{overflow:visible;}
-
-/* ── Card header : wrap les filtres inline (transfers, appts…) ── */
+/* ── Card header avec form inline → wrapping sur mobile ──────── */
 @media(max-width:680px){
   .admin-card__header{flex-wrap:wrap;gap:10px;}
   .admin-card__header>form{
@@ -33,7 +29,12 @@
     display:flex;flex-wrap:wrap;gap:8px;
   }
   .admin-card__header>form input,
-  .admin-card__header>form select{flex:1;min-width:0;width:auto;}
+  .admin-card__header>form select{flex:1;min-width:0;}
+}
+
+/* admin-filters : min-width:220px ne passe pas sur mobile */
+@media(max-width:768px){
+  .admin-filters input{min-width:0;}
 }
 
 /* ── Messages layout ───────────────────────────────────────── */
@@ -48,85 +49,100 @@
   min-height:520px;
 }
 .admin-msgs-users{
-  width:280px;
-  flex-shrink:0;
+  width:280px;flex-shrink:0;
   border-right:1px solid rgba(255,255,255,.07);
   overflow-y:auto;
   background:#151b26;
 }
 .admin-msgs-conv{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
+  flex:1;display:flex;flex-direction:column;overflow:hidden;
 }
 .admin-msgs-back{
   display:none;
   width:100%;
-  align-items:center;
-  gap:8px;
+  align-items:center;gap:8px;
   padding:11px 16px;
-  background:none;
+  background:rgba(255,255,255,.03);
   border:none;
   border-bottom:1px solid rgba(255,255,255,.07);
   color:#a0aec0;
-  font-size:13px;
-  font-weight:600;
-  cursor:pointer;
-  font-family:inherit;
+  font-size:13px;font-weight:600;
+  cursor:pointer;font-family:inherit;
   text-decoration:none;
   box-sizing:border-box;
-  transition:background .15s,color .15s;
   flex-shrink:0;
+  transition:background .15s,color .15s;
 }
-.admin-msgs-back:hover{background:rgba(255,255,255,.05);color:#e2e8f0;}
+.admin-msgs-back:hover{background:rgba(255,255,255,.07);color:#e2e8f0;}
 
+/* ── Messages : version mobile full-screen robuste ─────────────
+   position:fixed du topbar au bas de l'écran = hauteur parfaite
+   quelle que soit la taille du chrome du navigateur.
+   ──────────────────────────────────────────────────────────── */
 @media(max-width:768px){
+  .admin-msgs-title{display:none;}
+
   .admin-msgs-layout{
-    height:calc(100vh - 180px);
-    min-height:400px;
-    border-radius:12px;
+    position:fixed;
+    top:var(--admin-topbar,60px);
+    left:0;right:0;bottom:0;
+    height:auto;min-height:0;
+    border-radius:0;
+    z-index:20;
+    margin:0;
   }
-  /* La colonne users prend toute la place */
+
+  /* Panneau users : occupe tout l'espace */
   .admin-msgs-users{
     position:absolute;
     top:0;left:0;right:0;bottom:0;
-    width:100%;
-    border-right:none;
+    width:100%;border-right:none;
     z-index:5;
     transition:transform .28s cubic-bezier(.4,0,.2,1);
   }
-  /* Quand une conversation est sélectionnée : slide la liste vers la gauche */
+
+  /* Conversation active → slide le panneau users hors écran */
   .admin-msgs-layout.has-user .admin-msgs-users{
     transform:translateX(-110%);
     pointer-events:none;
   }
-  /* Bouton retour visible sur mobile */
+
   .admin-msgs-back{display:flex;}
   .admin-msgs-conv{width:100%;}
-  /* Sans utilisateur sélectionné : masquer la zone conv */
+
+  /* Pas d'utilisateur sélectionné → cacher la conv */
   .admin-msgs-layout:not(.has-user) .admin-msgs-conv{
-    visibility:hidden;
-    pointer-events:none;
+    visibility:hidden;pointer-events:none;
+  }
+
+  /* Formulaire compose : 1 colonne sur mobile */
+  .admin-compose-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  /* Zone d'envoi : padding réduit */
+  .admin-msgs-send-area{
+    padding:10px 14px !important;
+  }
+
+  /* Textarea : moins haute */
+  .admin-msgs-layout textarea{
+    min-height:56px !important;
   }
 }
 
-/* ── Réduction des paddings de cellules sur petit écran ─────── */
+/* ── Réduction paddings sur petits écrans ───────────────────── */
 @media(max-width:560px){
   .admin-table th,.admin-table td{padding:10px 12px;}
   .admin-card__header{padding:12px 14px;}
-  .admin-msg-compose{margin:12px 14px;padding:14px;}
 }
 
 /* ── Topbar très petit écran ────────────────────────────────── */
 @media(max-width:420px){
   .admin-topbar{gap:8px;padding:0 10px;}
   .admin-topbar__title{
-    font-size:12px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    max-width:130px;
+    font-size:12px;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap;max-width:130px;
   }
   .admin-topbar__avatar{width:28px;height:28px;font-size:10px;}
 }
