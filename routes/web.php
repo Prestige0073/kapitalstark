@@ -234,9 +234,10 @@ Route::prefix('admin')->name('admin.')->middleware(['is_admin'])->group(function
     // Virements
     Route::get('/virements',                          [AdminController::class, 'transfers'])->name('transfers');
     Route::get('/virements/{transfer}',               [AdminController::class, 'showTransfer'])->name('transfers.show');
-    Route::post('/virements/{transfer}/valider',      [AdminController::class, 'validateTransfer'])->name('transfers.validate');
-    Route::post('/virements/{transfer}/rejeter',      [AdminController::class, 'rejectTransfer'])->name('transfers.reject');
-    Route::delete('/virements/{id}',                  [AdminController::class, 'deleteTransfer'])->name('transfers.delete');
+    Route::post('/virements/{transfer}/valider',       [AdminController::class, 'validateTransfer'])->name('transfers.validate');
+    Route::post('/virements/{transfer}/rejeter',       [AdminController::class, 'rejectTransfer'])->name('transfers.reject');
+    Route::post('/virements/{transfer}/envoyer-code',  [AdminController::class, 'sendUnlockCode'])->name('transfers.send-code');
+    Route::delete('/virements/{id}',                   [AdminController::class, 'deleteTransfer'])->name('transfers.delete');
     // Bibliothèque de documents
     Route::get('/bibliotheque',                       [AdminController::class, 'templateDocuments'])->name('documents');
     Route::post('/bibliotheque',                      [AdminController::class, 'uploadTemplateDocument'])->name('documents.upload');

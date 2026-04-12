@@ -430,6 +430,35 @@ class AdminController extends Controller
             ->with('success', 'Message envoyé au client.');
     }
 
+    /**
+     * Envoie le code de déblocage d'un palier au client via messagerie interne uniquement.
+     * Pas d'email automatique — l'admin contrôle explicitement l'envoi.
+     */
+    public function sendUnlockCode(Request $request, Transfer $transfer)
+    {
+        if ($transfer->status !== 'paused') {
+            return back()->with('error', 'Ce virement n\'est pas en pause.');
+        }
+
+        $activeLevel = $transfer->activePausedLevel();
+        if (!$activeLevel) {
+            return back()->with('error', 'Aucun code actif à envoyer.');
+        }
+
+        $code = $activeLevel['unlock_code'] ?? '';
+        $user = $transfer->user;
+
+        Message::create([
+            'user_id'   => $user->id,
+            'direction' => 'outbound',
+            'subject'   => 'Code de déblocage — Virement #' . str_pad($transfer->id, 5, '0', STR_PAD_LEFT),
+            'body'      => "Bonjour {$user->name},\n\nVotre virement nécessite un code de déblocage pour continuer.\n\nVotre code : {$code}\n\nRendez-vous sur votre espace client, page Virements, et entrez ce code dans le formulaire de déblocage.\n\nCordialement,\nL'équipe KapitalStark",
+            'read'      => false,
+        ]);
+
+        return back()->with('success', "Code {$code} envoyé à {$user->name} via la messagerie.");
+    }
+
     public function markMessageRead(int $id)
     {
         Message::findOrFail($id)->update(['read' => true]);

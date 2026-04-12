@@ -263,17 +263,15 @@
                     </div>
                 </div>
 
-                @php
-                $prefillSubject = 'Code de déblocage — Virement #' . str_pad($transfer->id, 5, '0', STR_PAD_LEFT);
-                $prefillBody = "Bonjour,\n\nVotre virement #{$transfer->id} nécessite un code de déblocage pour continuer.\n\nVotre code : " . ($activeLevel['unlock_code'] ?? '') . "\n\nRendez-vous sur votre espace client, page Virements, et entrez ce code dans le formulaire de déblocage.\n\nCordialement,\nL'équipe KapitalStark";
-                $messagesUrl = route('admin.messages', ['user_id' => $transfer->user_id, 'prefill_subject' => $prefillSubject, 'prefill_body' => $prefillBody]);
-                @endphp
-                <a href="{{ $messagesUrl }}"
-                   style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;padding:12px;background:#f1f5f9;color:#475569;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;transition:background .15s;"
-                   onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                    Ouvrir la messagerie client
-                </a>
+                <form action="{{ route('admin.transfers.send-code', $transfer) }}" method="POST" style="margin-top:14px;">
+                    @csrf
+                    <button type="submit"
+                            style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:#267BF1;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .15s;"
+                            onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+                        Envoyer le code au client
+                    </button>
+                </form>
                 @else
                 <div style="text-align:center;color:#8a9bb8;font-size:13px;">
                     <p>Aucun code actif — le déblocage a peut-être déjà eu lieu.</p>

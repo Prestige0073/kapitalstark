@@ -167,11 +167,18 @@ class TransferController extends Controller
             ? $transfer->calculateProgress()
             : $transfer->progress;
 
+        // Ne jamais exposer unlock_code au navigateur client
+        $safeLevels = array_map(fn ($l) => [
+            'percentage' => $l['percentage'],
+            'text'       => $l['text'] ?? '',
+            'reached_at' => $l['reached_at'] ?? null,
+        ], $transfer->sortedStopLevels());
+
         return response()->json([
             'status'             => $transfer->status,
             'status_label'       => $transfer->statusLabel(),
             'progress'           => $progress,
-            'stop_levels'        => $transfer->sortedStopLevels(),
+            'stop_levels'        => $safeLevels,
             'completion_message' => $transfer->completion_message,
             'current_text'       => $transfer->currentLevelText(),
             'completed_at'       => $transfer->completed_at?->format('d/m/Y à H:i'),
