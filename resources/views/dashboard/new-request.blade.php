@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', 'Nouvelle Demande de Prêt')
+@section('title', __('dashboard.new_request.title'))
 
 @section('content')
 
@@ -91,7 +91,7 @@
                 <div class="nr-select-wrap">
                     <select name="duration" id="duration" class="nr-select">
                         @php
-                        $durations = [6=>'6 mois',12=>'1 an',24=>'2 ans',36=>'3 ans',48=>'4 ans',60=>'5 ans',84=>'7 ans',120=>'10 ans',180=>'15 ans',240=>'20 ans',300=>'25 ans',360=>'30 ans'];
+                        $durations = [6=>__('dashboard.new_request.dur_6m'),12=>__('dashboard.new_request.dur_1y'),24=>__('dashboard.new_request.dur_2y'),36=>__('dashboard.new_request.dur_3y'),48=>__('dashboard.new_request.dur_4y'),60=>__('dashboard.new_request.dur_5y'),84=>__('dashboard.new_request.dur_7y'),120=>__('dashboard.new_request.dur_10y'),180=>__('dashboard.new_request.dur_15y'),240=>__('dashboard.new_request.dur_20y'),300=>__('dashboard.new_request.dur_25y'),360=>__('dashboard.new_request.dur_30y')];
                         @endphp
                         @foreach($durations as $months => $label)
                         <option value="{{ $months }}" {{ old('duration', 240) == $months ? 'selected' : '' }}>{{ $label }}</option>

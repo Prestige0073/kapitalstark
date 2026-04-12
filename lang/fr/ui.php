@@ -45,6 +45,17 @@ return [
         // Méga-menu Ressources
         'resources_guides'   => 'Guides pratiques',
         'resources_glossary' => 'Glossaire financier',
+        'blog'               => 'Blog',
+        'faq'                => 'FAQ',
+        'open_menu'          => 'Ouvrir le menu',
+        'close_menu'         => 'Fermer le menu',
+    ],
+    'seo' => [
+        'title_suffix'      => 'Votre avenir financier commence ici',
+        'desc_default'      => 'KapitalStark — Institution financière moderne. Prêts immobiliers, automobiles, personnels et entreprise. Simulez votre prêt en ligne.',
+        'json_desc'         => 'Institution financière moderne — prêts immobiliers, automobiles, personnels, entreprise et microcrédit.',
+        'breadcrumb_home'   => 'Accueil',
+        'og_locale'         => 'fr_FR',
     ],
     'dash' => [
         'overview'          => 'Tableau de bord',

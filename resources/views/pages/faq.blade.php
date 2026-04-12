@@ -29,20 +29,7 @@
             @endforeach
         </div>
 
-        @php
-        $faqs = [
-            ['cat'=>'Dossier','q'=>'Quels documents sont nécessaires pour une demande de prêt ?','r'=>'Les documents de base sont : une pièce d\'identité valide, les 3 derniers bulletins de salaire (ou bilans pour les indépendants), les 2 derniers avis d\'imposition, les 3 derniers relevés bancaires, et un justificatif de domicile.'],
-            ['cat'=>'Dossier','q'=>'Combien de temps faut-il pour obtenir une réponse ?','r'=>'Nous vous donnons une réponse de principe dans les 24 heures ouvrées suivant la réception de votre dossier complet. L\'offre définitive est émise dans les 7 jours.'],
-            ['cat'=>'Prêt Immobilier','q'=>'Puis-je emprunter sans apport ?','r'=>'Certains profils (fonctionnaires, CDI longue durée, revenus élevés) peuvent emprunter sans apport. Cependant, un apport de 10% minimum est recommandé pour couvrir les frais de notaire et obtenir un meilleur taux.'],
-            ['cat'=>'Prêt Immobilier','q'=>'Quelle est la durée maximale pour un prêt immobilier ?','r'=>'La durée maximale est de 30 ans pour un prêt immobilier classique. Pour un investissement locatif, elle peut être réduite à 25 ans selon votre profil.'],
-            ['cat'=>'Prêt Auto','q'=>'Peut-on financer un véhicule d\'occasion de plus de 5 ans ?','r'=>'Oui, nous finançons les véhicules jusqu\'à 10 ans d\'âge au moment de l\'achat. Pour les véhicules plus anciens, nous proposons des solutions personnalisées.'],
-            ['cat'=>'Prêt Personnel','q'=>'Dois-je justifier l\'utilisation de mon prêt personnel ?','r'=>'Non, le prêt personnel ne nécessite aucun justificatif d\'utilisation. Les fonds sont virés directement sur votre compte et vous les utilisez librement.'],
-            ['cat'=>'Remboursement','q'=>'Puis-je rembourser mon prêt par anticipation ?','r'=>'Oui, le remboursement anticipé total ou partiel est possible. Pour les crédits à la consommation inférieurs à 10 000 €, il est gratuit. Au-delà, des indemnités plafonnées s\'appliquent (1% du capital restant dû).'],
-            ['cat'=>'Remboursement','q'=>'Que se passe-t-il en cas de difficulté de remboursement ?','r'=>'Contactez-nous le plus tôt possible. Nous pouvons aménager votre échéancier, accorder un report de mensualités ou restructurer votre prêt selon votre situation.'],
-            ['cat'=>'Entreprise','q'=>'Mon entreprise doit-elle exister depuis un certain temps ?','r'=>'Pour la plupart de nos prêts entreprise, un historique d\'au moins 12 mois est requis. Pour les créations d\'entreprise, nous avons des offres spécifiques avec un business plan.'],
-            ['cat'=>'Remboursement','q'=>'Mon taux peut-il changer pendant la durée du prêt ?','r'=>'Non, nos prêts sont à taux fixe. Votre mensualité reste identique du début à la fin du contrat, quelle que soit l\'évolution des taux du marché.'],
-        ];
-        @endphp
+        @php $faqs = trans('pages.faq.items'); @endphp
 
         <div class="faq-list" id="faq-list">
             @foreach($faqs as $i => $item)

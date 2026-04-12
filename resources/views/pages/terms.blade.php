@@ -8,29 +8,17 @@
 <section class="page-hero" style="background:linear-gradient(135deg,var(--navy),var(--blue-dark));padding-block:60px 40px;">
     <div class="container page-hero__inner">
         <nav style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;">
-            <a href="{{ route('home') }}" style="color:rgba(255,255,255,0.5);">Accueil</a>
+            <a href="{{ route('home') }}" style="color:rgba(255,255,255,0.5);">{{ __('pages.legal_chrome.home') }}</a>
             <span style="margin-inline:8px;">›</span>
-            <span>CGU</span>
+            <span>{{ __('pages.terms.breadcrumb') }}</span>
         </nav>
-        <h1 style="color:#fff;">Conditions Générales d'Utilisation</h1>
-        <p style="color:rgba(255,255,255,0.55);margin-top:8px;font-size:14px;">Dernière mise à jour : {{ date('d/m/Y') }} — Version 3.2</p>
+        <h1 style="color:#fff;">{{ __('pages.terms.page_title') }}</h1>
+        <p style="color:rgba(255,255,255,0.55);margin-top:8px;font-size:14px;">{{ __('pages.legal_chrome.last_update') }} : {{ date('d/m/Y') }}</p>
     </div>
 </section>
 
 @php
-$sections = [
-    ['id'=>'objet',        'title'=>'1. Objet et champ d\'application', 'content'=>'Les présentes Conditions Générales d\'Utilisation (CGU) ont pour objet de définir les modalités et conditions d\'utilisation du site <strong>kapitalstark.pt</strong> (ci-après "le Site") et des services proposés par KapitalStark, S.A. (ci-après "KapitalStark"), société de droit portugais immatriculée sous le NIF 506 789 123, dont le siège est Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa. Tout accès ou utilisation du Site implique l\'acceptation pleine, entière et sans réserve des présentes CGU. Si vous n\'acceptez pas ces conditions, vous devez cesser d\'utiliser le Site immédiatement.'],
-    ['id'=>'acces',        'title'=>'2. Accès au site',                 'content'=>'Le Site est accessible gratuitement 24h/24, 7j/7, sous réserve des cas de force majeure, de maintenance planifiée ou non, de panne informatique, ou de tout événement hors du contrôle de KapitalStark. KapitalStark se réserve le droit d\'interrompre, de modifier ou de suspendre temporairement l\'accès au Site, notamment pour des opérations de maintenance, de mise à jour ou d\'amélioration des services, sans que cela ne puisse engager sa responsabilité.'],
-    ['id'=>'services',     'title'=>'3. Services de simulation',        'content'=>'Les simulations et estimations fournies sur ce Site sont exclusivement indicatives et non contractuelles. Elles sont calculées sur la base des informations saisies par l\'utilisateur et des taux en vigueur à la date de la simulation. Ces résultats ne constituent en aucun cas une offre de prêt, un accord de principe ou un engagement de la part de KapitalStark. Toute demande de financement fera l\'objet d\'une étude personnalisée par nos conseillers, qui prendra en compte l\'ensemble de votre situation financière.'],
-    ['id'=>'espace-client','title'=>'4. Espace Client',                 'content'=>'L\'accès à l\'Espace Client est réservé aux personnes physiques majeures ayant créé un compte sur le Site. L\'utilisateur est seul responsable de la confidentialité de ses identifiants de connexion (email et mot de passe) et de toute activité réalisée sous son compte. En cas de perte ou d\'utilisation non autorisée de ses identifiants, l\'utilisateur doit en informer immédiatement KapitalStark. KapitalStark se réserve le droit de suspendre ou de résilier tout compte en cas d\'utilisation frauduleuse ou non conforme aux présentes CGU.'],
-    ['id'=>'donnees',      'title'=>'5. Données personnelles et RGPD',  'content'=>'Le traitement des données à caractère personnel collectées sur ce Site est décrit dans notre <a href="' . route('privacy') . '" style="color:var(--blue);">Politique de Confidentialité</a>. Conformément au Règlement (UE) 2016/679 (RGPD) et à la Lei n.º 58/2019 (loi portugaise de mise en œuvre du RGPD), vous disposez d\'un droit d\'accès, de rectification, d\'effacement, de portabilité et d\'opposition. Pour exercer ces droits, contactez notre DPO : <a href="mailto:dpo@kapitalstark.pt" style="color:var(--blue);">dpo@kapitalstark.pt</a>.'],
-    ['id'=>'cookies',      'title'=>'6. Cookies',                       'content'=>'Le Site utilise des cookies techniques, strictement nécessaires à son fonctionnement (session, sécurité CSRF), qui ne nécessitent pas votre consentement. Des cookies analytiques (mesure d\'audience anonymisée) et marketing peuvent être déposés avec votre accord explicite, via le bandeau de gestion des cookies. Vous pouvez modifier vos préférences à tout moment via ce bandeau ou les paramètres de votre navigateur.'],
-    ['id'=>'pi',           'title'=>'7. Propriété intellectuelle',      'content'=>'L\'ensemble des éléments constituant le Site (architecture, code source, textes, graphiques, logo, images, sons, vidéos) est protégé par les droits de propriété intellectuelle et appartient à KapitalStark SAS ou à ses partenaires sous licence. Aucun élément de ce Site ne peut être reproduit, modifié, publié ou transmis sans autorisation préalable écrite de KapitalStark SAS, à l\'exception d\'une utilisation à des fins strictement personnelles et non commerciales.'],
-    ['id'=>'responsabilite','title'=>'8. Limitation de responsabilité', 'content'=>'KapitalStark SAS met tout en œuvre pour maintenir le Site en bon état de fonctionnement mais ne peut garantir que le Site sera exempt d\'erreurs, de virus ou d\'interruptions. La responsabilité de KapitalStark ne saurait être engagée pour : (1) les interruptions ou pannes techniques, (2) les dommages résultant de l\'utilisation du Site par l\'utilisateur, (3) les inexactitudes ou omissions dans les informations publiées, (4) les dommages causés par des tiers accédant frauduleusement au Site.'],
-    ['id'=>'modification', 'title'=>'9. Modification des CGU',          'content'=>'KapitalStark SAS se réserve le droit de modifier les présentes CGU à tout moment, notamment pour prendre en compte toute évolution légale, réglementaire, jurisprudentielle ou technologique. Les utilisateurs seront informés de toute modification substantielle par email ou par un bandeau de notification sur le Site. La poursuite de l\'utilisation du Site après modification vaut acceptation des nouvelles CGU.'],
-    ['id'=>'droit',        'title'=>'10. Droit applicable et juridiction','content'=>'Les présentes CGU sont soumises au droit portugais. En cas de litige relatif à leur interprétation ou à leur exécution, les parties s\'engagent à rechercher une solution amiable, notamment via le Centro de Arbitragem de Conflitos de Consumo (CACCL) ou la plateforme européenne de résolution des litiges en ligne (ODR). À défaut, tout litige sera soumis à la compétence exclusive des tribunaux de Lisboa, sous réserve des dispositions impératives du droit de la consommation (Lei de Defesa do Consumidor, Lei n.º 24/96) applicables aux consommateurs.'],
-    ['id'=>'contact-cgu',  'title'=>'11. Contact',                      'content'=>'Pour toute question relative aux présentes CGU : <a href="mailto:juridico@kapitalstark.pt" style="color:var(--blue);">juridico@kapitalstark.pt</a> — KapitalStark, S.A., Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa, Portugal.'],
-];
+$sections = trans('pages.terms.sections');
 @endphp
 
 <section style="background:var(--white);padding-block:0 80px;">
@@ -38,7 +26,7 @@ $sections = [
         <div class="legal-layout">
             <aside class="legal-toc" id="legal-toc">
                 <div class="legal-toc__inner">
-                    <p class="legal-toc__title">Sommaire</p>
+                    <p class="legal-toc__title">{{ __('pages.legal_chrome.toc_title') }}</p>
                     <nav>
                         @foreach($sections as $s)
                         <a class="legal-toc__link" href="#{{ $s['id'] }}">{{ $s['title'] }}</a>
@@ -50,7 +38,7 @@ $sections = [
                 @foreach($sections as $s)
                 <div class="legal-section reveal" id="{{ $s['id'] }}">
                     <h2 class="legal-section__title">{{ $s['title'] }}</h2>
-                    <p class="legal-section__body">{!! $s['content'] !!}</p>
+                    <p class="legal-section__body">{!! str_replace('{privacy_url}', route('privacy'), $s['content']) !!}</p>
                 </div>
                 @endforeach
             </div>

@@ -35,6 +35,18 @@ return [
         'cta_p'       => 'Notre équipe répond à toutes vos questions sous 24h.',
         'cta_btn1'    => 'Poser une question',
         'cta_btn2'    => 'Consulter le glossaire',
+        'items' => [
+            ['cat'=>'Dossier',          'q'=>'Quels documents sont nécessaires pour une demande de prêt ?',            'r'=>'Les documents de base sont : une pièce d\'identité valide, les 3 derniers bulletins de salaire (ou bilans pour les indépendants), les 2 derniers avis d\'imposition, les 3 derniers relevés bancaires, et un justificatif de domicile.'],
+            ['cat'=>'Dossier',          'q'=>'Combien de temps faut-il pour obtenir une réponse ?',                    'r'=>'Nous vous donnons une réponse de principe dans les 24 heures ouvrées suivant la réception de votre dossier complet. L\'offre définitive est émise dans les 7 jours.'],
+            ['cat'=>'Prêt Immobilier',  'q'=>'Puis-je emprunter sans apport ?',                                        'r'=>'Certains profils (fonctionnaires, CDI longue durée, revenus élevés) peuvent emprunter sans apport. Cependant, un apport de 10 % minimum est recommandé pour couvrir les frais de notaire et obtenir un meilleur taux.'],
+            ['cat'=>'Prêt Immobilier',  'q'=>'Quelle est la durée maximale pour un prêt immobilier ?',                 'r'=>'La durée maximale est de 30 ans pour un prêt immobilier classique. Pour un investissement locatif, elle peut être réduite à 25 ans selon votre profil.'],
+            ['cat'=>'Prêt Auto',        'q'=>'Peut-on financer un véhicule d\'occasion de plus de 5 ans ?',            'r'=>'Oui, nous finançons les véhicules jusqu\'à 10 ans d\'âge au moment de l\'achat. Pour les véhicules plus anciens, nous proposons des solutions personnalisées.'],
+            ['cat'=>'Prêt Personnel',   'q'=>'Dois-je justifier l\'utilisation de mon prêt personnel ?',               'r'=>'Non, le prêt personnel ne nécessite aucun justificatif d\'utilisation. Les fonds sont virés directement sur votre compte et vous les utilisez librement.'],
+            ['cat'=>'Remboursement',    'q'=>'Puis-je rembourser mon prêt par anticipation ?',                         'r'=>'Oui, le remboursement anticipé total ou partiel est possible. Pour les crédits à la consommation inférieurs à 10 000 €, il est gratuit. Au-delà, des indemnités plafonnées s\'appliquent (1 % du capital restant dû).'],
+            ['cat'=>'Remboursement',    'q'=>'Que se passe-t-il en cas de difficulté de remboursement ?',              'r'=>'Contactez-nous le plus tôt possible. Nous pouvons aménager votre échéancier, accorder un report de mensualités ou restructurer votre prêt selon votre situation.'],
+            ['cat'=>'Entreprise',       'q'=>'Mon entreprise doit-elle exister depuis un certain temps ?',             'r'=>'Pour la plupart de nos prêts entreprise, un historique d\'au moins 12 mois est requis. Pour les créations d\'entreprise, nous avons des offres spécifiques avec un business plan.'],
+            ['cat'=>'Remboursement',    'q'=>'Mon taux peut-il changer pendant la durée du prêt ?',                    'r'=>'Non, nos prêts sont à taux fixe. Votre mensualité reste identique du début à la fin du contrat, quelle que soit l\'évolution des taux du marché.'],
+        ],
     ],
 
     /* ── Glossaire ───────────────────────────────────────────────── */
@@ -406,7 +418,122 @@ return [
         'cta_sub'     => 'Utilisez notre simulateur gratuit ou prenez rendez-vous avec un conseiller expert.',
         'read_guide'  => 'Lire le guide →',
         'steps_label' => 'étapes',
+        // Guide vedette
+        'featured_label'   => 'Guide complet',
+        'featured_title'   => 'Acheter votre résidence principale : le guide de A à Z',
+        'featured_desc'    => 'De la simulation jusqu\'à la remise des clés : toutes les étapes, les documents nécessaires, les pièges à éviter et nos conseils d\'experts pour réussir votre premier achat immobilier.',
+        'featured_read'    => '15 min de lecture',
+        'featured_steps'   => '12 étapes détaillées',
+        'featured_updated' => 'Mis à jour mars 2025',
+        'featured_learn'   => 'Ce que vous apprendrez :',
+        'featured_steps_list' => [
+            'Définir votre capacité d\'emprunt réelle',
+            'Trouver le bien idéal et négocier le prix',
+            'Constituer un dossier de prêt solide',
+            'Comparer les offres et négocier le taux',
+            'Choisir la meilleure assurance emprunteur',
+            'Comprendre l\'offre de prêt et les délais légaux',
+            'Les frais notariaux : calcul et optimisation',
+            'La signature chez le notaire : étape par étape',
+        ],
+        // Grille des guides
+        'items' => [
+            ['icon'=>'🏠','cat'=>'Immobilier','title'=>'Prêt immobilier : tout comprendre avant de se lancer',         'desc'=>'TAEG, apport, durée, assurance… maîtrisez tous les concepts pour choisir le meilleur financement.',                                            'read'=>'12 min','steps'=>8,'updated'=>'Fév. 2025','color'=>'var(--blue)',     'slug'=>'pret-immobilier-guide-complet'],
+            ['icon'=>'🔑','cat'=>'Immobilier','title'=>'Investissement locatif : financer et rentabiliser',              'desc'=>'Dispositifs Pinel, LMNP, rendement locatif brut/net, fiscalité… notre guide de l\'investisseur.',                                            'read'=>'14 min','steps'=>9,'updated'=>'Jan. 2025','color'=>'var(--blue-dark)','slug'=>'investissement-locatif-guide'],
+            ['icon'=>'🚗','cat'=>'Automobile','title'=>'Financer son véhicule : LOA, LLD ou crédit auto ?',              'desc'=>'Comparatif complet des 3 formules, tableau de coût total, conseils selon votre profil.',                                                     'read'=>'9 min', 'steps'=>6,'updated'=>'Mars 2025','color'=>'#10b981',        'slug'=>'loa-vs-pret-auto'],
+            ['icon'=>'💼','cat'=>'Entreprise','title'=>'Financer la création de son entreprise en 2025',                  'desc'=>'BPI, NACRE, love money, crowdfunding : combiner les sources de financement intelligemment.',                                               'read'=>'11 min','steps'=>7,'updated'=>'Fév. 2025','color'=>'#f59e0b',        'slug'=>'pret-entreprise-creation'],
+            ['icon'=>'🔄','cat'=>'Optimisation','title'=>'Rachat de crédits : quand et comment en profiter',             'desc'=>'Regrouper vos crédits pour alléger vos mensualités. Calcul du gain, démarches, pièges.',                                                  'read'=>'8 min', 'steps'=>5,'updated'=>'Jan. 2025','color'=>'var(--gold)',     'slug'=>'remboursement-anticipe-credit'],
+            ['icon'=>'⚖️','cat'=>'Assurance','title'=>'Assurance emprunteur : comparer et économiser',                   'desc'=>'Délégation d\'assurance, loi Lemoine, garanties essentielles. Économisez jusqu\'à 50 %.',                                                  'read'=>'7 min', 'steps'=>5,'updated'=>'Mars 2025','color'=>'#8b5cf6',        'slug'=>'assurance-emprunteur-deleguer'],
+            ['icon'=>'📊','cat'=>'Finance',   'title'=>'Optimiser son taux d\'endettement avant d\'emprunter',           'desc'=>'Stratégies concrètes pour améliorer votre dossier et maximiser votre capacité d\'emprunt.',                                              'read'=>'6 min', 'steps'=>4,'updated'=>'Fév. 2025','color'=>'var(--blue)',     'slug'=>'taux-endettement-guide-complet'],
+            ['icon'=>'🌾','cat'=>'Agricole',  'title'=>'Prêt agricole : financer son exploitation',                      'desc'=>'Matériel, foncier, trésorerie saisonnière, aides PAC. Le guide complet pour les agriculteurs.',                                           'read'=>'10 min','steps'=>6,'updated'=>'Jan. 2025','color'=>'#10b981',        'slug'=>'pret-agricole-guide'],
+            ['icon'=>'🌱','cat'=>'Inclusion', 'title'=>'Microcrédit : guide pour les exclus du système bancaire',        'desc'=>'Conditions, montants, organismes partenaires, démarches. Accédez au financement malgré les obstacles.',                                   'read'=>'8 min', 'steps'=>5,'updated'=>'Mars 2025','color'=>'#f59e0b',        'slug'=>'microcredit-inclusion-financiere'],
+        ],
     ],
+    /* ── Pages légales (chrome partagé) ────────────────────────── */
+    'legal_chrome' => [
+        'home'        => 'Accueil',
+        'toc_title'   => 'Sommaire',
+        'last_update' => 'Dernière mise à jour',
+        'reset_prefs' => 'Réinitialiser mes choix',
+        'accept_all'  => 'Tout accepter',
+        'manage_now'  => '🍪 Gérez vos préférences maintenant',
+        'manage_sub'  => 'Vous pouvez modifier vos choix à tout moment sans conséquence sur la navigation principale.',
+    ],
+
+    /* ── Mentions légales ───────────────────────────────────────── */
+    'legal' => [
+        'breadcrumb'  => 'Mentions légales',
+        'page_title'  => 'Mentions légales',
+        'last_update' => 'Dernière mise à jour',
+        'sections' => [
+            ['id'=>'editeur',        'title'=>'1. Éditeur du site',               'content'=>'Le site <strong>kapitalstark.pt</strong> est édité par <strong>KapitalStark, S.A.</strong>, société anonyme au capital de 2 000 000 €, immatriculée à la Conservatória do Registo Comercial de Lisboa sous le numéro 28745, NIF/NIPC : <strong>506 789 123</strong>, dont le siège social est situé Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa, Portugal. Enregistrée auprès du <strong>Banco de Portugal</strong> en tant qu\'institution de crédit sous le N° 4567. Numéro IVA : PT 506 789 123.'],
+            ['id'=>'direction',      'title'=>'2. Directeur de la publication',   'content'=>'M. João Ferreira, Président Directeur Général de KapitalStark, S.A. Contact : <a href="mailto:direcao@kapitalstark.pt" style="color:var(--blue);">direcao@kapitalstark.pt</a>'],
+            ['id'=>'hebergement',    'title'=>'3. Hébergement',                   'content'=>'Le site kapitalstark.pt est hébergé par <strong>OVHcloud</strong>, SAS au capital de 10 174 560 €, immatriculée au RCS de Lille Métropole sous le numéro 424 761 419 00045, 2 Rue Kellermann, 59100 Roubaix, France. Téléphone : +33 9 72 10 10 07.'],
+            ['id'=>'activite',       'title'=>'4. Activité réglementée',          'content'=>'KapitalStark, S.A. est une institution de crédit agréée par le <strong>Banco de Portugal</strong>, Rua do Ouro, 27, 1100-150 Lisboa. KapitalStark est soumis à la réglementation bancaire portugaise et européenne, notamment les directives CRD IV/CRR, le DL 133/2009 et le DL 74-A/2017.'],
+            ['id'=>'pi',             'title'=>'5. Propriété intellectuelle',      'content'=>'L\'ensemble des contenus présents sur ce site est la propriété exclusive de KapitalStark, S.A. ou de ses partenaires, protégé par les lois portugaises et internationales relatives à la propriété intellectuelle. Toute reproduction sans autorisation préalable écrite est formellement interdite.'],
+            ['id'=>'responsabilite', 'title'=>'6. Limitation de responsabilité', 'content'=>'Les informations et taux présentés sont fournis à titre indicatif et ne constituent pas une offre contractuelle de crédit. KapitalStark ne saurait être tenu responsable d\'éventuelles erreurs ou inexactitudes. L\'utilisation des informations disponibles est effectuée sous la seule et entière responsabilité de l\'utilisateur.'],
+            ['id'=>'donnees',        'title'=>'7. Données personnelles',          'content'=>'Conformément au RGPD et à la Lei n.º 58/2019, vous disposez d\'un droit d\'accès, de rectification, d\'effacement et de portabilité de vos données. Pour exercer ces droits, contactez notre DPO : <a href="mailto:dpo@kapitalstark.pt" style="color:var(--blue);">dpo@kapitalstark.pt</a>. Consultez notre <a href="{privacy_url}" style="color:var(--blue);">Politique de Confidentialité</a>.'],
+            ['id'=>'cookies',        'title'=>'8. Cookies',                       'content'=>'Le site utilise des cookies techniques nécessaires à son fonctionnement et, avec votre consentement, des cookies analytiques. Vous pouvez gérer vos préférences via le bandeau de consentement ou dans les paramètres de votre navigateur.'],
+            ['id'=>'contact',        'title'=>'9. Contact',                       'content'=>'Pour toute question relative à cette information légale : <a href="mailto:juridico@kapitalstark.pt" style="color:var(--blue);">juridico@kapitalstark.pt</a> — KapitalStark, S.A., Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa — Tél. +351 21 000 12 34.'],
+        ],
+    ],
+
+    /* ── CGU ────────────────────────────────────────────────────── */
+    'terms' => [
+        'breadcrumb'  => 'CGU',
+        'page_title'  => 'Conditions Générales d\'Utilisation',
+        'version'     => 'Version 3.2',
+        'sections' => [
+            ['id'=>'objet',         'title'=>'1. Objet et champ d\'application',  'content'=>'Les présentes CGU définissent les modalités d\'utilisation du site <strong>kapitalstark.pt</strong> et des services proposés par KapitalStark, S.A. (NIF 506 789 123), dont le siège est Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa. Tout accès au Site implique l\'acceptation pleine et entière des présentes CGU.'],
+            ['id'=>'acces',         'title'=>'2. Accès au site',                  'content'=>'Le Site est accessible gratuitement 24h/24, 7j/7, sous réserve des cas de force majeure ou de maintenance. KapitalStark se réserve le droit d\'interrompre temporairement l\'accès pour des opérations de maintenance ou de mise à jour.'],
+            ['id'=>'services',      'title'=>'3. Services de simulation',         'content'=>'Les simulations et estimations fournies sur ce Site sont exclusivement indicatives et non contractuelles. Elles ne constituent pas une offre de prêt ni un accord de principe. Toute demande de financement fera l\'objet d\'une étude personnalisée par nos conseillers.'],
+            ['id'=>'espace-client', 'title'=>'4. Espace Client',                  'content'=>'L\'accès à l\'Espace Client est réservé aux personnes physiques majeures ayant créé un compte. L\'utilisateur est seul responsable de la confidentialité de ses identifiants. En cas d\'utilisation non autorisée, il doit en informer immédiatement KapitalStark.'],
+            ['id'=>'donnees',       'title'=>'5. Données personnelles et RGPD',   'content'=>'Le traitement des données est décrit dans notre <a href="{privacy_url}" style="color:var(--blue);">Politique de Confidentialité</a>. Conformément au RGPD, vous disposez d\'un droit d\'accès, de rectification, d\'effacement et de portabilité. Contact DPO : <a href="mailto:dpo@kapitalstark.pt" style="color:var(--blue);">dpo@kapitalstark.pt</a>.'],
+            ['id'=>'cookies',       'title'=>'6. Cookies',                        'content'=>'Le Site utilise des cookies techniques (session, sécurité CSRF), strictement nécessaires à son fonctionnement. Des cookies analytiques et marketing peuvent être déposés avec votre accord explicite.'],
+            ['id'=>'pi',            'title'=>'7. Propriété intellectuelle',       'content'=>'L\'ensemble des éléments constituant le Site est protégé par les droits de propriété intellectuelle et appartient à KapitalStark, S.A. ou à ses partenaires. Aucun élément ne peut être reproduit sans autorisation préalable écrite.'],
+            ['id'=>'responsabilite','title'=>'8. Limitation de responsabilité',   'content'=>'KapitalStark met tout en œuvre pour maintenir le Site en bon état de fonctionnement mais ne peut garantir qu\'il sera exempt d\'erreurs ou d\'interruptions. La responsabilité de KapitalStark ne saurait être engagée pour les dommages résultant de l\'utilisation du Site.'],
+            ['id'=>'modification',  'title'=>'9. Modification des CGU',           'content'=>'KapitalStark se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs seront informés de toute modification substantielle. La poursuite de l\'utilisation du Site vaut acceptation des nouvelles CGU.'],
+            ['id'=>'droit',         'title'=>'10. Droit applicable',              'content'=>'Les présentes CGU sont soumises au droit portugais. En cas de litige, les parties rechercheront une solution amiable. À défaut, tout litige sera soumis à la compétence exclusive des tribunaux de Lisboa.'],
+            ['id'=>'contact-cgu',   'title'=>'11. Contact',                       'content'=>'Pour toute question : <a href="mailto:juridico@kapitalstark.pt" style="color:var(--blue);">juridico@kapitalstark.pt</a> — KapitalStark, S.A., Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa, Portugal.'],
+        ],
+    ],
+
+    /* ── Confidentialité ────────────────────────────────────────── */
+    'privacy' => [
+        'breadcrumb'   => 'Confidentialité',
+        'page_title'   => 'Politique de Confidentialité',
+        'compliance'   => 'Conforme RGPD (UE) 2016/679',
+        'contact_dpo'  => 'Pour toute question :',
+        'sections' => [
+            ['id'=>'responsable',   'title'=>'1. Responsable du traitement',   'content'=>'<strong>KapitalStark, S.A.</strong><br>Avenida da Liberdade, 110, 3.º andar, 1269-046 Lisboa — NIF : 506 789 123<br><br><strong>DPO :</strong> Ana Rodrigues — <a href="mailto:dpo@kapitalstark.pt" style="color:var(--blue);">dpo@kapitalstark.pt</a>'],
+            ['id'=>'collecte',      'title'=>'2. Données collectées',          'content'=>'Nous collectons : <strong>données d\'identification</strong> (nom, date de naissance, pièce d\'identité, email, téléphone, adresse), <strong>données financières</strong> (revenus, charges, type de prêt — dans le cadre de l\'étude de dossier), <strong>données de connexion</strong> (IP, logs) et <strong>données de communication</strong> (messages échangés avec nos conseillers).'],
+            ['id'=>'finalites',     'title'=>'3. Finalités du traitement',     'content'=>'Vos données sont traitées pour : l\'exécution du contrat (étude de votre demande, gestion de vos prêts), les obligations légales (BCFT/KYC, DL 133/2009, DL 74-A/2017), le consentement (newsletter, cookies analytiques) et l\'intérêt légitime (prévention des fraudes, sécurité).'],
+            ['id'=>'base-legale',   'title'=>'4. Base légale',                 'content'=>'Gestion des prêts : exécution d\'un contrat. LCB-FT / KYC : obligation légale. Newsletter & Marketing : consentement. Amélioration du service : intérêt légitime.'],
+            ['id'=>'conservation',  'title'=>'5. Durées de conservation',      'content'=>'Clients actifs : durée de la relation + 5 ans. Prospects : 3 ans. Données KYC : 7 ans (Lei n.º 83/2017). Logs de connexion : 12 mois. Cookies analytiques : 13 mois maximum.'],
+            ['id'=>'destinataires', 'title'=>'6. Destinataires des données',   'content'=>'Vos données peuvent être partagées avec nos prestataires techniques (liés par des contrats RGPD), nos partenaires bancaires (avec votre consentement) et les autorités compétentes (Banco de Portugal, UIF) en cas d\'obligation légale. Aucune donnée n\'est vendue à des tiers.'],
+            ['id'=>'transferts',    'title'=>'7. Transferts hors UE',          'content'=>'KapitalStark s\'engage à ne procéder à aucun transfert de données à caractère personnel en dehors de l\'Union Européenne. Tous nos prestataires sont localisés dans l\'Espace Économique Européen.'],
+            ['id'=>'droits',        'title'=>'8. Vos droits',                  'content'=>'Conformément au RGPD, vous disposez des droits d\'accès (Art. 15), de rectification (Art. 16), d\'effacement (Art. 17), de limitation (Art. 18), de portabilité (Art. 20) et d\'opposition (Art. 21). Pour exercer vos droits : <a href="mailto:dpo@kapitalstark.pt" style="color:var(--blue);">dpo@kapitalstark.pt</a>. Vous pouvez également saisir la <a href="https://www.cnpd.pt" style="color:var(--blue);" target="_blank" rel="noopener">CNPD</a>.'],
+            ['id'=>'securite',      'title'=>'9. Sécurité',                    'content'=>'KapitalStark met en œuvre des mesures de protection : chiffrement TLS 1.3, chiffrement AES-256 des données sensibles, authentification multi-facteurs, contrôle d\'accès basé sur les rôles (RBAC) et audits de sécurité semestriels.'],
+            ['id'=>'modification',  'title'=>'10. Modification de la politique','content'=>'KapitalStark se réserve le droit de modifier la présente politique à tout moment. En cas de modification substantielle, vous serez informé(e) par email ou par un avis visible sur notre Site, avec un préavis de 30 jours lorsque cela est possible.'],
+        ],
+    ],
+
+    /* ── Cookies ────────────────────────────────────────────────── */
+    'cookies' => [
+        'breadcrumb'  => 'Cookies',
+        'page_title'  => 'Politique de Cookies',
+        'compliance'  => 'Conforme recommandations CNPD',
+        'sections' => [
+            ['id'=>'intro',       'title'=>'1. Qu\'est-ce qu\'un cookie ?',        'content'=>'Un cookie est un petit fichier texte déposé sur votre terminal lors de votre visite sur un site web. Il permet de mémoriser des informations relatives à votre navigation. Les cookies ne peuvent pas contenir de virus ni endommager votre équipement.'],
+            ['id'=>'types',       'title'=>'2. Types de cookies utilisés',         'content'=>'<strong>🔒 Cookies nécessaires</strong> (sans consentement) : <code>XSRF-TOKEN</code> / <code>kapitalstark_session</code> (session, CSRF) et <code>ks_cookie_consent</code> (préférences cookies, 13 mois).<br><br><strong>📊 Cookies analytiques</strong> (avec consentement) : <code>_ks_analytics</code> — audience anonymisée, 13 mois.<br><br><strong>🎯 Cookies marketing</strong> (avec consentement) : <code>_ks_mkt</code> — retargeting, 6 mois.'],
+            ['id'=>'durees',      'title'=>'3. Durées de conservation',            'content'=>'<code>kapitalstark_session</code> : Session · <code>XSRF-TOKEN</code> : 2 heures · <code>ks_cookie_consent</code> : 13 mois · <code>_ks_analytics</code> : 13 mois · <code>_ks_mkt</code> : 6 mois.'],
+            ['id'=>'gestion',     'title'=>'4. Gérer vos préférences',             'content'=>'Vous pouvez modifier vos préférences via : (1) notre bandeau de gestion des cookies en bas de page, (2) les paramètres de votre navigateur (Chrome : Confidentialité → Cookies ; Firefox : Vie privée → Cookies ; Safari : Préférences → Confidentialité), ou (3) votre espace client → Préférences de confidentialité.'],
+            ['id'=>'tiers',       'title'=>'5. Cookies tiers',                     'content'=>'Notre site peut inclure des contenus de partenaires tiers susceptibles de déposer leurs propres cookies (<strong>Google Fonts</strong>, <strong>Recaptcha</strong>). KapitalStark s\'efforce de limiter au maximum le recours à des services tiers.'],
+            ['id'=>'droits',      'title'=>'6. Vos droits',                        'content'=>'Conformément au RGPD, vous disposez d\'un droit d\'opposition au dépôt de cookies non essentiels. Contact DPO : <a href="mailto:dpo@kapitalstark.pt" style="color:var(--blue);">dpo@kapitalstark.pt</a>. Vous pouvez également saisir la <a href="https://www.cnpd.pt" style="color:var(--blue);" target="_blank" rel="noopener noreferrer">CNPD</a>.'],
+            ['id'=>'modification','title'=>'7. Évolution de cette politique',      'content'=>'KapitalStark se réserve le droit de modifier la présente politique à tout moment afin de refléter les évolutions légales, technologiques ou de service. Toute modification substantielle sera signalée par un bandeau visible.'],
+        ],
+    ],
+
     'testimonials' => [
         'hero_label'     => 'Témoignages vérifiés',
         'hero_title'     => 'Ce que disent nos clients à travers le monde',

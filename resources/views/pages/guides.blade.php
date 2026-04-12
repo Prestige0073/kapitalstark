@@ -23,37 +23,28 @@
             <div class="card" style="display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border-radius:24px;">
                 <div style="background:linear-gradient(135deg,var(--navy),var(--blue-dark));padding:48px;display:flex;flex-direction:column;justify-content:space-between;">
                     <div>
-                        <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">Guide complet</span>
-                        <h2 style="color:#fff;font-size:28px;margin-top:14px;margin-bottom:16px;">Acheter votre résidence principale : le guide de A à Z</h2>
-                        <p style="color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7;">De la simulation jusqu'à la remise des clés : toutes les étapes, les documents nécessaires, les pièges à éviter et nos conseils d'experts pour réussir votre premier achat immobilier.</p>
+                        <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">{{ __('pages.guides.featured_label') }}</span>
+                        <h2 style="color:#fff;font-size:28px;margin-top:14px;margin-bottom:16px;">{{ __('pages.guides.featured_title') }}</h2>
+                        <p style="color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7;">{{ __('pages.guides.featured_desc') }}</p>
                     </div>
                     <div style="margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;">
                         <div style="font-size:13px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:6px;">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            15 min de lecture
+                            {{ __('pages.guides.featured_read') }}
                         </div>
                         <div style="font-size:13px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:6px;">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            12 étapes détaillées
+                            {{ __('pages.guides.featured_steps') }}
                         </div>
                         <div style="font-size:13px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:6px;">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                            Mis à jour mars 2025
+                            {{ __('pages.guides.featured_updated') }}
                         </div>
                     </div>
                 </div>
                 <div style="padding:48px;display:flex;flex-direction:column;gap:14px;">
-                    <h3 style="font-size:16px;margin-bottom:8px;">Ce que vous apprendrez :</h3>
-                    @foreach([
-                        'Définir votre capacité d\'emprunt réelle',
-                        'Trouver le bien idéal et négocier le prix',
-                        'Constituer un dossier de prêt solide',
-                        'Comparer les offres et négocier le taux',
-                        'Choisir la meilleure assurance emprunteur',
-                        'Comprendre l\'offre de prêt et les délais légaux',
-                        'Les frais notariaux : calcul et optimisation',
-                        'La signature chez le notaire : étape par étape',
-                    ] as $step)
+                    <h3 style="font-size:16px;margin-bottom:8px;">{{ __('pages.guides.featured_learn') }}</h3>
+                    @foreach(trans('pages.guides.featured_steps_list') as $step)
                     <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-muted);">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><path d="M20 6L9 17l-5-5"/></svg>
                         {{ $step }}
@@ -68,108 +59,8 @@
 
         {{-- Grille des guides --}}
         @php
-        $guides = [
-            [
-                'icon'     => '🏠',
-                'cat'      => 'Immobilier',
-                'title'    => 'Prêt immobilier : tout comprendre avant de se lancer',
-                'desc'     => 'TAEG, apport, durée, assurance… maîtrisez tous les concepts pour choisir le meilleur financement.',
-                'read'     => '12 min',
-                'steps'    => 8,
-                'updated'  => 'Fév. 2025',
-                'color'    => 'var(--blue)',
-                'slug'     => 'pret-immobilier-guide-complet',
-            ],
-            [
-                'icon'     => '🔑',
-                'cat'      => 'Immobilier',
-                'title'    => 'Investissement locatif : financer et rentabiliser',
-                'desc'     => 'Dispositifs Pinel, LMNP, rendement locatif brut/net, fiscalité… notre guide de l\'investisseur.',
-                'read'     => '14 min',
-                'steps'    => 9,
-                'updated'  => 'Jan. 2025',
-                'color'    => 'var(--blue-dark)',
-                'slug'     => 'investissement-locatif-guide',
-            ],
-            [
-                'icon'     => '🚗',
-                'cat'      => 'Automobile',
-                'title'    => 'Financer son véhicule : LOA, LLD ou crédit auto ?',
-                'desc'     => 'Comparatif complet des 3 formules, tableau de coût total, conseils selon votre profil.',
-                'read'     => '9 min',
-                'steps'    => 6,
-                'updated'  => 'Mars 2025',
-                'color'    => '#10b981',
-                'slug'     => 'loa-vs-pret-auto',
-            ],
-            [
-                'icon'     => '💼',
-                'cat'      => 'Entreprise',
-                'title'    => 'Financer la création de son entreprise en 2025',
-                'desc'     => 'BPI, NACRE, love money, crowdfunding : combiner les sources de financement intelligemment.',
-                'read'     => '11 min',
-                'steps'    => 7,
-                'updated'  => 'Fév. 2025',
-                'color'    => '#f59e0b',
-                'slug'     => 'pret-entreprise-creation',
-            ],
-            [
-                'icon'     => '🔄',
-                'cat'      => 'Optimisation',
-                'title'    => 'Rachat de crédits : quand et comment en profiter',
-                'desc'     => 'Regrouper vos crédits pour alléger vos mensualités. Calcul du gain, démarches, pièges.',
-                'read'     => '8 min',
-                'steps'    => 5,
-                'updated'  => 'Jan. 2025',
-                'color'    => 'var(--gold)',
-                'slug'     => 'remboursement-anticipe-credit',
-            ],
-            [
-                'icon'     => '⚖️',
-                'cat'      => 'Assurance',
-                'title'    => 'Assurance emprunteur : comparer et économiser',
-                'desc'     => 'Délégation d\'assurance, loi Lemoine, garanties essentielles. Économisez jusqu\'à 50%.',
-                'read'     => '7 min',
-                'steps'    => 5,
-                'updated'  => 'Mars 2025',
-                'color'    => '#8b5cf6',
-                'slug'     => 'assurance-emprunteur-deleguer',
-            ],
-            [
-                'icon'     => '📊',
-                'cat'      => 'Finance',
-                'title'    => 'Optimiser son taux d\'endettement avant d\'emprunter',
-                'desc'     => 'Stratégies concrètes pour améliorer votre dossier et maximiser votre capacité d\'emprunt.',
-                'read'     => '6 min',
-                'steps'    => 4,
-                'updated'  => 'Fév. 2025',
-                'color'    => 'var(--blue)',
-                'slug'     => 'taux-endettement-guide-complet',
-            ],
-            [
-                'icon'     => '🌾',
-                'cat'      => 'Agricole',
-                'title'    => 'Prêt agricole : financer son exploitation',
-                'desc'     => 'Matériel, foncier, trésorerie saisonnière, aides PAC. Le guide complet pour les agriculteurs.',
-                'read'     => '10 min',
-                'steps'    => 6,
-                'updated'  => 'Jan. 2025',
-                'color'    => '#10b981',
-                'slug'     => 'pret-agricole-guide',
-            ],
-            [
-                'icon'     => '🌱',
-                'cat'      => 'Inclusion',
-                'title'    => 'Microcrédit : guide pour les exclus du système bancaire',
-                'desc'     => 'Conditions, montants, organismes partenaires, démarches. Accédez au financement malgré les obstacles.',
-                'read'     => '8 min',
-                'steps'    => 5,
-                'updated'  => 'Mars 2025',
-                'color'    => '#f59e0b',
-                'slug'     => 'microcredit-inclusion-financiere',
-            ],
-        ];
-        $cats = array_values(array_unique(array_column($guides, 'cat')));
+        $guides = trans('pages.guides.items');
+        $cats   = array_values(array_unique(array_column($guides, 'cat')));
         @endphp
 
         {{-- Filtres --}}
