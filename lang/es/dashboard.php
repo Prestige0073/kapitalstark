@@ -32,6 +32,8 @@ return [
         'notifications'  => 'Notificaciones',
         'no_notifs'      => 'Sin notificaciones',
         'see_messages'   => 'Ver todos los mensajes →',
+        'notif_message'  => 'Nuevo mensaje: ',
+        'notif_request'  => 'Solicitud :type: :status',
         'logout_confirm' => '¿Seguro que desea cerrar sesión?',
         'confirm_title'  => 'Confirmar acción',
         'confirm_cancel' => 'Cancelar',

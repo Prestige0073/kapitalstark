@@ -190,7 +190,9 @@
                         </div>
                         @if(empty($navNotifs) || $navNotifs->isEmpty())
                         <div class="dash-notif-dropdown__empty">{{ __('dashboard.nav.no_notifs') }}</div>
-                        @else
+                        @endif
+                        <div class="dash-notif-items">
+                        @if(!empty($navNotifs) && $navNotifs->isNotEmpty())
                         @foreach($navNotifs as $n)
                         <a href="{{ $n['url'] }}" class="dash-notif-item">
                             <div class="dash-notif-item__icon dash-notif-item__icon--{{ $n['type'] }}">
@@ -207,6 +209,7 @@
                         </a>
                         @endforeach
                         @endif
+                        </div>
                         <div class="dash-notif-dropdown__footer">
                             <a href="{{ route('dashboard.messages') }}">{{ __('dashboard.nav.see_messages') }}</a>
                         </div>
@@ -350,34 +353,64 @@ document.addEventListener('keydown', function(e) {
         }, 5000);
     }
 
-    /* ── Update bell badge ───────────────────────────── */
+    /* ── Update bell badge + dropdown items ─────────── */
     function updateBell(unread, items) {
-        if (!dot) {
-            /* Créer le dot s'il n'existe pas */
-            var btn = document.getElementById('notif-toggle');
-            if (btn && unread > 0) {
-                var d = document.createElement('span');
-                d.className = 'dash-notif-btn__dot';
-                btn.appendChild(d);
+        /* Badge dot */
+        var btn = document.getElementById('notif-toggle');
+        dot = document.querySelector('.dash-notif-btn__dot');
+        if (unread > 0) {
+            if (!dot && btn) {
+                dot = document.createElement('span');
+                dot.className = 'dash-notif-btn__dot';
+                btn.appendChild(dot);
             }
+            if (dot) dot.style.display = '';
         } else {
-            dot.style.display = unread > 0 ? '' : 'none';
+            if (dot) dot.style.display = 'none';
         }
 
-        /* Mettre à jour le compteur dans le header du dropdown */
-        if (dropdown) {
-            var countEl = dropdown.querySelector('.dash-notif-dropdown__count');
-            var header  = dropdown.querySelector('.dash-notif-dropdown__header strong');
-            if (unread > 0) {
-                if (!countEl && header) {
-                    countEl = document.createElement('span');
-                    countEl.className = 'dash-notif-dropdown__count';
-                    header.parentNode.appendChild(countEl);
-                }
-                if (countEl) countEl.textContent = unread;
-            } else if (countEl) {
-                countEl.remove();
+        if (!dropdown) return;
+
+        /* Compteur dans le header */
+        var countEl = dropdown.querySelector('.dash-notif-dropdown__count');
+        var header  = dropdown.querySelector('.dash-notif-dropdown__header strong');
+        if (unread > 0) {
+            if (!countEl && header) {
+                countEl = document.createElement('span');
+                countEl.className = 'dash-notif-dropdown__count';
+                header.parentNode.appendChild(countEl);
             }
+            if (countEl) countEl.textContent = unread;
+        } else if (countEl) {
+            countEl.remove();
+        }
+
+        /* Mise à jour de la liste des items dans le dropdown */
+        var footer = dropdown.querySelector('.dash-notif-dropdown__footer');
+        var listEl = dropdown.querySelector('.dash-notif-items');
+        if (!listEl) {
+            listEl = document.createElement('div');
+            listEl.className = 'dash-notif-items';
+            if (footer) { dropdown.insertBefore(listEl, footer); }
+            else { dropdown.appendChild(listEl); }
+        }
+        var emptyEl = dropdown.querySelector('.dash-notif-dropdown__empty');
+        if (items && items.length > 0) {
+            if (emptyEl) emptyEl.style.display = 'none';
+            listEl.innerHTML = items.map(function (n) {
+                var msgIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
+                var reqIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>';
+                var icon = n.type === 'message' ? msgIcon : reqIcon;
+                return '<a href="' + n.url + '" class="dash-notif-item">'
+                    + '<div class="dash-notif-item__icon dash-notif-item__icon--' + n.type + '">' + icon + '</div>'
+                    + '<div class="dash-notif-item__body">'
+                    + '<div class="dash-notif-item__text">' + n.text + '</div>'
+                    + '<div class="dash-notif-item__time">' + n.at + '</div>'
+                    + '</div></a>';
+            }).join('');
+        } else {
+            listEl.innerHTML = '';
+            if (emptyEl) emptyEl.style.display = '';
         }
     }
 

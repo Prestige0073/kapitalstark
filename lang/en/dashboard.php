@@ -32,6 +32,8 @@ return [
         'notifications'  => 'Notifications',
         'no_notifs'      => 'No notifications',
         'see_messages'   => 'View all messages →',
+        'notif_message'  => 'New message: ',
+        'notif_request'  => 'Request :type: :status',
         'logout_confirm' => 'Are you sure you want to sign out?',
         'confirm_title'  => 'Confirm action',
         'confirm_cancel' => 'Cancel',

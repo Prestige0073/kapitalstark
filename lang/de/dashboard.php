@@ -32,6 +32,8 @@ return [
         'notifications'  => 'Benachrichtigungen',
         'no_notifs'      => 'Keine Benachrichtigungen',
         'see_messages'   => 'Alle Nachrichten anzeigen →',
+        'notif_message'  => 'Neue Nachricht: ',
+        'notif_request'  => 'Antrag :type: :status',
         'logout_confirm' => 'Möchten Sie sich wirklich abmelden?',
         'confirm_title'  => 'Aktion bestätigen',
         'confirm_cancel' => 'Abbrechen',

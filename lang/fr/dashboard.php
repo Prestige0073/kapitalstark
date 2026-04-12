@@ -34,6 +34,8 @@ return [
         'notifications'  => 'Notifications',
         'no_notifs'      => 'Aucune notification',
         'see_messages'   => 'Voir tous les messages →',
+        'notif_message'  => 'Nouveau message : ',
+        'notif_request'  => 'Demande :type : :status',
         'logout_confirm' => 'Voulez-vous vraiment vous déconnecter ?',
         'confirm_title'  => 'Confirmer l\'action',
         'confirm_cancel' => 'Annuler',

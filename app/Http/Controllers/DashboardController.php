@@ -308,7 +308,7 @@ class DashboardController extends Controller
             ->each(function ($m) use (&$items) {
                 $items[] = [
                     'type' => 'message',
-                    'text' => 'Nouveau message : ' . ($m->subject ?? Str::limit($m->body, 50)),
+                    'text' => __('dashboard.nav.notif_message') . ($m->subject ?? Str::limit($m->body, 50)),
                     'url'  => route('dashboard.messages'),
                     'at'   => $m->created_at->diffForHumans(),
                 ];
@@ -320,7 +320,7 @@ class DashboardController extends Controller
             ->each(function ($r) use (&$items) {
                 $items[] = [
                     'type' => 'request',
-                    'text' => 'Demande ' . ucwords(str_replace(['-','_'],' ',$r->loan_type)) . ' : ' . $r->statusLabel(),
+                    'text' => __('dashboard.nav.notif_request', ['type' => ucwords(str_replace(['-','_'],' ',$r->loan_type)), 'status' => $r->statusLabel()]),
                     'url'  => route('dashboard.requests'),
                     'at'   => $r->updated_at->diffForHumans(),
                 ];

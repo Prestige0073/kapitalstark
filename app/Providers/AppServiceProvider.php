@@ -59,14 +59,14 @@ class AppServiceProvider extends ServiceProvider
                 ->latest()->limit(5)->get()
                 ->each(fn ($m) => $notifs->push([
                     'type' => 'message',
-                    'text' => 'Nouveau message : ' . ($m->subject ?? Str::limit($m->body, 50)),
+                    'text' => __('dashboard.nav.notif_message') . ($m->subject ?? Str::limit($m->body, 50)),
                     'at'   => $m->created_at->diffForHumans(),
                     'url'  => route('dashboard.messages'),
                 ]));
             LoanRequest::where('user_id', $uid)->whereIn('status', ['offer', 'analysis', 'validated', 'approved'])->latest()->limit(3)->get()
                 ->each(fn ($r) => $notifs->push([
                     'type' => 'request',
-                    'text' => 'Demande ' . ucwords(str_replace(['-','_'],' ',$r->loan_type)) . ' : ' . $r->statusLabel(),
+                    'text' => __('dashboard.nav.notif_request', ['type' => ucwords(str_replace(['-','_'],' ',$r->loan_type)), 'status' => $r->statusLabel()]),
                     'at'   => $r->updated_at->diffForHumans(),
                     'url'  => route('dashboard.requests'),
                 ]));
