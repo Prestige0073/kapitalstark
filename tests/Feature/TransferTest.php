@@ -266,6 +266,53 @@ class TransferTest extends TestCase
              ->assertSee(__('dashboard.transfers.launch_btn')); // locale-indépendant
     }
 
+    // ── Modèle : calculateProgress() ─────────────────────────────
+
+    public function test_calculate_progress_returns_positive_value(): void
+    {
+        $user     = $this->user();
+        $transfer = $this->makeTransfer($user, [
+            'status'           => 'processing',
+            'started_at'       => now()->subSeconds(30),
+            'duration_seconds' => 300,
+            'base_progress'    => 0,
+            'progress'         => 0,
+        ]);
+
+        $progress = $transfer->calculateProgress();
+
+        $this->assertGreaterThan(0, $progress, 'calculateProgress() doit retourner une valeur positive');
+        $this->assertLessThanOrEqual(100, $progress);
+    }
+
+    public function test_calculate_progress_reaches_100_after_full_duration(): void
+    {
+        $user     = $this->user();
+        $transfer = $this->makeTransfer($user, [
+            'status'           => 'processing',
+            'started_at'       => now()->subSeconds(400), // > 300s
+            'duration_seconds' => 300,
+            'base_progress'    => 0,
+            'progress'         => 0,
+        ]);
+
+        $this->assertSame(100, $transfer->calculateProgress());
+    }
+
+    public function test_calculate_progress_never_negative(): void
+    {
+        $user     = $this->user();
+        $transfer = $this->makeTransfer($user, [
+            'status'           => 'processing',
+            'started_at'       => now()->subSeconds(5),
+            'duration_seconds' => 300,
+            'base_progress'    => 0,
+            'progress'         => 0,
+        ]);
+
+        $this->assertGreaterThanOrEqual(0, $transfer->calculateProgress());
+    }
+
     // ── Modèle : activePausedLevel() ─────────────────────────────
 
     public function test_active_paused_level_returns_null_when_no_stop_levels(): void

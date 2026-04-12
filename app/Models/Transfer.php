@@ -45,7 +45,7 @@ class Transfer extends Model
             return (int) $this->progress;
         }
 
-        $elapsed  = now()->diffInSeconds($this->started_at);
+        $elapsed  = (int) $this->started_at->diffInSeconds(now());
         $duration = max(1, (int) ($this->duration_seconds ?? 300));
         $base     = (int) ($this->base_progress ?? 0);
         $earned   = ($elapsed / $duration) * 100;
