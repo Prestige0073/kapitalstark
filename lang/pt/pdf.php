@@ -64,6 +64,7 @@ return [
         'footer_confidential'  => 'Documento confidencial · Destinado exclusivamente ao mutuário',
         'footer_website'       => 'kapitalstark.fr',
         'page'                 => 'Página 1 / 1',
+        'months'               => 'meses',
     ],
     'receipt' => [
         'title_credit'     => 'Comprovativo de Transferência Recebida',
@@ -100,5 +101,6 @@ return [
         'footer_legal'     => 'KapitalStark Financial Services · Instituição de crédito acreditada',
         'footer_confidential' => 'Documento confidencial · Destinado exclusivamente ao titular da conta',
         'footer_website'   => 'kapitalstark.fr',
+        'transfer_to'      => 'Transferência bancária para ',
     ],
 ];

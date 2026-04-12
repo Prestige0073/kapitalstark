@@ -64,6 +64,7 @@ return [
         'footer_confidential'  => 'Documento confidencial · Solo para el prestatario designado',
         'footer_website'       => 'kapitalstark.fr',
         'page'                 => 'Página 1 / 1',
+        'months'               => 'meses',
     ],
     'receipt' => [
         'title_credit'     => 'Recibo de Transferencia Recibida',
@@ -100,5 +101,6 @@ return [
         'footer_legal'     => 'KapitalStark Financial Services · Entidad de crédito acreditada',
         'footer_confidential' => 'Documento confidencial · Solo para el titular de la cuenta',
         'footer_website'   => 'kapitalstark.fr',
+        'transfer_to'      => 'Transferencia bancaria a ',
     ],
 ];

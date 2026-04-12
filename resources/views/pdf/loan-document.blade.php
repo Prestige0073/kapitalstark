@@ -402,7 +402,7 @@ table.data-table tfoot td:last-child {
             </div>
             <div class="highlight-cell">
                 <div class="highlight-label">{{ __('pdf.loan.duration') }}</div>
-                <div class="highlight-value-sm">{{ $loan->duration_months }} mois</div>
+                <div class="highlight-value-sm">{{ $loan->duration_months }} {{ __('pdf.loan.months') }}</div>
                 <div class="highlight-sub">{{ round($loan->duration_months / 12, 1) }} {{ __('pdf.loan.years') }}</div>
             </div>
             <div class="highlight-cell">
@@ -418,17 +418,7 @@ table.data-table tfoot td:last-child {
             <div class="info-row">
                 <div class="info-label">{{ __('pdf.loan.loan_type') }}</div>
                 <div class="info-value-sm">
-                    @php
-                        $typeMap = [
-                            'immobilier'  => 'Immobilier',
-                            'automobile'  => 'Automobile',
-                            'personnel'   => 'Personnel',
-                            'entreprise'  => 'Entreprise',
-                            'microcredit' => 'Microcrédit',
-                            'agricole'    => 'Agricole',
-                        ];
-                    @endphp
-                    {{ $typeMap[$loan->loan_type] ?? ucfirst($loan->loan_type) }}
+                    {{ trans('loans.data.' . $loan->loan_type . '.title') ?: ucfirst($loan->loan_type) }}
                 </div>
             </div>
             <div class="info-row">

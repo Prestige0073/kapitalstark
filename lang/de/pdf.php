@@ -64,6 +64,7 @@ return [
         'footer_confidential'  => 'Vertrauliches Dokument · Nur für den Kreditnehmer bestimmt',
         'footer_website'       => 'kapitalstark.fr',
         'page'                 => 'Seite 1 / 1',
+        'months'               => 'Monate',
     ],
     'receipt' => [
         'title_credit'     => 'Gutschriftsbeleg',
@@ -100,5 +101,6 @@ return [
         'footer_legal'     => 'KapitalStark Financial Services · Zugelassenes Kreditinstitut',
         'footer_confidential' => 'Vertrauliches Dokument · Nur für den Kontoinhaber bestimmt',
         'footer_website'   => 'kapitalstark.fr',
+        'transfer_to'      => 'Banküberweisung an ',
     ],
 ];

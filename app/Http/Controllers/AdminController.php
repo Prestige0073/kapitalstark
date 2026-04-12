@@ -193,7 +193,7 @@ class AdminController extends Controller
 
         // 4. Générer le document d'approbation PDF
         try {
-            (new PdfService)->generateLoanDocument($lr, 'approved');
+            (new PdfService)->generateLoanDocument($lr, 'approved', $lr->user->locale ?? config('app.locale', 'fr'));
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::warning('Approval PDF generation failed: ' . $e->getMessage());
         }

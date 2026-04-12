@@ -64,6 +64,7 @@ return [
         'footer_confidential'  => 'Document confidentiel · Destiné exclusivement à l\'emprunteur désigné',
         'footer_website'       => 'kapitalstark.fr',
         'page'                 => 'Page 1 / 1',
+        'months'               => 'mois',
     ],
     'receipt' => [
         'title_credit'     => 'Reçu de Virement Reçu',
@@ -100,5 +101,6 @@ return [
         'footer_legal'     => 'KapitalStark Financial Services · Établissement de crédit agréé',
         'footer_confidential' => 'Document confidentiel · Destiné exclusivement au titulaire du compte',
         'footer_website'   => 'kapitalstark.fr',
+        'transfer_to'      => 'Virement bancaire vers ',
     ],
 ];

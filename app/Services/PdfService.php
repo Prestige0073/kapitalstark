@@ -42,9 +42,9 @@ class PdfService
 
         $view     = 'pdf.loan-document';
         $filename = match ($status) {
-            'offer'    => 'offre-pret',
-            'approved' => 'accord-pret',
-            default    => 'contrat-signe',
+            'offer'    => 'loan-offer',
+            'approved' => 'loan-approval',
+            default    => 'loan-contract',
         } . '-' . $loanRequest->id . '-' . now()->format('Ymd') . '.pdf';
 
         $pdf = Pdf::loadView($view, $data)
@@ -53,10 +53,11 @@ class PdfService
 
         $storedName = $this->store($pdf, $user->id, $filename);
 
+        $typeLabel = $this->loanTypeLabel($loanRequest->loan_type, $locale);
         $label = match ($status) {
-            'offer'    => 'Offre de prêt — ' . $this->loanTypeLabel($loanRequest->loan_type),
-            'approved' => 'Accord de prêt — ' . $this->loanTypeLabel($loanRequest->loan_type),
-            default    => 'Contrat de prêt signé — ' . $this->loanTypeLabel($loanRequest->loan_type),
+            'offer'    => __('pdf.loan.title_offer', [], $locale) . ' — ' . $typeLabel,
+            'approved' => __('pdf.loan.title_approved', [], $locale) . ' — ' . $typeLabel,
+            default    => __('pdf.loan.title_signed', [], $locale) . ' — ' . $typeLabel,
         };
 
         return Document::create([
@@ -79,7 +80,7 @@ class PdfService
         $data = [
             'ref'        => 'VIR-' . strtoupper(Str::random(6)) . '-' . str_pad($transfer->id, 5, '0', STR_PAD_LEFT),
             'date'       => ($transfer->completed_at ?? $transfer->created_at)->format('d/m/Y à H:i'),
-            'label'      => $transfer->label ?: 'Virement bancaire vers ' . $transfer->recipient_name,
+            'label'      => $transfer->label ?: __('pdf.receipt.transfer_to', [], $locale) . $transfer->recipient_name,
             'amount'     => number_format($transfer->amount, 2, ',', ' ') . ' €',
             'credit'     => false,
             'locale'     => $locale,
@@ -160,17 +161,12 @@ class PdfService
         };
     }
 
-    private function loanTypeLabel(string $type): string
+    private function loanTypeLabel(string $type, string $locale = 'fr'): string
     {
-        return match ($type) {
-            'immobilier'  => 'Immobilier',
-            'automobile'  => 'Automobile',
-            'personnel'   => 'Personnel',
-            'entreprise'  => 'Entreprise',
-            'microcredit' => 'Microcrédit',
-            'agricole'    => 'Agricole',
-            default       => ucfirst($type),
-        };
+        $translated = trans('loans.data.' . $type . '.title', [], $locale);
+        return is_string($translated) && $translated !== 'loans.data.' . $type . '.title'
+            ? $translated
+            : ucfirst($type);
     }
 
     private function buildSchedule(int $amount, int $months, int $rows = 6): array
