@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Authenticated areas — no indexing
+Disallow: /dashboard/
+Disallow: /espace-client/
+Disallow: /logout
+
+Sitemap: https://kapitalstark.fr/sitemap.xml

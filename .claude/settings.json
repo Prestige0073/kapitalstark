@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "agent",
+            "prompt": "Un fichier vient d'être modifié dans le projet KapitalStark. Voici le contexte : $ARGUMENTS\n\nSi le fichier modifié est dans /home/afterdays/Documents/kapitalstark/ ET n'est PAS l'un des fichiers de documentation eux-mêmes (CLAUDE.md, docs/architecture.md, docs/features.md, docs/stack.md), alors mets à jour les fichiers docs concernés :\n\n- /home/afterdays/Documents/kapitalstark/docs/architecture.md → si des modèles, routes, migrations, contrôleurs, ou relations ont changé\n- /home/afterdays/Documents/kapitalstark/docs/features.md → si des fonctionnalités ont été ajoutées, modifiées ou complétées (mets à jour les cases [x] et l'historique)\n- /home/afterdays/Documents/kapitalstark/docs/stack.md → si des dépendances, configs ou variables d'environnement ont changé\n- /home/afterdays/Documents/kapitalstark/CLAUDE.md → si la structure générale ou les commandes clés ont évolué\n\nN'update que ce qui a réellement changé. Si le fichier modifié ne concerne pas le projet KapitalStark ou est lui-même un fichier de doc, ne fais rien.",
+            "timeout": 90,
+            "statusMessage": "Mise à jour de la documentation projet..."
+          }
+        ]
+      }
+    ]
+  }
+}
