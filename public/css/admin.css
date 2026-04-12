@@ -137,12 +137,30 @@
   .admin-card__header{padding:12px 14px;}
 }
 
-/* ── Topbar très petit écran ────────────────────────────────── */
+/* ── Topbar — correctifs fondamentaux ───────────────────────── */
+/* flex:1 sans min-width:0 déborde et pousse l'avatar/logout */
+.admin-topbar__title{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+/* la section user ne doit pas être compressée par le titre */
+.admin-topbar__user{flex-shrink:0;}
+.admin-topbar__burger{flex-shrink:0;}
+
+@media(max-width:900px){
+  .admin-topbar{gap:12px;}
+}
+
+@media(max-width:600px){
+  .admin-topbar{padding:0 12px;gap:10px;}
+  .admin-topbar__user{gap:8px;}
+}
+
 @media(max-width:420px){
-  .admin-topbar{gap:8px;padding:0 10px;}
-  .admin-topbar__title{
-    font-size:12px;overflow:hidden;
-    text-overflow:ellipsis;white-space:nowrap;max-width:130px;
-  }
+  .admin-topbar{padding:0 10px;gap:8px;}
+  .admin-topbar__title{font-size:13px;}
   .admin-topbar__avatar{width:28px;height:28px;font-size:10px;}
+  .admin-topbar__logout{width:30px;height:30px;}
 }
