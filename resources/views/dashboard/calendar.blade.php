@@ -162,9 +162,9 @@ $past     = array_filter($appointments, fn($a) => $a['status'] === 'past');
                             {{ $appt['location'] }}
                         </span>
                     </div>
-                    <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;flex-shrink:0;">
+                    <div class="cal-appt-actions">
                         <span class="dash-status dash-status--active" style="font-size:11px;">{{ __('dashboard.calendar.confirmed') }}</span>
-                        <button onclick="calCancel({{ $appt['id'] }})" style="background:none;border:none;cursor:pointer;font-size:12px;color:var(--text-muted);transition:color 0.2s;" onmouseenter="this.style.color='#ef4444'" onmouseleave="this.style.color='var(--text-muted)'">
+                        <button onclick="calCancel({{ $appt['id'] }})" class="cal-appt-cancel">
                             {{ __('dashboard.calendar.cancel') }}
                         </button>
                     </div>
@@ -203,7 +203,9 @@ $past     = array_filter($appointments, fn($a) => $a['status'] === 'past');
                             {{ $appt['location'] }}
                         </span>
                     </div>
-                    <span class="dash-status" style="font-size:11px;background:rgba(0,0,0,0.05);color:var(--text-muted);flex-shrink:0;">{{ __('dashboard.calendar.past') }}</span>
+                    <div class="cal-appt-actions">
+                        <span class="dash-status" style="font-size:11px;background:rgba(0,0,0,0.05);color:var(--text-muted);">{{ __('dashboard.calendar.past') }}</span>
+                    </div>
                 </div>
                 @endforeach
             </div>
@@ -306,6 +308,26 @@ $past     = array_filter($appointments, fn($a) => $a['status'] === 'past');
 .cal-time-pill input:checked + span { border-color:var(--blue);background:var(--blue);color:#fff; }
 .cal-time-pill span:hover { border-color:var(--blue);color:var(--blue); }
 
+/* ── Appointment action column ── */
+.cal-appt-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+.cal-appt-cancel {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: color 0.2s;
+    padding: 0;
+    font-family: var(--font-sans);
+}
+.cal-appt-cancel:hover { color: #ef4444; }
+
 /* ── Appointment rows ── */
 .cal-appt-row {
     display: flex;
@@ -364,6 +386,62 @@ $past     = array_filter($appointments, fn($a) => $a['status'] === 'past');
 
 @media (max-width: 1024px) {
     .cal-layout { grid-template-columns: 1fr; }
+}
+
+/* ── Responsive mobile ─────────────────────────────────── */
+@media (max-width: 640px) {
+    .dash-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .dash-page-header .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Appointment rows */
+    .cal-appt-row {
+        padding: 14px 16px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .cal-appt-info {
+        /* let info grow but allow it to shrink */
+        min-width: 0;
+        flex: 1 1 0;
+    }
+    .cal-appt-subject {
+        white-space: normal;
+        word-break: break-word;
+    }
+    /* Push action column to a full-width row below date+info */
+    .cal-appt-actions {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 4px;
+        border-top: 1px solid rgba(38,123,241,0.06);
+        margin-top: 2px;
+    }
+
+    /* Calendar widget body */
+    .dash-widget__body { padding: 0 12px 12px; }
+}
+
+@media (max-width: 480px) {
+    /* Form booking */
+    .cal-times { gap: 5px; }
+    .cal-time-pill span { padding: 6px 8px; font-size: 11px; }
+
+    /* Reduce date box */
+    .cal-appt-date { min-width: 38px; padding: 6px 4px; }
+    .cal-appt-day  { font-size: 18px; }
+    .cal-appt-month { font-size: 10px; }
+
+    /* Meta row: allow wrapping */
+    .cal-appt-meta { flex-wrap: wrap; gap: 4px; }
 }
 </style>
 
