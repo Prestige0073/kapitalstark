@@ -137,6 +137,24 @@
   .admin-card__header{padding:12px 14px;}
 }
 
+/* ── Topbar : position fixe (override sticky du fichier de base) ─ */
+.admin-topbar{
+  position:fixed !important;
+  top:0;
+  left:var(--admin-sidebar);
+  right:0;
+  z-index:50;
+}
+/* Compenser la hauteur du topbar fixe dans le flux */
+.admin-content{
+  padding-top:var(--admin-topbar);
+}
+
+/* Sur mobile la sidebar est cachée → topbar pleine largeur */
+@media(max-width:900px){
+  .admin-topbar{left:0;gap:12px;}
+}
+
 /* ── Topbar — correctifs fondamentaux ───────────────────────── */
 /* flex:1 sans min-width:0 déborde et pousse l'avatar/logout */
 .admin-topbar__title{
@@ -148,10 +166,6 @@
 /* la section user ne doit pas être compressée par le titre */
 .admin-topbar__user{flex-shrink:0;}
 .admin-topbar__burger{flex-shrink:0;}
-
-@media(max-width:900px){
-  .admin-topbar{gap:12px;}
-}
 
 @media(max-width:600px){
   .admin-topbar{padding:0 12px;gap:10px;}
