@@ -26,6 +26,13 @@
                         <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">{{ __('pages.guides.featured_label') }}</span>
                         <h2 style="color:#fff;font-size:28px;margin-top:14px;margin-bottom:16px;">{{ __('pages.guides.featured_title') }}</h2>
                         <p style="color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7;">{{ __('pages.guides.featured_desc') }}</p>
+                        <lottie-player
+                            src="https://assets10.lottiefiles.com/packages/lf20_06a6pf9i.json"
+                            background="transparent"
+                            speed="1"
+                            style="width:100%;max-width:260px;height:150px;margin:20px auto 0;display:block;opacity:0.85;"
+                            loop autoplay>
+                        </lottie-player>
                     </div>
                     <div style="margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;">
                         <div style="font-size:13px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:6px;">
@@ -61,6 +68,12 @@
         @php
         $guides = trans('pages.guides.items');
         $cats   = array_values(array_unique(array_column($guides, 'cat')));
+        $lotties = [
+            'https://assets10.lottiefiles.com/packages/lf20_06a6pf9i.json',
+            'https://assets2.lottiefiles.com/packages/lf20_ystsffqy.json',
+            'https://assets10.lottiefiles.com/packages/lf20_qp1q7mct.json',
+            'https://assets1.lottiefiles.com/packages/lf20_jcikwtux.json',
+        ];
         @endphp
 
         {{-- Filtres --}}
@@ -74,6 +87,15 @@
         <div class="g-3" style="gap:24px;" id="guides-grid">
             @foreach($guides as $i => $guide)
             <div class="card guide-card reveal stagger-{{ ($i % 3) + 1 }}" data-cat="{{ $guide['cat'] }}">
+                <div class="guide-card__visual">
+                    <lottie-player
+                        src="{{ $lotties[$i % 4] }}"
+                        background="transparent"
+                        speed="1"
+                        style="width:100%;height:100%;"
+                        loop autoplay>
+                    </lottie-player>
+                </div>
                 <div style="padding:28px 28px 0;">
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
                         <div style="width:44px;height:44px;border-radius:12px;background:rgba(38,123,241,0.08);display:flex;align-items:center;justify-content:center;font-size:22px;">
