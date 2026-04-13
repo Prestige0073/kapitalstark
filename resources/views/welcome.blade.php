@@ -268,7 +268,7 @@
         <div class="why__visual reveal">
             <div class="why__img-wrap" style="background:none;box-shadow:none;overflow:visible;position:relative;">
                 <lottie-player
-                    src="https://assets4.lottiefiles.com/packages/lf20_fcfjwiyb.json"
+                    src="https://assets10.lottiefiles.com/packages/lf20_06a6pf9i.json"
                     background="transparent"
                     speed="1"
                     style="width:100%;max-width:460px;height:460px;margin:auto;display:block;"
