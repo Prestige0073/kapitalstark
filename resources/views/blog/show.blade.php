@@ -159,9 +159,9 @@
             <span class="section-label reveal">Lire aussi</span>
             <h2 class="section-title reveal stagger-1" style="font-size:32px;">Articles similaires</h2>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div class="related-grid">
             @foreach($related as $i => $rel)
-            <a href="{{ route('blog.show', $rel['slug']) }}" class="blog-card blog-card--sm card reveal stagger-{{ $i+1 }}">
+            <a href="{{ route('blog.show', $rel['slug']) }}" class="blog-card card reveal stagger-{{ $i+1 }}">
                 <div class="blog-card__img">
                     <span class="blog-card__img-placeholder" style="font-size:36px;">{{ $rel['icon'] }}</span>
                     <div class="blog-card__img-overlay"></div>
