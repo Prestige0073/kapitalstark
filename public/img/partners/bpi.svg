@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 60" width="160" height="60">
+  <rect width="160" height="60" fill="#fff" rx="4"/>
+  <!-- BPI diamond mark -->
+  <polygon points="34,10 50,30 34,50 18,30" fill="#005AA0"/>
+  <polygon points="34,16 46,30 34,44 22,30" fill="#fff"/>
+  <polygon points="34,22 40,30 34,38 28,30" fill="#005AA0"/>
+  <!-- Text -->
+  <text x="105" y="26" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#005AA0" text-anchor="middle" letter-spacing="3">BPI</text>
+  <text x="105" y="42" font-family="Arial,sans-serif" font-size="8" font-weight="500" fill="#666" text-anchor="middle">Banco Português de Investimento</text>
+</svg>

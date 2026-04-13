@@ -149,6 +149,11 @@
                 ['file' => 'axa.svg',              'name' => 'AXA'],
                 ['file' => 'lcl.svg',              'name' => 'LCL'],
                 ['file' => 'credit-mutuel.svg',    'name' => 'Crédit Mutuel'],
+                // Banques portugaises — pays du siège social (Lisboa)
+                ['file' => 'cgd.svg',              'name' => 'Caixa Geral de Depósitos'],
+                ['file' => 'millennium-bcp.svg',   'name' => 'Millennium BCP'],
+                ['file' => 'novo-banco.svg',       'name' => 'Novo Banco'],
+                ['file' => 'bpi.svg',              'name' => 'BPI'],
             ];
             @endphp
             @foreach(array_merge($partners, $partners) as $p)

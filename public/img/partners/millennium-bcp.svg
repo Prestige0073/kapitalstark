@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 60" width="160" height="60">
+  <rect width="160" height="60" fill="#fff" rx="4"/>
+  <!-- Millennium arc symbol -->
+  <path d="M26 42 Q26 14 46 14 Q56 14 56 24 Q56 34 46 34 Q40 34 38 30" fill="none" stroke="#E30613" stroke-width="4" stroke-linecap="round"/>
+  <!-- Text -->
+  <text x="100" y="26" font-family="Arial,sans-serif" font-size="11" font-weight="800" fill="#E30613" text-anchor="middle" letter-spacing="0.5">MILLENNIUM</text>
+  <text x="100" y="42" font-family="Arial,sans-serif" font-size="12" font-weight="800" fill="#1A1A1A" text-anchor="middle" letter-spacing="1">BCP</text>
+</svg>
