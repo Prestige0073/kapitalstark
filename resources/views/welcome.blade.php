@@ -264,10 +264,17 @@
 <section class="why">
     <div class="container why__inner">
 
-        {{-- Visuel --}}
+        {{-- Visuel Lottie --}}
         <div class="why__visual reveal">
-            <div class="why__img-wrap">
-                <span class="why__img-placeholder">🏦</span>
+            <div class="why__img-wrap" style="background:none;box-shadow:none;overflow:visible;position:relative;">
+                <lottie-player
+                    src="https://assets4.lottiefiles.com/packages/lf20_fcfjwiyb.json"
+                    background="transparent"
+                    speed="1"
+                    style="width:100%;max-width:460px;height:460px;margin:auto;display:block;"
+                    loop
+                    autoplay>
+                </lottie-player>
             </div>
             <div class="why__badge-float">
                 <div class="why__badge-icon">⭐</div>
