@@ -123,7 +123,7 @@
                 <div class="job-item__body" id="job-body-{{ $i }}">
                     <div class="job-item__content">
                         <p style="font-size:15px;color:var(--text-muted);line-height:1.75;margin-bottom:20px;">{{ $job['desc'] }}</p>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+                        <div class="g-2" style="gap:28px;">
                             <div>
                                 <h4 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;">{{ __('pages.careers.job_missions') }}</h4>
                                 <ul style="display:flex;flex-direction:column;gap:8px;">

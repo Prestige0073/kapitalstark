@@ -20,7 +20,7 @@
 
         {{-- Guide vedette --}}
         <div class="reveal" style="margin-bottom:60px;">
-            <div class="card" style="display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border-radius:24px;">
+            <div class="card g-2-split" style="border-radius:24px;">
                 <div style="background:linear-gradient(135deg,var(--navy),var(--blue-dark));padding:48px;display:flex;flex-direction:column;justify-content:space-between;">
                     <div>
                         <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">{{ __('pages.guides.featured_label') }}</span>
@@ -71,7 +71,7 @@
             @endforeach
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" id="guides-grid">
+        <div class="g-3" style="gap:24px;" id="guides-grid">
             @foreach($guides as $i => $guide)
             <div class="card guide-card reveal stagger-{{ ($i % 3) + 1 }}" data-cat="{{ $guide['cat'] }}">
                 <div style="padding:28px 28px 0;">

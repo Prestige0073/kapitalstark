@@ -33,7 +33,7 @@
     <div class="container">
 
         {{-- Key stats --}}
-        <div class="reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:72px;">
+        <div class="reveal g-4" style="gap:20px;margin-bottom:72px;">
             @foreach(trans('pages.press.stats') as $k)
             <div class="card" style="padding:28px;text-align:center;">
                 <div style="font-size:32px;margin-bottom:10px;">{{ $k['icon'] }}</div>
@@ -73,7 +73,7 @@
 
         {{-- Media kit --}}
         <div id="kit-media" class="reveal" style="background:linear-gradient(135deg,var(--navy),var(--blue-dark));border-radius:24px;padding:56px;margin-bottom:72px;">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+            <div class="g-2-split" style="gap:48px;align-items:center;">
                 <div>
                     <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">{{ __('pages.press.kit_label') }}</span>
                     <h2 style="color:#fff;margin-top:14px;margin-bottom:16px;">{{ __('pages.press.kit_title') }}</h2>
@@ -98,7 +98,7 @@
         </div>
 
         {{-- Press contact --}}
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:80px;">
+        <div class="g-2" style="gap:32px;margin-bottom:80px;">
             <div class="card reveal" style="padding:36px;">
                 <div style="font-size:40px;margin-bottom:16px;">📞</div>
                 <h3 style="font-size:19px;margin-bottom:8px;">{{ __('pages.press.contact_title') }}</h3>

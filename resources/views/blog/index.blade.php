@@ -63,7 +63,7 @@
         @endif
 
         {{-- Grille articles --}}
-        <div id="blog-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div id="blog-grid" class="g-3" style="gap:24px;">
             @foreach(array_slice($articles, 1) as $i => $article)
             <a href="{{ route('blog.show', $article['slug']) }}"
                class="blog-card card reveal stagger-{{ ($i % 3) + 1 }}"

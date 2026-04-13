@@ -47,7 +47,7 @@
             <button class="faq-cat" data-cat="professionnels">{{ __('loans.index.filter_pro') }}</button>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" id="loans-grid">
+        <div id="loans-grid" class="g-3" style="gap:24px;">
             @php
             $loanMeta = [
                 'immobilier'  => ['cat'=>'particuliers','highlight'=>true, 'badge_key'=>'badge_popular'],
@@ -204,7 +204,7 @@
             <span class="section-label reveal">{{ __('loans.index.why_label') }}</span>
             <h2 class="section-title reveal stagger-1">{{ __('loans.index.why_title') }}</h2>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div class="g-3" style="gap:24px;">
             @foreach([
                 ['icon'=>'🔍','title_key'=>'why1_title','desc_key'=>'why1_desc'],
                 ['icon'=>'⚡','title_key'=>'why2_title','desc_key'=>'why2_desc'],

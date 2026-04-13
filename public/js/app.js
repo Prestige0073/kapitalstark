@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Fermer sur Escape
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeMobile();
+    if (e.key === 'Escape' && mobileMenu) closeMobile();
   });
 
   /* ── Accordéons sous-menus mobile ────────────────────────── */
