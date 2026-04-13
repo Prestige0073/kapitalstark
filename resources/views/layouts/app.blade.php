@@ -4,8 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'KapitalStark') — {{ __('ui.seo.title_suffix') }}</title>
-    <meta name="description" content="@yield('description', __('ui.seo.desc_default'))">
+    @php
+        $seoTitle = isset($seoSettings) && $seoSettings?->meta_title ? $seoSettings->meta_title : null;
+        $seoDesc  = isset($seoSettings) && $seoSettings?->meta_description ? $seoSettings->meta_description : null;
+        $seoRobots = isset($seoSettings) && $seoSettings?->robots_directive ? $seoSettings->robots_directive : 'index, follow';
+    @endphp
+    <title>{{ $seoTitle ?? (View::hasSection('title') ? View::getSection('title') : 'KapitalStark') }} — {{ __('ui.seo.title_suffix') }}</title>
+    <meta name="description" content="{{ $seoDesc ?? (View::hasSection('description') ? View::getSection('description') : __('ui.seo.desc_default')) }}">
+    <meta name="robots" content="{{ $seoRobots }}">
+    @if(isset($seoSettings) && $seoSettings?->keywords)
+    <meta name="keywords" content="{{ $seoSettings->keywords }}">
+    @endif
+    @include('components.gtag', ['section' => 'head', 'pageType' => $seoPageType ?? 'generic'])
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -59,14 +69,20 @@
     }
     </script>
 
+    {{-- Schema supplémentaire spécifique à la page (injecté par les contrôleurs) --}}
+    @yield('schema')
+    @if(isset($seoSettings) && $seoSettings?->schema_json)
+    <script type="application/ld+json">{!! $seoSettings->schema_json !!}</script>
+    @endif
+
     <!-- Canonical & Open Graph -->
-    <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="canonical" href="{{ isset($seoSettings) && $seoSettings?->canonical_url ? $seoSettings->canonical_url : url()->current() }}">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type"        content="website">
     <meta property="og:site_name"   content="KapitalStark">
-    <meta property="og:url"         content="{{ url()->current() }}">
-    <meta property="og:title"       content="@yield('title', 'KapitalStark') — {{ __('ui.seo.title_suffix') }}">
-    <meta property="og:description" content="@yield('description', __('ui.seo.desc_default'))">
-    <meta property="og:image"       content="{{ asset('img/og-cover.svg') }}">
+    <meta property="og:title"       content="{{ $seoTitle ?? '' }} — {{ __('ui.seo.title_suffix') }}">
+    <meta property="og:description" content="{{ $seoDesc ?? __('ui.seo.desc_default') }}">
+    <meta property="og:image"       content="{{ isset($seoSettings) && $seoSettings?->og_image ? asset($seoSettings->og_image) : asset('img/og-cover.svg') }}">
     <meta property="og:locale"      content="{{ __('ui.seo.og_locale') }}">
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="@yield('title', 'KapitalStark')">
@@ -91,6 +107,8 @@
     @yield('styles')
 </head>
 <body>
+
+    @include('components.gtag', ['section' => 'body'])
 
     <!-- Barre de progression scroll -->
     <div id="scroll-progress"></div>
@@ -966,6 +984,8 @@
         };
     })();
     </script>
+
+    @include('components.gtag', ['section' => 'events'])
 
 </body>
 </html>

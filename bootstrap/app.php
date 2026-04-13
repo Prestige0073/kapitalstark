@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'is_client' => \App\Http\Middleware\IsClient::class,
         ]);
         $middleware->web(\App\Http\Middleware\SetLocale::class);
+        $middleware->web(\App\Http\Middleware\SeoMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -2,6 +2,27 @@
 @section('title', __('pages.titles.faq'))
 @section('styles')<link rel="stylesheet" href="{{ asset('css/pages.css') }}">@endsection
 
+@section('schema')
+@php
+    $schemaService = app(\App\Services\SchemaMarkupService::class);
+    $allFaqs = collect();
+    if (!empty($faqsByCategory)) {
+        foreach ($faqsByCategory as $cat => $items) {
+            foreach ($items as $item) { $allFaqs->push($item); }
+        }
+    }
+    $breadcrumb = $schemaService->breadcrumbs([
+        ['name' => 'Accueil', 'url' => url('/')],
+        ['name' => 'FAQ', 'url' => url('/faq')],
+    ]);
+@endphp
+@if($allFaqs->isNotEmpty())
+<script type="application/ld+json">
+{!! $schemaService->buildGraph([$schemaService->faqPage($allFaqs), $breadcrumb]) !!}
+</script>
+@endif
+@endsection
+
 @section('content')
 
 <section class="page-hero" style="background:linear-gradient(135deg,var(--blue-dark),var(--navy));">

@@ -1,0 +1,232 @@
+
+<style>
+  .wrap { padding: 1.5rem 0; font-family: var(--font-mono); }
+  .header { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; }
+  .badge { font-size: 11px; font-weight: 500; background: var(--color-background-info); color: var(--color-text-info); border-radius: var(--border-radius-md); padding: 3px 10px; font-family: var(--font-sans); }
+  .prompt-box { background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 1.5rem; white-space: pre-wrap; font-size: 13px; line-height: 1.75; color: var(--color-text-primary); max-height: 520px; overflow-y: auto; }
+  .section-tag { color: var(--color-text-info); font-weight: 500; }
+  .copy-btn { margin-top: 1rem; padding: 9px 22px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: transparent; color: var(--color-text-primary); font-size: 13px; cursor: pointer; font-family: var(--font-sans); display: flex; align-items: center; gap: 8px; }
+  .copy-btn:hover { background: var(--color-background-secondary); }
+  .copy-btn:active { transform: scale(0.98); }
+  .tick { color: var(--color-text-success); font-weight: 500; display: none; }
+</style>
+<div class="wrap">
+  <div class="header">
+    <span style="font-family: var(--font-sans); font-size: 15px; font-weight: 500; color: var(--color-text-primary);">Prompt Claude Code — Laravel SEO + Google Ads</span>
+    <span class="badge">PRÊT À L'EMPLOI</span>
+  </div>
+  <div class="prompt-box" id="promptContent"><span class="section-tag"># CONTEXTE DU PROJET</span>
+Tu travailles sur un site web de prêt bancaire développé avec Laravel (PHP).
+L'objectif est d'implémenter une stratégie SEO avancée et Google Ads complète
+pour maximiser la visibilité dans les résultats Google, obtenir le Knowledge
+Panel, les Featured Snippets, et assurer un fort trafic qualifié via Google Ads.
+
+<span class="section-tag">## STACK TECHNIQUE</span>
+- Framework : Laravel (dernière version stable)
+- Frontend : Blade templating (+ TailwindCSS si déjà présent)
+- Base de données : MySQL
+- Serveur : Apache ou Nginx (Linux)
+
+<span class="section-tag">════════════════════════════════════════════</span>
+<span class="section-tag"># MODULE 1 — SCHEMA MARKUP & KNOWLEDGE PANEL</span>
+<span class="section-tag">════════════════════════════════════════════</span>
+
+Crée un service Laravel dédié : App\Services\SchemaMarkupService
+
+Ce service doit générer dynamiquement les données structurées JSON-LD suivantes
+et les injecter dans le <head> de chaque page via un ViewComposer ou middleware :
+
+1. ORGANISATION (pour le Knowledge Panel Google) :
+   - @type: FinancialService + Organization
+   - name, url, logo, description, foundingDate
+   - address (PostalAddress), telephone, email
+   - sameAs : [liens Facebook, LinkedIn, Twitter, Wikipedia si dispo]
+   - areaServed, currenciesAccepted, priceRange
+   - openingHoursSpecification
+   - aggregateRating (si avis disponibles)
+
+2. WEBPAGE par type de page :
+   - HomePage : WebSite + SearchAction (Sitelinks Searchbox)
+   - Pages services : Service + Offer + FinancialProduct
+   - FAQ Page : FAQPage avec tous les Q&A (pour Featured Snippets)
+   - Article/Blog : Article + BreadcrumbList
+   - Contact : ContactPage
+
+3. BREADCRUMBS sur toutes les pages intérieures :
+   - BreadcrumbList avec itemListElement dynamique selon la route Laravel
+
+4. Crée une migration pour la table `seo_settings` :
+   - Champs : page_type, meta_title, meta_description, og_image,
+              canonical_url, schema_json, robots_directive, keywords
+   - Crée le Model, Controller et interface admin CRUD simple
+
+<span class="section-tag">════════════════════════════════════════════</span>
+<span class="section-tag"># MODULE 2 — FEATURED SNIPPETS (POSITION ZÉRO)</span>
+<span class="section-tag">════════════════════════════════════════════</span>
+
+1. Crée une migration + model pour la table `faqs` :
+   - Champs : question, answer (longtext), category, page_slug,
+              is_published, sort_order, created_at
+   - Catégories : "conditions_pret", "taux_interet", "eligibilite",
+                  "remboursement", "documents_requis"
+
+2. Crée un composant Blade réutilisable : faq-accordion.blade.php
+   - Affichage accordéon accessible (HTML natif <details>/<summary>)
+   - Inclure automatiquement le Schema FAQPage JSON-LD
+   - Paramètre : $faqs (collection), $pageTitle
+
+3. Pour chaque page de service, structurer le contenu Blade pour les snippets :
+   - Utiliser des balises <h2>, <h3> hiérarchisées avec mots-clés cibles
+   - Listes <ul>/<ol> pour les étapes de processus (ex: "Comment obtenir un prêt")
+   - Tableaux <table> pour comparaisons (taux, durées, montants)
+   - Réponses courtes en <p> directement sous chaque <h2>/<h3>
+
+4. Crée une page dédiée /faq avec toutes les questions groupées par catégorie
+
+<span class="section-tag">════════════════════════════════════════════</span>
+<span class="section-tag"># MODULE 3 — SEO TECHNIQUE LARAVEL</span>
+<span class="section-tag">════════════════════════════════════════════</span>
+
+1. Crée un Middleware SeoMiddleware qui ajoute pour chaque réponse :
+   - En-têtes HTTP : X-Robots-Tag, Cache-Control adapté
+   - Canonical URL automatique basée sur la route courante
+
+2. Génère un sitemap.xml dynamique via une route /sitemap.xml :
+   - Inclure toutes les pages publiques avec lastmod, changefreq, priority
+   - Exclure les routes admin, auth, api
+   - Soumission automatique via ping Google/Bing au déploiement
+
+3. Génère un robots.txt dynamique via /robots.txt :
+   - Allow les pages publiques, Disallow admin/api/login
+   - Lien vers sitemap
+
+4. Meta tags dynamiques dans le layout Blade principal :
+   - <title> : pattern "[Keyword] | [Nom du Site]" (60 cars max)
+   - <meta name="description"> (160 cars max)
+   - Open Graph : og:title, og:description, og:image, og:url, og:type
+   - Twitter Card : summary_large_image
+   - <link rel="canonical">
+   - Hreflang si multilingue
+
+5. Optimisation vitesse (Core Web Vitals) :
+   - Lazy loading des images avec attribut loading="lazy"
+   - Ajouter preload pour fonts et images LCP critiques
+   - Minification des assets via vite.config.js
+   - Ajouter les en-têtes de cache nginx/apache dans le commentaire
+
+<span class="section-tag">════════════════════════════════════════════</span>
+<span class="section-tag"># MODULE 4 — GOOGLE ADS TRACKING & CONVERSIONS</span>
+<span class="section-tag">════════════════════════════════════════════</span>
+
+1. Crée un service : App\Services\GoogleAdsTrackingService
+   - Méthode injectGtag() : génère le script Google Tag Manager (GTM)
+   - Config via .env : GOOGLE_ADS_ID, GOOGLE_ADS_CONVERSION_ID,
+                       GOOGLE_ADS_CONVERSION_LABEL, GTM_CONTAINER_ID
+
+2. Événements de conversion à tracker (ajoute dans les Blade/JS) :
+   a. Soumission formulaire de demande de prêt → Conversion principale
+   b. Clic sur "Simuler mon prêt" → Micro-conversion
+   c. Appel téléphonique (tel:) → Conversion appel
+   d. Téléchargement PDF (conditions, formulaires) → Conversion doc
+   e. Temps passé > 3 minutes → Engagement
+   f. Scroll > 75% de la page → Signal d'intérêt
+
+3. Crée un composant Blade gtag.blade.php :
+   - GTM snippet dans <head> + <body>
+   - DataLayer avec : page_type, user_logged_in, loan_type_viewed
+   - Événement gtag('event') déclenché par chaque action ci-dessus
+
+4. Génère un fichier de configuration Google Ads JSON :
+   config/google_ads.php avec :
+   - Toutes les constantes de tracking
+   - Liste des pages de conversion
+   - Mapping URL → type de conversion
+
+5. Crée une migration pour la table `ad_conversions` (suivi côté serveur) :
+   - Champs : gclid, conversion_type, page_url, value, currency,
+              ip_address (anonymisée), created_at
+   - Enregistrement côté serveur via Google Ads API (server-side tracking)
+
+<span class="section-tag">════════════════════════════════════════════</span>
+<span class="section-tag"># MODULE 5 — LANDING PAGES GOOGLE ADS</span>
+<span class="section-tag">════════════════════════════════════════════</span>
+
+Crée des landing pages dédiées aux campagnes Google Ads (routes /lp/*) :
+
+1. Structure de chaque landing page Blade :
+   - Hero : titre H1 avec mot-clé exact de la campagne (dynamique via ?utm_term)
+   - Barre de confiance : nombre de clients, années d'expérience, certifications
+   - Formulaire de demande visible sans scroll (above the fold)
+   - Section avantages en 3 colonnes (icônes SVG + texte court)
+   - Section FAQ (5 questions clés avec Schema FAQPage)
+   - Section avis clients (Schema Review/AggregateRating)
+   - CTA répété 3 fois (top, milieu, bas de page)
+   - Bannière urgence/offre limitée si applicable
+
+2. Crée un Controller LandingPageController :
+   - Capture automatique de : utm_source, utm_medium, utm_campaign,
+     utm_term, utm_content, gclid dans la session + cookie 30 jours
+   - Pré-remplissage du formulaire si données UTM disponibles
+   - A/B testing simple : 2 variantes de titre via config
+   - Score de qualité : titre H1 = mot-clé ciblé (améliore Quality Score)
+
+3. Formulaire de demande de prêt (DemandePretForm) :
+   - Champs : prénom, nom, montant_souhaite, duree, objet_pret,
+              telephone, email, revenus_mensuels
+   - Validation Laravel Request avec messages en français
+   - Enregistrement en DB + envoi email + déclenchement conversion GTM
+   - Champ caché : source, medium, campaign, gclid
+
+<span class="section-tag">════════════════════════════════════════════</span>
+<span class="section-tag"># MODULE 6 — GOOGLE BUSINESS PROFILE (LOCAL SEO)</span>
+<span class="section-tag">════════════════════════════════════════════</span>
+
+1. Crée une page /agences ou /contact avec :
+   - Google Maps embed pour chaque agence
+   - Schema LocalBusiness pour chaque agence
+   - NAP (Nom, Adresse, Téléphone) identiques partout
+
+2. Génère un fichier business_data.json dans /public/.well-known/ :
+   - Informations complètes pour vérification Google Business Profile
+
+3. Ajoute dans le footer de toutes les pages :
+   - Adresse structurée avec itemprop (microdata backup)
+   - Liens vers réseaux sociaux avec rel="noopener noreferrer"
+
+<span class="section-tag">════════════════════════════════════════════</span>
+<span class="section-tag"># LIVRABLES ATTENDUS</span>
+<span class="section-tag">════════════════════════════════════════════</span>
+
+Pour chaque module, fournis :
+✅ Le code complet et fonctionnel (pas de pseudocode)
+✅ Les migrations SQL prêtes à exécuter
+✅ Les routes à ajouter dans web.php / api.php
+✅ Les variables .env requises
+✅ Les commandes artisan nécessaires
+✅ Un commentaire en haut de chaque fichier expliquant son rôle
+✅ Les instructions d'installation dans un fichier INSTALL.md
+
+<span class="section-tag"># CONTRAINTES</span>
+- Respecter les conventions Laravel (PSR-4, Service Providers, Facades)
+- Tout le code commenté en français
+- Compatible Laravel 10+ et PHP 8.2+
+- Ne pas utiliser de packages externes sauf si indispensable
+- Respecter le RGPD : anonymisation IP, consentement cookies
+- Tester chaque service avec un test PHPUnit minimal
+</div>
+  <button class="copy-btn" onclick="copyPrompt()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    Copier le prompt
+    <span class="tick" id="tick">✓ Copié !</span>
+  </button>
+</div>
+<script>
+function copyPrompt() {
+  const el = document.getElementById('promptContent');
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    document.getElementById('tick').style.display = 'inline';
+    setTimeout(() => { document.getElementById('tick').style.display = 'none'; }, 2500);
+  });
+}
+</script>

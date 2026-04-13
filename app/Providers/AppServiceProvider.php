@@ -16,6 +16,8 @@ use App\Models\Document;
 use App\Models\ContactRequest;
 use App\Models\AppointmentRequest;
 use App\Models\Transfer;
+use App\Services\SchemaMarkupService;
+use App\Services\GoogleAdsTrackingService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -91,6 +93,21 @@ class AppServiceProvider extends ServiceProvider
                 'pending_transfers' => Transfer::where('status', 'pending')->count(),
             ]);
         });
+
+        // Partage SchemaMarkupService dans toutes les vues publiques
+        View::composer('layouts.app', function ($view) {
+            $schema  = app(SchemaMarkupService::class);
+            $adsTracker = app(GoogleAdsTrackingService::class);
+            $view->with([
+                'schemaService'   => $schema,
+                'adsTracker'      => $adsTracker,
+                'adsEnabled'      => $adsTracker->isEnabled(),
+            ]);
+        });
+
+        // Enregistrement singleton des services
+        $this->app->singleton(SchemaMarkupService::class);
+        $this->app->singleton(GoogleAdsTrackingService::class);
 
         RateLimiter::for('contact', function (Request $request) {
             return Limit::perHour(5)->by($request->ip());

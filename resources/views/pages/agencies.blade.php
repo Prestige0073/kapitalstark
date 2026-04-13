@@ -2,6 +2,21 @@
 @section('title', __('pages.titles.agencies'))
 @section('styles')<link rel="stylesheet" href="{{ asset('css/pages.css') }}">@endsection
 
+@section('schema')
+@php
+    $schemaService = app(\App\Services\SchemaMarkupService::class);
+    $agenciesSchema = isset($agencies) ? array_map(fn($a) => $schemaService->localBusiness($a), $agencies) : [];
+    $breadcrumb = $schemaService->breadcrumbs([
+        ['name' => 'Accueil', 'url' => url('/')],
+        ['name' => 'À propos', 'url' => url('/a-propos')],
+        ['name' => 'Nos agences', 'url' => url('/a-propos/agences')],
+    ]);
+@endphp
+<script type="application/ld+json">
+{!! $schemaService->buildGraph(array_merge($agenciesSchema, [$breadcrumb])) !!}
+</script>
+@endsection
+
 @section('content')
 
 <section class="page-hero" style="background:linear-gradient(135deg,var(--navy),var(--blue-dark));padding-block:80px 60px;">

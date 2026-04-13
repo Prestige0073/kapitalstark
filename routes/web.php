@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\LandingPageController;
 
 /* ── Langue ──────────────────────────────────────────────── */
 Route::get('/langue/{locale}', function (string $locale) {
@@ -129,6 +130,12 @@ Route::get('/sitemap.xml', function () {
     $xml .= '</urlset>';
     return response($xml, 200)->header('Content-Type', 'application/xml');
 })->name('sitemap');
+
+/* ── Landing pages Google Ads (/lp/*) ───────────────────── */
+Route::prefix('lp')->name('landing.')->group(function () {
+    Route::get('/{type}',  [LandingPageController::class, 'show'])->name('show');
+    Route::post('/{type}', [LandingPageController::class, 'submit'])->name('submit')->middleware('throttle:10,1');
+});
 
 /* ── Chat widget public ──────────────────────────────────── */
 Route::post('/chat/message', [ChatController::class, 'store'])->name('chat.store')->middleware('throttle:30,1');

@@ -7,15 +7,28 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\NewsletterSubscription;
 use App\Models\ContactRequest;
 use App\Models\AppointmentRequest;
+use App\Models\Faq;
 use App\Mail\ContactConfirmation;
 
 class PageController extends Controller
 {
     public function about()    { return view('pages.about'); }
     public function team()     { return view('pages.team'); }
-    public function agencies() { return view('pages.agencies'); }
     public function careers()  { return view('pages.careers'); }
-    public function faq()      { return view('pages.faq'); }
+    public function faq()
+    {
+        $faqsByCategory = Faq::forFaqPage();
+        return view('pages.faq', compact('faqsByCategory'));
+    }
+
+    public function agencies()
+    {
+        $agencies = [
+            ['name' => 'KapitalStark Lisboa', 'address' => 'Avenida da Liberdade, 110, 3.º andar', 'city' => 'Lisboa', 'zip' => '1269-046', 'phone' => '+351210001234', 'lat' => 38.7197, 'lng' => -9.1468],
+            ['name' => 'KapitalStark Porto', 'address' => 'Rua de Santa Catarina, 200, 2.º andar', 'city' => 'Porto', 'zip' => '4000-447', 'phone' => '+351220001234', 'lat' => 41.1496, 'lng' => -8.6109],
+        ];
+        return view('pages.agencies', compact('agencies'));
+    }
     public function glossary() { return view('pages.glossary'); }
     public function legal()    { return view('pages.legal'); }
     public function terms()    { return view('pages.terms'); }

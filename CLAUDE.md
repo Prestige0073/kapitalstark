@@ -53,4 +53,58 @@ database/
 - Score Lighthouse visé : **90+** sur toutes les métriques
 
 ---
+
+## Suivi des tâches
+
+### SEO & Google Ads — 6 modules
+
+#### Module 1 — Schema Markup & Knowledge Panel
+- [ ] Créer `App\Services\SchemaMarkupService`
+- [ ] JSON-LD : Organization + FinancialService (Knowledge Panel)
+- [ ] JSON-LD : WebPage par type (HomePage, Service, FAQ, Article, Contact)
+- [ ] JSON-LD : BreadcrumbList dynamique sur toutes les pages intérieures
+- [ ] Migration + Model + Controller CRUD `seo_settings`
+- [ ] ViewComposer ou Middleware pour injecter les schemas dans `<head>`
+
+#### Module 2 — Featured Snippets (Position Zéro)
+- [ ] Migration + Model `faqs` (question, answer, category, page_slug, is_published, sort_order)
+- [ ] Composant Blade `faq-accordion.blade.php` (accordéon `<details>/<summary>` + Schema FAQPage)
+- [ ] Structurer les pages de service : h2/h3, ul/ol, table, réponses courtes
+- [ ] Page publique `/faq` groupée par catégorie
+
+#### Module 3 — SEO Technique Laravel
+- [ ] `SeoMiddleware` : X-Robots-Tag, Cache-Control, canonical automatique
+- [ ] Route `/sitemap.xml` dynamique (pages publiques, lastmod, changefreq, priority)
+- [ ] Route `/robots.txt` dynamique
+- [ ] Meta tags dynamiques dans layout Blade : title, description, OG, Twitter Card, canonical, hreflang
+- [ ] Core Web Vitals : lazy loading images, preload fonts/LCP, headers cache
+
+#### Module 4 — Google Ads Tracking & Conversions
+- [ ] `App\Services\GoogleAdsTrackingService` (GTM injection)
+- [ ] Variables `.env` : GOOGLE_ADS_ID, GOOGLE_ADS_CONVERSION_ID, GTM_CONTAINER_ID
+- [ ] Composant Blade `gtag.blade.php` (GTM head + body + dataLayer)
+- [ ] Événements : soumission formulaire, clic simulateur, appel tel, PDF, scroll 75%, temps > 3min
+- [ ] `config/google_ads.php`
+- [ ] Migration + Model `ad_conversions` (gclid, conversion_type, ip anonymisée)
+
+#### Module 5 — Landing Pages Google Ads
+- [ ] Routes `/lp/*` + `LandingPageController`
+- [ ] Capture UTM + GCLID (session + cookie 30j)
+- [ ] Structure landing page Blade : Hero, confiance, formulaire above-fold, FAQ, avis, CTA x3
+- [ ] A/B testing simple (2 variantes de titre via config)
+- [ ] `DemandePretForm` : validation FR, enregistrement DB, email, conversion GTM
+
+#### Module 6 — Google Business Profile (Local SEO)
+- [ ] Page `/agences` ou `/contact` avec Google Maps embed
+- [ ] Schema `LocalBusiness` pour chaque agence
+- [ ] Fichier `public/.well-known/business_data.json`
+- [ ] Footer : adresse structurée itemprop + liens réseaux sociaux
+
+### Corrections & Améliorations en cours
+- [x] Favicon Google Search : suppression favicon-32.png manquant, ajout site.webmanifest
+- [x] robots.txt : correction URL sitemap → kapitalstarks.com
+- [x] Messagerie admin/user : polling backoff, typing indicator, read receipts
+- [x] Responsive mobile admin : topbar fixed, overflow tables, breakpoints 420-900px
+
+---
 *Mis à jour automatiquement à chaque évolution du projet.*
