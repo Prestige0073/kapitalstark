@@ -76,12 +76,13 @@
     <!-- Fonts (locally embedded) -->
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
 
-    <!-- Favicon -->
+    <!-- Favicon — toutes résolutions + manifest pour Google Search -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon-192.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16.png') }}">
     <link rel="apple-touch-icon" sizes="192x192" href="{{ asset('favicon-192.png') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
     <!-- CSS -->
     <link rel="preload" href="{{ asset('css/app.css') }}" as="style">
