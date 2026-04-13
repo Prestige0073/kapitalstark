@@ -26,19 +26,6 @@
                         <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">{{ __('pages.guides.featured_label') }}</span>
                         <h2 style="color:#fff;font-size:28px;margin-top:14px;margin-bottom:16px;">{{ __('pages.guides.featured_title') }}</h2>
                         <p style="color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7;">{{ __('pages.guides.featured_desc') }}</p>
-                        <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:110px;opacity:0.9;margin:20px auto 0;display:block;" aria-hidden="true">
-                            <line x1="10" y1="20" x2="190" y2="20" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                            <line x1="10" y1="50" x2="190" y2="50" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                            <line x1="10" y1="80" x2="190" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                            <path d="M10,80 L45,62 L80,68 L115,38 L150,44 L185,18 L190,20 L190,90 L10,90 Z" fill="rgba(255,255,255,0.1)"/>
-                            <polyline points="10,80 45,62 80,68 115,38 150,44 185,18"
-                                fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="185" cy="18" r="5" fill="white" class="guide-svg-pulse"/>
-                            <text x="2" y="22" font-size="8" fill="rgba(255,255,255,0.5)" font-family="monospace">+12%</text>
-                            <text x="2" y="82" font-size="8" fill="rgba(255,255,255,0.5)" font-family="monospace">0%</text>
-                            <rect x="140" y="4" width="52" height="20" rx="5" fill="rgba(34,197,94,0.25)" stroke="rgba(34,197,94,0.5)" stroke-width="1"/>
-                            <text x="166" y="18" text-anchor="middle" font-size="10" font-weight="700" fill="#86efac" font-family="monospace">+12%</text>
-                        </svg>
                     </div>
                     <div style="margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;">
                         <div style="font-size:13px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:6px;">
@@ -87,52 +74,6 @@
         <div class="g-3" style="gap:24px;" id="guides-grid">
             @foreach($guides as $i => $guide)
             <div class="card guide-card reveal stagger-{{ ($i % 3) + 1 }}" data-cat="{{ $guide['cat'] }}">
-                <div class="guide-card__visual">
-                    @php $animIdx = $i % 4; @endphp
-                    @if($animIdx === 0)
-                    {{-- Courbe de tendance --}}
-                    <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:120px;height:80px;" aria-hidden="true">
-                        <line x1="10" y1="15" x2="110" y2="15" stroke="#267BF1" stroke-width="0.8" opacity="0.25"/>
-                        <line x1="10" y1="40" x2="110" y2="40" stroke="#267BF1" stroke-width="0.8" opacity="0.25"/>
-                        <line x1="10" y1="65" x2="110" y2="65" stroke="#267BF1" stroke-width="0.8" opacity="0.25"/>
-                        <path d="M10,65 L30,50 L50,54 L70,30 L90,35 L110,12 L110,72 L10,72 Z" fill="#267BF1" opacity="0.12"/>
-                        <polyline points="10,65 30,50 50,54 70,30 90,35 110,12"
-                            fill="none" stroke="#267BF1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="110" cy="12" r="4.5" fill="#267BF1" class="guide-svg-pulse"/>
-                    </svg>
-                    @elseif($animIdx === 1)
-                    {{-- Barres --}}
-                    <svg viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:80px;" aria-hidden="true">
-                        <line x1="8" y1="72" x2="102" y2="72" stroke="#267BF1" stroke-width="1" opacity="0.25"/>
-                        <rect x="12" y="44" width="16" height="28" rx="4" fill="#267BF1" opacity="0.35"/>
-                        <rect x="36" y="28" width="16" height="44" rx="4" fill="#267BF1" opacity="0.55"/>
-                        <rect x="60" y="36" width="16" height="36" rx="4" fill="#267BF1" opacity="0.75"/>
-                        <rect x="84" y="14" width="16" height="58" rx="4" fill="#267BF1"/>
-                        <polyline points="20,44 44,28 68,36 92,14"
-                            fill="none" stroke="#267BF1" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5" stroke-linecap="round"/>
-                    </svg>
-                    @elseif($animIdx === 2)
-                    {{-- Pile de pièces --}}
-                    <svg viewBox="0 0 110 80" xmlns="http://www.w3.org/2000/svg" style="width:110px;height:80px;" aria-hidden="true">
-                        <ellipse cx="55" cy="70" rx="30" ry="8" fill="#267BF1" opacity="0.2"/>
-                        <ellipse cx="55" cy="62" rx="30" ry="8" fill="#267BF1" opacity="0.35"/>
-                        <ellipse cx="55" cy="54" rx="30" ry="8" fill="#267BF1" opacity="0.5"/>
-                        <ellipse cx="55" cy="46" rx="30" ry="8" fill="#267BF1" opacity="0.7"/>
-                        <ellipse cx="55" cy="38" rx="30" ry="8" fill="#267BF1" opacity="0.9"/>
-                        <text x="45" y="43" font-size="12" font-weight="700" fill="white" font-family="monospace">€</text>
-                        <text x="34" y="20" font-size="11" font-weight="700" fill="#267BF1" font-family="monospace">+2 400€</text>
-                    </svg>
-                    @else
-                    {{-- Anneau de progression --}}
-                    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;" aria-hidden="true">
-                        <circle cx="40" cy="40" r="30" fill="none" stroke="#267BF1" stroke-width="8" opacity="0.15"/>
-                        <circle cx="40" cy="40" r="30" fill="none" stroke="#267BF1" stroke-width="8"
-                            stroke-dasharray="188" stroke-dashoffset="47" stroke-linecap="round"
-                            transform="rotate(-90 40 40)"/>
-                        <text x="40" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#267BF1" font-family="monospace">75%</text>
-                    </svg>
-                    @endif
-                </div>
                 <div style="padding:28px 28px 0;">
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
                         <div style="width:44px;height:44px;border-radius:12px;background:rgba(38,123,241,0.08);display:flex;align-items:center;justify-content:center;font-size:22px;">

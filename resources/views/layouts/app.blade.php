@@ -127,8 +127,6 @@
     <!-- JS -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
-    <!-- Lottie player (chargé en différé, uniquement si présent sur la page) -->
-    <script>if(document.querySelector('lottie-player')){var s=document.createElement('script');s.src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js';document.body.appendChild(s);}</script>
     @include('partials.feedback-modal')
 
     <!-- ── Bandeau RGPD ──────────────────────────────────────── -->
