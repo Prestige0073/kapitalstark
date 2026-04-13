@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Models\AdConversion;
-use App\Models\LoanRequest;
 use App\Models\Faq;
 
 class LandingPageController extends Controller

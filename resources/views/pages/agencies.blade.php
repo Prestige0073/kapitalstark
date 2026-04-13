@@ -4,8 +4,17 @@
 
 @section('schema')
 @php
+    // Les agences sont définies dans la vue elle-même (bloc @php plus bas).
+    // On reconstruit ici les données minimales pour le schema LocalBusiness.
     $schemaService = app(\App\Services\SchemaMarkupService::class);
-    $agenciesSchema = isset($agencies) ? array_map(fn($a) => $schemaService->localBusiness($a), $agencies) : [];
+    $agenciesForSchema = [
+        ['name' => 'KapitalStark Lisboa',       'address' => 'Av. da Liberdade, 110, 3.º andar', 'city' => 'Lisboa', 'zip' => '1269-046', 'phone' => '+351210001234', 'lat' => 38.7197, 'lng' => -9.1468],
+        ['name' => 'KapitalStark Porto',         'address' => 'Rua de Santa Catarina, 85',         'city' => 'Porto',  'zip' => '4000-447', 'phone' => '+351220001234', 'lat' => 41.1496, 'lng' => -8.6109],
+        ['name' => 'KapitalStark Coimbra',       'address' => 'Rua Ferreira Borges, 25',           'city' => 'Coimbra','zip' => '3000-191', 'phone' => '+351239001234'],
+        ['name' => 'KapitalStark Braga',         'address' => 'Rua do Souto, 20',                  'city' => 'Braga',  'zip' => '4700-239', 'phone' => '+351253001234'],
+        ['name' => 'KapitalStark Faro (Algarve)','address' => 'Rua de Santo António, 40',          'city' => 'Faro',   'zip' => '8000-283', 'phone' => '+351289001234'],
+    ];
+    $agenciesSchema = array_map(fn($a) => $schemaService->localBusiness($a), $agenciesForSchema);
     $breadcrumb = $schemaService->breadcrumbs([
         ['name' => 'Accueil', 'url' => url('/')],
         ['name' => 'À propos', 'url' => url('/a-propos')],

@@ -80,7 +80,7 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type"        content="website">
     <meta property="og:site_name"   content="KapitalStark">
-    <meta property="og:title"       content="{{ $seoTitle ?? '' }} — {{ __('ui.seo.title_suffix') }}">
+    <meta property="og:title"       content="{{ $seoTitle ?? (View::hasSection('title') ? View::getSection('title') : 'KapitalStark') }} — {{ __('ui.seo.title_suffix') }}">
     <meta property="og:description" content="{{ $seoDesc ?? __('ui.seo.desc_default') }}">
     <meta property="og:image"       content="{{ isset($seoSettings) && $seoSettings?->og_image ? asset($seoSettings->og_image) : asset('img/og-cover.svg') }}">
     <meta property="og:locale"      content="{{ __('ui.seo.og_locale') }}">
