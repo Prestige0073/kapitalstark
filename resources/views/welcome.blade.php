@@ -267,14 +267,56 @@
         {{-- Visuel Lottie --}}
         <div class="why__visual reveal">
             <div class="why__img-wrap" style="background:none;box-shadow:none;overflow:visible;position:relative;">
-                <lottie-player
-                    src="https://assets10.lottiefiles.com/packages/lf20_06a6pf9i.json"
-                    background="transparent"
-                    speed="1"
-                    style="width:100%;max-width:460px;height:460px;margin:auto;display:block;"
-                    loop
-                    autoplay>
-                </lottie-player>
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:460px;height:460px;margin:auto;display:block;" aria-hidden="true">
+                    <!-- Fond cercle -->
+                    <circle cx="200" cy="200" r="180" fill="rgba(38,123,241,0.04)" stroke="rgba(38,123,241,0.08)" stroke-width="1"/>
+                    <circle cx="200" cy="200" r="130" fill="rgba(38,123,241,0.05)" stroke="rgba(38,123,241,0.06)" stroke-width="1"/>
+                    <!-- Grille horizontale -->
+                    <line x1="40" y1="120" x2="360" y2="120" stroke="rgba(38,123,241,0.12)" stroke-width="1"/>
+                    <line x1="40" y1="180" x2="360" y2="180" stroke="rgba(38,123,241,0.12)" stroke-width="1"/>
+                    <line x1="40" y1="240" x2="360" y2="240" stroke="rgba(38,123,241,0.12)" stroke-width="1"/>
+                    <line x1="40" y1="300" x2="360" y2="300" stroke="rgba(38,123,241,0.12)" stroke-width="1"/>
+                    <!-- Zone remplie sous la courbe -->
+                    <path d="M40,290 L100,240 L160,255 L220,175 L280,185 L340,110 L360,115 L360,310 L40,310 Z"
+                        fill="rgba(38,123,241,0.07)"/>
+                    <!-- Courbe principale -->
+                    <polyline points="40,290 100,240 160,255 220,175 280,185 340,110"
+                        fill="none" stroke="#267BF1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-dasharray="700" stroke-dashoffset="700">
+                        <animate attributeName="stroke-dashoffset" from="700" to="0" dur="2.2s" begin="0.4s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+                    </polyline>
+                    <!-- Points de données -->
+                    <circle cx="100" cy="240" r="5" fill="#267BF1" opacity="0">
+                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="0.9s" fill="freeze"/>
+                    </circle>
+                    <circle cx="160" cy="255" r="5" fill="#267BF1" opacity="0">
+                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.2s" fill="freeze"/>
+                    </circle>
+                    <circle cx="220" cy="175" r="5" fill="#267BF1" opacity="0">
+                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.5s" fill="freeze"/>
+                    </circle>
+                    <circle cx="280" cy="185" r="5" fill="#267BF1" opacity="0">
+                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.8s" fill="freeze"/>
+                    </circle>
+                    <!-- Point final pulsant -->
+                    <circle cx="340" cy="110" r="6" fill="#267BF1" opacity="0">
+                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.4s" fill="freeze"/>
+                        <animate attributeName="r" values="6;9;6" dur="2s" begin="2.7s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="340" cy="110" r="14" fill="rgba(38,123,241,0.15)" opacity="0">
+                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.4s" fill="freeze"/>
+                        <animate attributeName="r" values="14;20;14" dur="2s" begin="2.7s" repeatCount="indefinite"/>
+                    </circle>
+                    <!-- Étiquettes axe Y -->
+                    <text x="16" y="124" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">+20%</text>
+                    <text x="16" y="184" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">+10%</text>
+                    <text x="22" y="244" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">0%</text>
+                    <!-- Badge +12% en haut -->
+                    <rect x="290" y="72" width="72" height="28" rx="8" fill="rgba(22,163,74,0.12)" stroke="rgba(22,163,74,0.25)" stroke-width="1"/>
+                    <text x="326" y="91" text-anchor="middle" font-size="13" font-weight="700" fill="#15803d" font-family="monospace" opacity="0">+12%
+                        <animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="2.6s" fill="freeze"/>
+                    </text>
+                </svg>
             </div>
             <div class="why__badge-float">
                 <div class="why__badge-icon">⭐</div>
