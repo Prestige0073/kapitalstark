@@ -158,10 +158,12 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('is_client')->group(f
     Route::get('/profil',      [DashboardController::class, 'profile'])->name('profile');
     Route::put('/profil',      [DashboardController::class, 'updateProfile'])->name('profile.update');
     Route::put('/password',    [DashboardController::class, 'updatePassword'])->name('password.update');
-    Route::get('/messagerie',         [DashboardController::class, 'messages'])->name('messages');
-    Route::post('/messagerie',        [DashboardController::class, 'sendMessage'])->name('messages.send');
-    Route::get('/messagerie/poll',    [DashboardController::class, 'pollMessages'])->name('messages.poll');
-    Route::get('/notifs/poll',        [DashboardController::class, 'pollNotifications'])->name('notifs.poll');
+    Route::get('/messagerie',              [DashboardController::class, 'messages'])->name('messages');
+    Route::post('/messagerie',             [DashboardController::class, 'sendMessage'])->name('messages.send')->middleware('throttle:20,1');
+    Route::get('/messagerie/poll',         [DashboardController::class, 'pollMessages'])->name('messages.poll')->middleware('throttle:60,1');
+    Route::post('/messagerie/typing',      [DashboardController::class, 'setTyping'])->name('messages.typing')->middleware('throttle:30,1');
+    Route::get('/messagerie/typing-status',[DashboardController::class, 'getTypingStatus'])->name('messages.typing.status')->middleware('throttle:60,1');
+    Route::get('/notifs/poll',             [DashboardController::class, 'pollNotifications'])->name('notifs.poll');
     Route::post('/push/subscribe',    [DashboardController::class, 'savePushSubscription'])->name('push.subscribe');
     Route::post('/push/unsubscribe',  [DashboardController::class, 'removePushSubscription'])->name('push.unsubscribe');
     Route::get('/messagerie/{id}/attachment', [DashboardController::class, 'downloadAttachment'])->name('messages.attachment');
@@ -209,11 +211,13 @@ Route::prefix('admin')->name('admin.')->middleware(['is_admin'])->group(function
     Route::post('/prets',                       [AdminController::class, 'createLoan'])->name('loans.create');
     Route::post('/prets/{id}',                  [AdminController::class, 'updateLoan'])->name('loans.update');
     // Messagerie
-    Route::get('/messagerie',                   [AdminController::class, 'messages'])->name('messages');
-    Route::post('/messagerie',                  [AdminController::class, 'sendMessage'])->name('messages.send');
-    Route::post('/messagerie/{id}/lu',          [AdminController::class, 'markMessageRead'])->name('messages.read');
-    Route::get('/messagerie/{userId}/poll',     [AdminController::class, 'pollMessages'])->name('messages.poll');
-    Route::get('/messagerie/{id}/attachment',   [AdminController::class, 'downloadAttachment'])->name('messages.download');
+    Route::get('/messagerie',                        [AdminController::class, 'messages'])->name('messages');
+    Route::post('/messagerie',                       [AdminController::class, 'sendMessage'])->name('messages.send')->middleware('throttle:30,1');
+    Route::post('/messagerie/{id}/lu',               [AdminController::class, 'markMessageRead'])->name('messages.read');
+    Route::get('/messagerie/{userId}/poll',          [AdminController::class, 'pollMessages'])->name('messages.poll')->middleware('throttle:120,1');
+    Route::get('/messagerie/{id}/attachment',        [AdminController::class, 'downloadAttachment'])->name('messages.download');
+    Route::post('/messagerie/{userId}/typing',       [AdminController::class, 'setTyping'])->name('messages.typing')->middleware('throttle:30,1');
+    Route::get('/messagerie/{userId}/typing-status', [AdminController::class, 'getTypingStatus'])->name('messages.typing.status')->middleware('throttle:120,1');
     // Rendez-vous
     Route::get('/rendez-vous',                  [AdminController::class, 'appointments'])->name('appointments');
     Route::post('/rendez-vous/{id}',            [AdminController::class, 'updateAppointment'])->name('appointments.update');

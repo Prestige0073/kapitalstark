@@ -481,10 +481,41 @@ class AdminController extends Controller
             'subject'         => $m->subject,
             'at'              => $m->created_at->format('d/m/Y H:i'),
             'created_at'      => $m->created_at->toISOString(),
+            'read'            => $m->read,
             'attachment_name' => $m->attachment_name,
             'attachment_url'  => $m->attachment_path ? route('admin.messages.download', $m->id) : null,
         ]);
-        return response()->json(['messages' => $msgs]);
+
+        // Accusé de lecture : renvoyer si le client a lu les derniers messages outbound
+        $lastOutboundRead = Message::where('user_id', $userId)
+            ->where('direction', 'outbound')
+            ->where('read', true)
+            ->latest('created_at')
+            ->value('id');
+
+        // Indicateur de frappe du client
+        $clientTyping = \Cache::get("typing:client:{$userId}", false);
+
+        return response()->json([
+            'messages'         => $msgs,
+            'last_read_id'     => $lastOutboundRead,
+            'client_typing'    => $clientTyping,
+        ]);
+    }
+
+    /** Enregistre l'indicateur de frappe de l'admin vers un client. */
+    public function setTyping(int $userId)
+    {
+        \Cache::put("typing:admin:{$userId}", true, now()->addSeconds(5));
+        return response()->json(['ok' => true]);
+    }
+
+    /** Retourne si l'admin est en train d'écrire (lu par le client). */
+    public function getTypingStatus(int $userId)
+    {
+        return response()->json([
+            'admin_typing' => (bool) \Cache::get("typing:admin:{$userId}", false),
+        ]);
     }
 
     public function downloadAttachment(int $id)

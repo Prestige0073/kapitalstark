@@ -308,10 +308,18 @@ document.addEventListener('keydown', function(e) {
     const userId = {{ $selectedUserId ?? 'null' }};
     if (!userId) return;
 
+    const chatBody    = document.getElementById('chat-body');
+    const textarea    = document.querySelector('textarea[name="body"]');
     let lastTimestamp = null;
-    const chatBody = document.getElementById('chat-body');
+    let lastReadId    = null;   // dernier outbound lu par le client
+    let pollDelay     = 2000;   // backoff : 2s → 10s quand inactif
+    let idleCount     = 0;
+    let typingTimer   = null;
+    let isTyping      = false;
+    let typingEl      = null;   // bulle "le client écrit…"
+    let pollTimer     = null;
 
-    // Init last timestamp from existing messages
+    /* ── Init ─────────────────────────────────────────────── */
     const existing = chatBody ? chatBody.querySelectorAll('[data-ts]') : [];
     if (existing.length) lastTimestamp = existing[existing.length - 1].dataset.ts;
 
@@ -320,39 +328,152 @@ document.addEventListener('keydown', function(e) {
     }
     scrollBottom();
 
-    function escHtml(str) {
-        return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    function escHtml(s) {
+        return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
+    /* ── Rendu d'un nouveau message ───────────────────────── */
     function renderMessage(msg) {
-        const wrap = document.createElement('div');
-        wrap.style.cssText = 'display:flex;justify-content:' + (msg.from === 'admin' ? 'flex-end' : 'flex-start') + ';margin-bottom:4px;';
+        const isAdmin = msg.from === 'admin';
+        const wrap  = document.createElement('div');
+        wrap.id = 'msg-' + msg.id;
+        wrap.style.cssText = 'display:flex;justify-content:' + (isAdmin ? 'flex-end' : 'flex-start') + ';align-items:flex-end;gap:6px;margin-bottom:4px;';
         const bubble = document.createElement('div');
         bubble.dataset.ts = msg.created_at;
-        bubble.style.cssText = 'max-width:70%;padding:12px 16px;border-radius:' + (msg.from === 'admin' ? '16px 4px 16px 16px' : '4px 16px 16px 16px') + ';background:' + (msg.from === 'admin' ? '#267BF1' : 'rgba(255,255,255,0.07)') + ';color:' + (msg.from === 'admin' ? '#fff' : '#e2e8f0') + ';font-size:14px;line-height:1.5;';
-        bubble.innerHTML = '<p style="margin:0 0 4px;white-space:pre-wrap;">' + escHtml(msg.body) + '</p><span style="font-size:11px;opacity:0.6;display:block;text-align:right;">' + msg.at + '</span>';
-        if (msg.attachment_name) {
-            bubble.innerHTML += '<div style="margin-top:8px;"><a href="' + msg.attachment_url + '" style="color:' + (msg.from === 'admin' ? '#A8CFF7' : '#267BF1') + ';font-size:12px;text-decoration:none;">&#128206; ' + escHtml(msg.attachment_name) + '</a></div>';
+        bubble.style.cssText = 'max-width:68%;padding:12px 16px;border-radius:'
+            + (isAdmin ? '16px 4px 16px 16px' : '4px 16px 16px 16px')
+            + ';background:' + (isAdmin ? '#267BF1' : 'rgba(255,255,255,0.07)')
+            + ';color:' + (isAdmin ? '#fff' : '#e2e8f0') + ';font-size:14px;line-height:1.5;';
+
+        let readBadge = isAdmin
+            ? '<span id="read-badge-' + msg.id + '" style="font-size:11px;opacity:0.6;margin-left:4px;">'
+              + (msg.read ? '✓✓ Lu' : '✓ Envoyé') + '</span>'
+            : '';
+
+        bubble.innerHTML = '<p style="margin:0 0 4px;white-space:pre-wrap;">' + escHtml(msg.body) + '</p>'
+            + '<span style="font-size:11px;opacity:0.6;display:flex;align-items:center;justify-content:flex-end;gap:6px;">'
+            + msg.at + readBadge + '</span>';
+
+        if (msg.attachment_name && msg.attachment_url) {
+            bubble.innerHTML += '<div style="margin-top:8px;"><a href="' + escHtml(msg.attachment_url)
+                + '" style="color:' + (isAdmin ? '#A8CFF7' : '#267BF1') + ';font-size:12px;text-decoration:none;">&#128206; '
+                + escHtml(msg.attachment_name) + '</a></div>';
         }
         wrap.appendChild(bubble);
         return wrap;
     }
 
-    setInterval(function() {
-        const url = '/admin/messagerie/' + userId + '/poll' + (lastTimestamp ? '?since=' + encodeURIComponent(lastTimestamp) : '');
+    /* ── Accusé de lecture : marque les outbound lus ─────── */
+    function updateReadReceipts(lastReadIdFromServer) {
+        if (!lastReadIdFromServer || lastReadIdFromServer === lastReadId) return;
+        lastReadId = lastReadIdFromServer;
+        // Mettre à jour tous les badges ✓ Envoyé → ✓✓ Lu pour les messages id <= lastReadId
+        document.querySelectorAll('[id^="read-badge-"]').forEach(function(el) {
+            const msgId = parseInt(el.id.replace('read-badge-', ''), 10);
+            if (msgId <= lastReadId && el.textContent.trim() === '✓ Envoyé') {
+                el.textContent = '✓✓ Lu';
+                el.style.color = '#A8CFF7';
+            }
+        });
+    }
+
+    /* ── Typing indicator visiteur ────────────────────────── */
+    function showClientTyping(show) {
+        if (show && !typingEl) {
+            typingEl = document.createElement('div');
+            typingEl.id = 'typing-indicator';
+            typingEl.style.cssText = 'display:flex;justify-content:flex-start;margin-bottom:4px;';
+            typingEl.innerHTML = '<div style="padding:10px 16px;border-radius:4px 16px 16px 16px;background:rgba(255,255,255,0.07);color:#718096;font-size:13px;font-style:italic;">'
+                + '&#8942; Le client est en train d\'écrire…</div>';
+            chatBody.appendChild(typingEl);
+            scrollBottom();
+        } else if (!show && typingEl) {
+            typingEl.remove();
+            typingEl = null;
+        }
+    }
+
+    /* ── Envoi typing signal admin → serveur ──────────────── */
+    function sendTypingSignal() {
+        if (isTyping) return;
+        isTyping = true;
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+        fetch('/admin/messagerie/' + userId + '/typing', {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': csrfToken },
+        }).catch(function(){});
+        // Reset après 4s (TTL cache = 5s)
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(function() { isTyping = false; }, 4000);
+    }
+
+    if (textarea) {
+        textarea.addEventListener('input', sendTypingSignal);
+    }
+
+    /* ── Polling avec backoff exponentiel ─────────────────── */
+    function schedulePoll() {
+        clearTimeout(pollTimer);
+        pollTimer = setTimeout(doPoll, pollDelay);
+    }
+
+    function doPoll() {
+        const url = '/admin/messagerie/' + userId + '/poll'
+            + (lastTimestamp ? '?since=' + encodeURIComponent(lastTimestamp) : '');
+
         fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
             .then(function(r) { return r.json(); })
             .then(function(data) {
+                let gotNew = false;
+
                 if (data.messages && data.messages.length) {
+                    // Supprimer typing indicator avant d'insérer de vrais messages
+                    if (typingEl) { typingEl.remove(); typingEl = null; }
                     data.messages.forEach(function(msg) {
-                        chatBody.appendChild(renderMessage(msg));
-                        lastTimestamp = msg.created_at;
+                        if (!document.getElementById('msg-' + msg.id)) {
+                            chatBody.appendChild(renderMessage(msg));
+                            lastTimestamp = msg.created_at;
+                        }
                     });
                     scrollBottom();
+                    gotNew = true;
+                }
+
+                // Accusé de lecture
+                updateReadReceipts(data.last_read_id);
+
+                // Typing indicator client
+                showClientTyping(!!data.client_typing);
+
+                // Backoff : si pas de nouveau msg → ralentir jusqu'à 10s
+                if (gotNew) {
+                    pollDelay = 2000;
+                    idleCount = 0;
+                } else {
+                    idleCount++;
+                    if (idleCount > 5) {
+                        pollDelay = Math.min(pollDelay * 1.4, 10000);
+                    }
                 }
             })
-            .catch(function() {});
-    }, 3000);
+            .catch(function() {
+                // Erreur réseau → backoff agressif
+                pollDelay = Math.min(pollDelay * 2, 15000);
+            })
+            .finally(schedulePoll);
+    }
+
+    // Reprendre le poll immédiatement si l'onglet redevient actif
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            pollDelay = 2000;
+            idleCount = 0;
+            clearTimeout(pollTimer);
+            doPoll();
+        }
+    });
+
+    schedulePoll();
 })();
 </script>
 @endsection

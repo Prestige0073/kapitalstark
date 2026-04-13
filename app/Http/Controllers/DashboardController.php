@@ -336,8 +336,9 @@ class DashboardController extends Controller
     {
         $request->validate(['since' => 'nullable|date']);
 
+        $uid   = Auth::id();
         $since = $request->query('since');
-        $q = Message::where('user_id', Auth::id())->orderBy('created_at', 'asc');
+        $q = Message::where('user_id', $uid)->orderBy('created_at', 'asc');
         if ($since) {
             $q->where('created_at', '>', $since);
         }
@@ -348,10 +349,41 @@ class DashboardController extends Controller
             'subject'         => $m->subject,
             'at'              => $m->created_at->format('d/m/Y H:i'),
             'created_at'      => $m->created_at->toISOString(),
+            'read'            => $m->read,
             'attachment_name' => $m->attachment_name,
             'attachment_url'  => $m->attachment_path ? route('dashboard.messages.attachment', $m->id) : null,
         ]);
-        return response()->json(['messages' => $msgs]);
+
+        // Accusé de lecture : dernier message inbound que l'admin a lu
+        $lastReadId = Message::where('user_id', $uid)
+            ->where('direction', 'inbound')
+            ->where('read', true)
+            ->latest('created_at')
+            ->value('id');
+
+        // Indicateur de frappe de l'admin
+        $adminTyping = \Cache::get("typing:admin:{$uid}", false);
+
+        return response()->json([
+            'messages'      => $msgs,
+            'last_read_id'  => $lastReadId,
+            'admin_typing'  => $adminTyping,
+        ]);
+    }
+
+    /** Client signale qu'il est en train d'écrire. */
+    public function setTyping(Request $request)
+    {
+        \Cache::put('typing:client:' . Auth::id(), true, now()->addSeconds(5));
+        return response()->json(['ok' => true]);
+    }
+
+    /** Retourne si l'admin est en train d'écrire (pour debug/futur usage). */
+    public function getTypingStatus(Request $request)
+    {
+        return response()->json([
+            'admin_typing' => (bool) \Cache::get('typing:admin:' . Auth::id(), false),
+        ]);
     }
 
     public function downloadAttachment(int $id)

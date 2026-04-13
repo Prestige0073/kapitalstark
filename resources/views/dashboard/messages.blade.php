@@ -130,6 +130,7 @@
 }
 .chat-msg--in  .chat-msg__meta { color: var(--text-muted); opacity: .85; }
 .chat-msg--out .chat-msg__meta { color: rgba(255,255,255,.65); }
+.chat-msg__read { margin-left: 6px; font-size: 10px; opacity: .8; }
 
 .chat-msg__attach {
     display: inline-flex; align-items: center; gap: 6px;
@@ -310,12 +311,8 @@
     }
     scrollBottom();
 
-    /* Auto-grow textarea */
+    /* Auto-grow textarea + typing signal (géré dans le bloc polling plus bas) */
     if (textarea) {
-        textarea.addEventListener('input', function () {
-            this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 130) + 'px';
-        });
         textarea.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -367,7 +364,15 @@
         });
     }
 
-    var lastTs = null;
+    var lastTs      = null;
+    var lastReadId  = null;
+    var pollDelay   = 2000;
+    var idleCount   = 0;
+    var pollTimer   = null;
+    var typingTimer = null;
+    var isTyping    = false;
+    var typingEl    = null;
+
     var rendered = chatBody ? chatBody.querySelectorAll('[data-ts]') : [];
     if (rendered.length) lastTs = rendered[rendered.length - 1].dataset.ts;
 
@@ -397,6 +402,13 @@
                 escHtml(msg.attachment_name) + '</a>';
         }
 
+        /* Accusé de lecture pour les messages sortants */
+        var readBadge = '';
+        if (isOut) {
+            readBadge = '<span id="read-badge-' + msg.id + '" class="chat-msg__read">'
+                + (msg.read ? '✓✓ Lu' : '✓ Envoyé') + '</span>';
+        }
+
         var el = document.createElement('div');
         el.className  = cls;
         el.dataset.ts = msg.created_at;
@@ -407,7 +419,7 @@
                 subjectHtml +
                 '<p class="chat-msg__text">' + escHtml(msg.body) + '</p>' +
                 attachHtml +
-                '<div class="chat-msg__meta">' + escHtml(msg.at) + '</div>' +
+                '<div class="chat-msg__meta">' + escHtml(msg.at) + readBadge + '</div>' +
             '</div>';
         return el;
     }
@@ -417,32 +429,109 @@
         if (e) e.remove();
     }
 
-    /* Polling every 3s */
-    setInterval(function () {
+    /* ── Accusé de lecture ──────────────────────────────── */
+    function updateReadReceipts(newLastReadId) {
+        if (!newLastReadId || newLastReadId === lastReadId) return;
+        lastReadId = newLastReadId;
+        document.querySelectorAll('[id^="read-badge-"]').forEach(function(el) {
+            var msgId = parseInt(el.id.replace('read-badge-', ''), 10);
+            if (msgId <= lastReadId && el.textContent.trim() === '✓ Envoyé') {
+                el.textContent = '✓✓ Lu';
+            }
+        });
+    }
+
+    /* ── Typing indicator conseiller ────────────────────── */
+    function showAdvisorTyping(show) {
+        if (show && !typingEl) {
+            typingEl = document.createElement('div');
+            typingEl.className = 'chat-msg chat-msg--in';
+            typingEl.id = 'typing-indicator';
+            typingEl.innerHTML =
+                '<div class="chat-msg__av">KS</div>' +
+                '<div class="chat-msg__bubble"><p class="chat-msg__text" style="font-style:italic;color:#94a3b8;">' +
+                '&#8942; Votre conseiller est en train d\'écrire…</p></div>';
+            chatBody.appendChild(typingEl);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        } else if (!show && typingEl) {
+            typingEl.remove();
+            typingEl = null;
+        }
+    }
+
+    /* ── Signal typing du client → serveur ──────────────── */
+    function sendTypingSignal() {
+        if (isTyping) return;
+        isTyping = true;
+        fetch('/dashboard/messagerie/typing', {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': csrfToken },
+        }).catch(function(){});
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(function() { isTyping = false; }, 4000);
+    }
+
+    if (textarea) {
+        textarea.addEventListener('input', function() {
+            /* auto-grow existant */
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 130) + 'px';
+            /* typing signal */
+            sendTypingSignal();
+        });
+    }
+
+    /* ── Polling avec backoff exponentiel ───────────────── */
+    function schedulePoll() {
+        clearTimeout(pollTimer);
+        pollTimer = setTimeout(doPoll, pollDelay);
+    }
+
+    function doPoll() {
         var url = '/dashboard/messagerie/poll' +
             (lastTs ? '?since=' + encodeURIComponent(lastTs) : '');
 
-        fetch(url, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-TOKEN': csrfToken,
-            }
-        })
+        fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRF-TOKEN': csrfToken } })
         .then(function (r) { return r.json(); })
         .then(function (data) {
-            if (!data.messages || !data.messages.length) return;
             var appended = false;
-            data.messages.forEach(function (msg) {
-                if (document.getElementById('msg-' + msg.id)) return;
-                lastTs = msg.created_at;
-                removeEmpty();
-                chatBody.appendChild(renderBubble(msg));
-                appended = true;
-            });
-            if (appended) scrollBottom();
+            if (data.messages && data.messages.length) {
+                if (typingEl) { typingEl.remove(); typingEl = null; }
+                data.messages.forEach(function (msg) {
+                    if (document.getElementById('msg-' + msg.id)) return;
+                    lastTs = msg.created_at;
+                    removeEmpty();
+                    chatBody.appendChild(renderBubble(msg));
+                    appended = true;
+                });
+                if (appended) scrollBottom();
+            }
+
+            updateReadReceipts(data.last_read_id);
+            showAdvisorTyping(!!data.admin_typing);
+
+            if (appended) {
+                pollDelay = 2000; idleCount = 0;
+            } else {
+                idleCount++;
+                if (idleCount > 5) pollDelay = Math.min(pollDelay * 1.4, 10000);
+            }
         })
-        .catch(function () {});
-    }, 3000);
+        .catch(function () {
+            pollDelay = Math.min(pollDelay * 2, 15000);
+        })
+        .finally(schedulePoll);
+    }
+
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            pollDelay = 2000; idleCount = 0;
+            clearTimeout(pollTimer);
+            doPoll();
+        }
+    });
+
+    schedulePoll();
 
 })();
 </script>
