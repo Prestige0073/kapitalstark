@@ -267,55 +267,42 @@
         {{-- Visuel Lottie --}}
         <div class="why__visual reveal">
             <div class="why__img-wrap" style="background:none;box-shadow:none;overflow:visible;position:relative;">
-                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:460px;height:460px;margin:auto;display:block;" aria-hidden="true">
-                    <!-- Fond cercle -->
-                    <circle cx="200" cy="200" r="180" fill="rgba(38,123,241,0.04)" stroke="rgba(38,123,241,0.08)" stroke-width="1"/>
-                    <circle cx="200" cy="200" r="130" fill="rgba(38,123,241,0.05)" stroke="rgba(38,123,241,0.06)" stroke-width="1"/>
-                    <!-- Grille horizontale -->
-                    <line x1="40" y1="120" x2="360" y2="120" stroke="rgba(38,123,241,0.12)" stroke-width="1"/>
-                    <line x1="40" y1="180" x2="360" y2="180" stroke="rgba(38,123,241,0.12)" stroke-width="1"/>
-                    <line x1="40" y1="240" x2="360" y2="240" stroke="rgba(38,123,241,0.12)" stroke-width="1"/>
-                    <line x1="40" y1="300" x2="360" y2="300" stroke="rgba(38,123,241,0.12)" stroke-width="1"/>
-                    <!-- Zone remplie sous la courbe -->
-                    <path d="M40,290 L100,240 L160,255 L220,175 L280,185 L340,110 L360,115 L360,310 L40,310 Z"
-                        fill="rgba(38,123,241,0.07)"/>
-                    <!-- Courbe principale -->
-                    <polyline points="40,290 100,240 160,255 220,175 280,185 340,110"
-                        fill="none" stroke="#267BF1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-dasharray="700" stroke-dashoffset="700">
-                        <animate attributeName="stroke-dashoffset" from="700" to="0" dur="2.2s" begin="0.4s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-                    </polyline>
+                <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:460px;height:auto;margin:auto;display:block;" aria-hidden="true">
+                    <!-- Cercles de fond -->
+                    <circle cx="200" cy="200" r="175" fill="rgba(38,123,241,0.05)" stroke="rgba(38,123,241,0.1)" stroke-width="1.5"/>
+                    <circle cx="200" cy="200" r="125" fill="rgba(38,123,241,0.07)" stroke="rgba(38,123,241,0.12)" stroke-width="1.5"/>
+                    <!-- Grille -->
+                    <line x1="40" y1="110" x2="360" y2="110" stroke="rgba(38,123,241,0.2)" stroke-width="1"/>
+                    <line x1="40" y1="160" x2="360" y2="160" stroke="rgba(38,123,241,0.2)" stroke-width="1"/>
+                    <line x1="40" y1="210" x2="360" y2="210" stroke="rgba(38,123,241,0.2)" stroke-width="1"/>
+                    <line x1="40" y1="260" x2="360" y2="260" stroke="rgba(38,123,241,0.2)" stroke-width="1"/>
+                    <!-- Zone remplie -->
+                    <path d="M40,280 L100,230 L160,245 L220,168 L280,178 L340,108 L360,112 L360,300 L40,300 Z"
+                        fill="rgba(38,123,241,0.12)"/>
+                    <!-- Courbe principale (toujours visible) -->
+                    <polyline points="40,280 100,230 160,245 220,168 280,178 340,108"
+                        fill="none" stroke="#267BF1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <!-- Points de données -->
-                    <circle cx="100" cy="240" r="5" fill="#267BF1" opacity="0">
-                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="0.9s" fill="freeze"/>
-                    </circle>
-                    <circle cx="160" cy="255" r="5" fill="#267BF1" opacity="0">
-                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.2s" fill="freeze"/>
-                    </circle>
-                    <circle cx="220" cy="175" r="5" fill="#267BF1" opacity="0">
-                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.5s" fill="freeze"/>
-                    </circle>
-                    <circle cx="280" cy="185" r="5" fill="#267BF1" opacity="0">
-                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.8s" fill="freeze"/>
-                    </circle>
+                    <circle cx="100" cy="230" r="5" fill="#267BF1"/>
+                    <circle cx="160" cy="245" r="5" fill="#267BF1"/>
+                    <circle cx="220" cy="168" r="5" fill="#267BF1"/>
+                    <circle cx="280" cy="178" r="5" fill="#267BF1"/>
                     <!-- Point final pulsant -->
-                    <circle cx="340" cy="110" r="6" fill="#267BF1" opacity="0">
-                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.4s" fill="freeze"/>
-                        <animate attributeName="r" values="6;9;6" dur="2s" begin="2.7s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="340" cy="110" r="14" fill="rgba(38,123,241,0.15)" opacity="0">
-                        <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.4s" fill="freeze"/>
-                        <animate attributeName="r" values="14;20;14" dur="2s" begin="2.7s" repeatCount="indefinite"/>
-                    </circle>
+                    <circle cx="340" cy="108" r="6" fill="#267BF1" class="guide-svg-pulse"/>
+                    <circle cx="340" cy="108" r="14" fill="rgba(38,123,241,0.2)" class="guide-svg-pulse-ring"/>
                     <!-- Étiquettes axe Y -->
-                    <text x="16" y="124" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">+20%</text>
-                    <text x="16" y="184" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">+10%</text>
-                    <text x="22" y="244" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">0%</text>
-                    <!-- Badge +12% en haut -->
-                    <rect x="290" y="72" width="72" height="28" rx="8" fill="rgba(22,163,74,0.12)" stroke="rgba(22,163,74,0.25)" stroke-width="1"/>
-                    <text x="326" y="91" text-anchor="middle" font-size="13" font-weight="700" fill="#15803d" font-family="monospace" opacity="0">+12%
-                        <animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="2.6s" fill="freeze"/>
-                    </text>
+                    <text x="2" y="114" font-size="12" fill="rgba(26,37,64,0.45)" font-family="monospace">+20%</text>
+                    <text x="8" y="215" font-size="12" fill="rgba(26,37,64,0.45)" font-family="monospace">0%</text>
+                    <!-- Badge +12% -->
+                    <rect x="280" y="68" width="76" height="28" rx="8" fill="rgba(22,163,74,0.15)" stroke="rgba(22,163,74,0.4)" stroke-width="1.5"/>
+                    <text x="318" y="87" text-anchor="middle" font-size="13" font-weight="700" fill="#15803d" font-family="monospace">+12%</text>
+                    <!-- Axe X labels -->
+                    <text x="35" y="320" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">Jan</text>
+                    <text x="93" y="320" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">Mar</text>
+                    <text x="153" y="320" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">Mai</text>
+                    <text x="213" y="320" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">Juil</text>
+                    <text x="273" y="320" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">Sep</text>
+                    <text x="333" y="320" font-size="11" fill="rgba(26,37,64,0.3)" font-family="monospace">Nov</text>
                 </svg>
             </div>
             <div class="why__badge-float">
