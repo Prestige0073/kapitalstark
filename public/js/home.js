@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         input && input.focus();
         return;
       }
-      btn.disabled = true;
+      if (btn) btn.disabled = true;
       const csrfToken = document.querySelector('meta[name="csrf-token"]')
         ? document.querySelector('meta[name="csrf-token"]').content
         : '';

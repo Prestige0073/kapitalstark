@@ -113,6 +113,8 @@ Route::get('/sitemap.xml', function () {
         ['loc' => url('/a-propos/carrieres'),      'priority' => '0.5',  'freq' => 'monthly'],
         ['loc' => url('/contact'),                 'priority' => '0.7',  'freq' => 'monthly'],
         ['loc' => url('/contact/rdv'),             'priority' => '0.6',  'freq' => 'monthly'],
+        ['loc' => url('/temoignages'),             'priority' => '0.7',  'freq' => 'monthly'],
+        ['loc' => url('/presse'),                  'priority' => '0.6',  'freq' => 'monthly'],
         ['loc' => url('/mentions-legales'),        'priority' => '0.3',  'freq' => 'yearly'],
         ['loc' => url('/cgu'),                     'priority' => '0.3',  'freq' => 'yearly'],
         ['loc' => url('/confidentialite'),         'priority' => '0.3',  'freq' => 'yearly'],

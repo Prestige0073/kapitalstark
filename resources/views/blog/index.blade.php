@@ -42,7 +42,7 @@
         @if(count($articles) > 0)
         @php $featured = $articles[0]; @endphp
         <div class="blog-featured reveal" data-tag="{{ $featured['tag'] }}" style="margin-bottom:48px;">
-            <a href="{{ route('blog.show', $featured['slug']) }}" class="blog-card card" style="display:grid;grid-template-columns:1.2fr 1fr;overflow:hidden;border-radius:var(--radius-xl);text-decoration:none;color:inherit;">
+            <a href="{{ route('blog.show', $featured['slug']) }}" class="blog-card card blog-featured-grid">
                 <div class="blog-card__img" style="border-radius:0;aspect-ratio:auto;min-height:280px;">
                     <span style="font-size:80px;opacity:0.25;">{{ $featured['icon'] }}</span>
                     <div class="blog-card__img-overlay"></div>

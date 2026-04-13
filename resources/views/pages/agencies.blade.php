@@ -134,7 +134,7 @@
 {{-- Agence en ligne --}}
 <section style="background:var(--cream);">
     <div class="container" style="max-width:900px;">
-        <div class="card reveal" style="padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+        <div class="card reveal agency-online-grid">
             <div>
                 <span class="section-label" style="margin-bottom:16px;display:inline-block;">{{ __('pages.agencies.online_label') }}</span>
                 <h2 style="font-size:28px;margin-bottom:16px;">{{ __('pages.agencies.online_title') }}</h2>

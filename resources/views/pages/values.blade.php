@@ -24,7 +24,7 @@
 {{-- Valeurs principales --}}
 <section style="background:var(--white);">
     <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:80px;">
+        <div class="values-main-grid">
             @foreach(trans('pages.values.items') as $i => $val)
             <div class="card reveal stagger-{{ ($i % 2) + 1 }}" style="padding:40px;overflow:hidden;position:relative;">
                 <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:{{ $val['color'] }};opacity:0.06;"></div>
@@ -48,12 +48,12 @@
         </div>
 
         {{-- Chiffres clés --}}
-        <div class="reveal" style="background:linear-gradient(135deg,var(--navy),var(--blue-dark));border-radius:24px;padding:60px;margin-bottom:80px;">
+        <div class="reveal values-stats-block" style="background:linear-gradient(135deg,var(--navy),var(--blue-dark));">
             <div style="text-align:center;margin-bottom:48px;">
                 <span class="section-label" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">{{ __('pages.values.stats_label') }}</span>
                 <h2 style="color:#fff;margin-top:14px;">{{ __('pages.values.stats_title') }}</h2>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;">
+            <div class="values-stats-grid">
                 @foreach(trans('pages.values.stats') as $stat)
                 <div>
                     <div class="font-mono" style="font-size:36px;font-weight:700;color:#fff;margin-bottom:8px;">{{ $stat['val'] }}</div>
@@ -68,7 +68,7 @@
             <span class="section-label">{{ __('pages.values.rse_label') }}</span>
             <h2 class="section-title reveal stagger-1">{{ __('pages.values.rse_title') }}</h2>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px;">
+        <div class="values-rse-grid">
             @foreach(trans('pages.values.rse') as $i => $eng)
             <div class="card reveal stagger-{{ ($i % 3) + 1 }}" style="padding:28px;">
                 <div style="font-size:32px;margin-bottom:14px;">{{ $eng['icon'] }}</div>

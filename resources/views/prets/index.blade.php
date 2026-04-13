@@ -79,7 +79,7 @@
                     <h2 style="font-size:20px;margin-bottom:8px;">{{ $loan['title'] }}</h2>
                     <p style="font-size:14px;color:var(--text-muted);line-height:1.65;margin-bottom:20px;">{{ $loan['desc'] }}</p>
 
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+                    <div class="loan-index-detail-grid">
                         @foreach([
                             ['key'=> __('loans.index.detail_amount'), 'val'=> $loan['amount_min'].' → '.$loan['amount_max']],
                             ['key'=> __('loans.index.detail_dur'),    'val'=> $loan['duration_max']],
