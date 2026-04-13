@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->command->info('✓ Admin : admin@kapitalstark.fr / Admin1234!');
+
+        $this->call([
+            FaqSeeder::class,
+            SeoSettingSeeder::class,
+        ]);
     }
 }

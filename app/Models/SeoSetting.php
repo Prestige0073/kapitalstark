@@ -15,8 +15,15 @@ class SeoSetting extends Model
     /** Récupère les settings pour un type de page donné (avec mise en cache 1h) */
     public static function forPage(string $pageType): ?self
     {
-        return \Cache::remember("seo_settings:{$pageType}", 3600, function () use ($pageType) {
-            return static::where('page_type', $pageType)->first();
+        // On stocke en tableau brut pour éviter les problèmes de désérialisation Eloquent via cache DB
+        $data = \Cache::remember("seo_arr:{$pageType}", 3600, function () use ($pageType) {
+            return static::where('page_type', $pageType)->first()?->toArray();
         });
+
+        if (empty($data)) return null;
+
+        $instance = new static();
+        $instance->forceFill($data);
+        return $instance;
     }
 }

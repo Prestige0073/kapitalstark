@@ -53,18 +53,53 @@
 
         @php
         $agencies = [
-            ['emoji'=>'🏙️','name'=>'Lisboa — Sede Social','type'=>__('pages.agencies.type_hq'),      'address'=>'Av. da Liberdade, 110, 3.º andar, 1269-046 Lisboa','phone'=>'+351 21 000 12 34','hours'=>'Seg–Sex : 9h–18h30','metro'=>'Avenida (Linha Azul)'],
-            ['emoji'=>'🌊','name'=>'Porto',               'type'=>__('pages.agencies.type_regional'),'address'=>'Rua de Santa Catarina, 85, 4000-447 Porto',         'phone'=>'+351 22 000 12 35','hours'=>'Seg–Sex : 9h–18h', 'metro'=>'Bolhão (Linha Amarela/Vermelha)'],
-            ['emoji'=>'🎓','name'=>'Coimbra',             'type'=>__('pages.agencies.type_regional'),'address'=>'Rua Ferreira Borges, 25, 3000-191 Coimbra',         'phone'=>'+351 23 900 12 36','hours'=>'Seg–Sex : 9h–18h', 'metro'=>'Centro (autocarros urbanos)'],
-            ['emoji'=>'🌿','name'=>'Braga',               'type'=>__('pages.agencies.type_regional'),'address'=>'Rua do Souto, 20, 4700-239 Braga',                 'phone'=>'+351 25 300 12 37','hours'=>'Seg–Sex : 9h–17h30','metro'=>'Centro Histórico'],
-            ['emoji'=>'☀️','name'=>'Faro (Algarve)',      'type'=>__('pages.agencies.type_regional'),'address'=>'Rua de Santo António, 40, 8000-283 Faro',           'phone'=>'+351 28 900 12 38','hours'=>'Seg–Sex : 9h–18h', 'metro'=>'Centro (autocarros urbanos)'],
+            ['emoji'=>'🏙️','name'=>'Lisboa — Sede Social','type'=>__('pages.agencies.type_hq'),      'address'=>'Av. da Liberdade, 110, 3.º andar, 1269-046 Lisboa','phone'=>'+351 21 000 12 34','hours'=>'Seg–Sex : 9h–18h30','metro'=>'Avenida (Linha Azul)',   'lat'=>38.7197,'lng'=>-9.1468,  'maps_q'=>'Avenida+da+Liberdade+110+Lisboa'],
+            ['emoji'=>'🌊','name'=>'Porto',               'type'=>__('pages.agencies.type_regional'),'address'=>'Rua de Santa Catarina, 85, 4000-447 Porto',         'phone'=>'+351 22 000 12 35','hours'=>'Seg–Sex : 9h–18h', 'metro'=>'Bolhão (Linha Amarela/Vermelha)','lat'=>41.1496,'lng'=>-8.6109,'maps_q'=>'Rua+de+Santa+Catarina+85+Porto'],
+            ['emoji'=>'🎓','name'=>'Coimbra',             'type'=>__('pages.agencies.type_regional'),'address'=>'Rua Ferreira Borges, 25, 3000-191 Coimbra',         'phone'=>'+351 23 900 12 36','hours'=>'Seg–Sex : 9h–18h', 'metro'=>'Centro (autocarros urbanos)',   'lat'=>40.2033,'lng'=>-8.4103,'maps_q'=>'Rua+Ferreira+Borges+25+Coimbra'],
+            ['emoji'=>'🌿','name'=>'Braga',               'type'=>__('pages.agencies.type_regional'),'address'=>'Rua do Souto, 20, 4700-239 Braga',                 'phone'=>'+351 25 300 12 37','hours'=>'Seg–Sex : 9h–17h30','metro'=>'Centro Histórico',             'lat'=>41.5454,'lng'=>-8.4265,'maps_q'=>'Rua+do+Souto+20+Braga'],
+            ['emoji'=>'☀️','name'=>'Faro (Algarve)',      'type'=>__('pages.agencies.type_regional'),'address'=>'Rua de Santo António, 40, 8000-283 Faro',           'phone'=>'+351 28 900 12 38','hours'=>'Seg–Sex : 9h–18h', 'metro'=>'Centro (autocarros urbanos)',   'lat'=>37.0194,'lng'=>-7.9322,'maps_q'=>'Rua+de+Santo+Antonio+40+Faro'],
         ];
         @endphp
+
+        {{-- Carte principale — siège Lisboa --}}
+        <div class="reveal" style="border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(15,28,54,.1);margin-bottom:48px;border:1px solid #e8edf5;">
+            <div style="background:var(--navy);padding:14px 20px;display:flex;align-items:center;gap:10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#267BF1" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span style="color:#fff;font-size:14px;font-weight:600;">KapitalStark — Siège Social Lisboa</span>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=38.7197,-9.1468" target="_blank" rel="noopener noreferrer"
+                   style="margin-left:auto;font-size:12px;color:#267BF1;text-decoration:none;background:rgba(38,123,241,.15);padding:4px 12px;border-radius:20px;font-weight:500;">
+                    Itinéraire →
+                </a>
+            </div>
+            <iframe
+                src="https://maps.google.com/maps?q=38.7197,-9.1468&hl=fr&z=15&output=embed"
+                width="100%" height="320" style="border:0;display:block;" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="KapitalStark Lisboa — Avenida da Liberdade"
+                aria-label="Carte Google Maps — KapitalStark Lisboa">
+            </iframe>
+        </div>
 
         <div class="agencies-grid reveal">
             @foreach($agencies as $a)
             <div class="agency-card reveal">
-                <div class="agency-card__map">{{ $a['emoji'] }}</div>
+                <div class="agency-card__map" style="padding:0;overflow:hidden;position:relative;">
+                    <iframe
+                        src="https://maps.google.com/maps?q={{ $a['lat'] }},{{ $a['lng'] }}&hl=fr&z=15&output=embed"
+                        width="100%" height="180" style="border:0;display:block;pointer-events:none;" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="{{ $a['name'] }}"
+                        aria-hidden="true">
+                    </iframe>
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ $a['lat'] }},{{ $a['lng'] }}"
+                       target="_blank" rel="noopener noreferrer"
+                       style="position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-end;padding:10px;text-decoration:none;"
+                       aria-label="Voir sur Google Maps — {{ $a['name'] }}">
+                        <span style="background:#267BF1;color:#fff;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.2);">
+                            Ouvrir dans Maps ↗
+                        </span>
+                    </a>
+                </div>
                 <div class="agency-card__body">
                     <h3 class="agency-card__name">{{ $a['name'] }}</h3>
                     <p class="agency-card__type">{{ $a['type'] }}</p>
