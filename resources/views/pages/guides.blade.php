@@ -61,6 +61,12 @@
         @php
         $guides = trans('pages.guides.items');
         $cats   = array_values(array_unique(array_column($guides, 'cat')));
+        $lotties = [
+            asset('lottie/stock-chart.json'),
+            asset('lottie/chart.json'),
+            asset('lottie/growth.json'),
+            asset('lottie/coins.json'),
+        ];
         @endphp
 
         {{-- Filtres --}}
@@ -74,6 +80,15 @@
         <div class="g-3" style="gap:24px;" id="guides-grid">
             @foreach($guides as $i => $guide)
             <div class="card guide-card reveal stagger-{{ ($i % 3) + 1 }}" data-cat="{{ $guide['cat'] }}">
+                <div class="guide-card__visual">
+                    <lottie-player
+                        src="{{ $lotties[$i % 4] }}"
+                        background="transparent"
+                        speed="1"
+                        style="width:100%;height:100%;"
+                        loop autoplay>
+                    </lottie-player>
+                </div>
                 <div style="padding:28px 28px 0;">
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
                         <div style="width:44px;height:44px;border-radius:12px;background:rgba(38,123,241,0.08);display:flex;align-items:center;justify-content:center;font-size:22px;">
